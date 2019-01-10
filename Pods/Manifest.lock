@@ -1,0 +1,94 @@
+PODS:
+  - Alamofire (4.8.0)
+  - AlamofireImage (3.5.0):
+    - Alamofire (~> 4.8)
+  - CreditCardForm (0.1.8)
+  - EGFormValidator (2.0.0)
+  - IQKeyboardManagerSwift (6.2.0)
+  - JGProgressHUD (2.0.3)
+  - KeychainAccess (3.1.2)
+  - Kingfisher (5.0.1)
+  - MarqueeLabel/Swift (3.2.0)
+  - Moya/Core (12.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.0)
+  - Moya/RxSwift (12.0.1):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - NotificationBannerSwift (1.8.0):
+    - MarqueeLabel/Swift (~> 3.2.0)
+    - SnapKit (~> 4.0.1)
+  - Paystack (3.0.5):
+    - Paystack/Core (= 3.0.5)
+  - Paystack/Core (3.0.5)
+  - Result (4.0.0)
+  - RxAtomic (4.4.0)
+  - RxCocoa (4.4.0):
+    - RxSwift (~> 4.0)
+  - RxOptional (3.6.2):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.4.0):
+    - RxAtomic (~> 4.4)
+  - SnapKit (4.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
+  - CreditCardForm
+  - EGFormValidator
+  - IQKeyboardManagerSwift
+  - JGProgressHUD
+  - KeychainAccess
+  - Kingfisher
+  - Moya/RxSwift
+  - NotificationBannerSwift
+  - Paystack
+  - RxCocoa
+  - RxOptional
+  - RxSwift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireImage
+    - CreditCardForm
+    - EGFormValidator
+    - IQKeyboardManagerSwift
+    - JGProgressHUD
+    - KeychainAccess
+    - Kingfisher
+    - MarqueeLabel
+    - Moya
+    - NotificationBannerSwift
+    - Paystack
+    - Result
+    - RxAtomic
+    - RxCocoa
+    - RxOptional
+    - RxSwift
+    - SnapKit
+
+SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
+  CreditCardForm: 7e67bc394545eda9e502652af0858552b4931728
+  EGFormValidator: 075803c0227c2f17c7e87ba43311adbf9beae704
+  IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
+  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
+  Kingfisher: 4f771421b9208185217550528a06fd48756cb7c2
+  MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
+  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  NotificationBannerSwift: 49fc4be7fabada55b189b50e72184c92edd5f7f7
+  Paystack: 21a16fe02cca6cc94618a2b68b7402917179ca0b
+  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
+  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxOptional: 80426a0ddbd092573e4c482d8cc13302078c4d5e
+  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+
+PODFILE CHECKSUM: 3fc48f07534ad8b76c744806ce86586da19ea5a8
+
+COCOAPODS: 1.6.0.beta.2

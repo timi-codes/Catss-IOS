@@ -1,0 +1,6 @@
+framework module EGFormValidator {
+  umbrella header "EGFormValidator-umbrella.h"
+
+  export *
+  module * { export * }
+}
