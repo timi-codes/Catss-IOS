@@ -25,6 +25,12 @@ class MarketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initMarketSecurities()
+        
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.searchBar.keyboardType = UIKeyboardType.asciiCapable
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.barTintColor = Color.primaryColor
+        
     }
     
     override func viewWillAppear(_ animated: Bool){
@@ -34,74 +40,43 @@ class MarketViewController: UIViewController {
     }
     
     private func setupViews(){
-        
-        // Set any properties (in this case, don't hide the nav bar and don't show the emoji keyboard option)
-        searchController.hidesNavigationBarDuringPresentation = true
-        searchController.searchBar.keyboardType = UIKeyboardType.asciiCapable
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.barTintColor = Color.primaryColor
-        
-        // Make this class the delegate and present the search
-        searchController.searchBar.delegate = self
-        
         let searchButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_search"), style: .plain, target: self, action: #selector(showUISearchController))
         self.tabBarController?.navigationItem.setRightBarButton(searchButtonItem, animated: true)
         setUpNavBarItem()
-        
-        
-//        searchController.searchBar.rx.text.asDriver().drive(onNext: { query in
-//            self.marketTableView.delegate = nil
-//            self.marketTableView.dataSource = nil
-//
-//            self.marketModel?.searchResult.asObservable()
-//                .filterNil()
-//                .bind(to:
-//                    self.marketTableView.rx.items(cellIdentifier: MarketViewCell.Identifier,
-//                                                  cellType:MarketViewCell.self)){(row, element, cell) in
-//                                                    cell.configureMarketCell(with: element)
-//                }.disposed(by: self.disposeBag)
-//        }).disposed(by: disposeBag)
-    
     }
-    
     
     @objc private func showUISearchController(){
         present(searchController, animated: true, completion: nil)
     }
     
     private func initMarketSecurities(){
-        
         marketModel = MarketViewModel(sortBy: segmentedControl.rx.selectedSegmentIndex.asDriver(), searchQuery: searchController.searchBar.rx.text.orEmpty.asDriver(), completion: { [unowned self](error) in
             guard let error = error else {return}
             self.showBanner(subtitle: error, style: .danger)
         })
         
-        marketModel?.marketSecurity.asObservable()
-            .filterNil()
-            .bind(to:
-                self.marketTableView.rx.items(cellIdentifier: MarketViewCell.Identifier,
-                cellType:MarketViewCell.self)){(row, element, cell) in
-                cell.configureMarketCell(with: element)
-            }.disposed(by: disposeBag)
+        searchController.searchBar.rx.text.orEmpty.asDriver().drive(onNext: { query in
+            if query == "" {
+                switch self.segmentedControl.selectedSegmentIndex {
+                case 0 :
+                    self.self.loadMarket()
+                case 1:
+                    self.self.loadWatchList()
+                default:
+                    return
+                }
+            }else{
+                self.loadSearchResult()
+            }
+            print("search bar observer")
+        }).disposed(by: disposeBag)
         
     }
     
     @IBAction func segmentedValueChanged(_ sender: UISegmentedControl) {
         
         if segmentedControl.selectedSegmentIndex == 0 {
-            
-            self.marketTableView.delegate = nil
-            self.marketTableView.dataSource = nil
-            
-            marketModel?.marketSecurity.asObservable()
-                .filterNil()
-                
-                .bind(to:
-                    self.marketTableView.rx.items(cellIdentifier: MarketViewCell.Identifier,
-                                                  cellType : MarketViewCell.self)){(row, element, cell) in
-                                                    cell.configureMarketCell(with: element)
-                }.disposed(by: disposeBag)
-            
+            self.loadMarket()
             rightHeaderLabel.text = "24h Chg%"
             
         } else if segmentedControl.selectedSegmentIndex == 1 {
@@ -112,23 +87,52 @@ class MarketViewController: UIViewController {
                 return
             }
             
-            self.marketTableView.delegate = nil
-            self.marketTableView.dataSource = nil
-            
-            marketModel?.watchlist.asObservable()
-                .filterNil()
-                .map{$0.filter { $0.securityName.contains(self.searchController.searchBar.text!) }}
-                .bind(to:
-                    self.marketTableView.rx.items(cellIdentifier: MarketViewCell.Identifier,
-                                                  cellType : MarketViewCell.self)){(row, element, cell) in
-                                                    cell.configureMarketCell(with: element)
-                }.disposed(by: disposeBag)
-            
+            self.loadWatchList()
             rightHeaderLabel.text = "No of Trades"
         }
     }
-}
-
-extension MarketViewController : UISearchBarDelegate {
     
+    
+    private func loadMarket(){
+        
+        self.marketTableView.delegate = nil
+        self.marketTableView.dataSource = nil
+        
+        marketModel?.marketSecurity.asObservable()
+            .filterNil()
+            .bind(to:
+                self.marketTableView.rx.items(cellIdentifier: MarketViewCell.Identifier,
+                                              cellType : MarketViewCell.self)){(row, element, cell) in
+                                                cell.configureMarketCell(with: element)
+                                                
+            }.disposed(by: disposeBag)
+    }
+    
+    
+    private func loadWatchList(){
+        
+        self.marketTableView.delegate = nil
+        self.marketTableView.dataSource = nil
+        
+        marketModel?.watchlist.asObservable()
+            .filterNil()
+            .bind(to:
+                self.marketTableView.rx.items(cellIdentifier: MarketViewCell.Identifier,
+                                              cellType : MarketViewCell.self)){(row, element, cell) in
+                                                cell.configureMarketCell(with: element)
+            }.disposed(by: disposeBag)
+    }
+    
+    private func loadSearchResult(){
+        self.marketTableView.delegate = nil
+        self.marketTableView.dataSource = nil
+        
+        self.marketModel?.searchResult.asObservable()
+            .filterNil()
+            .bind(to:
+                self.marketTableView.rx.items(cellIdentifier: MarketViewCell.Identifier,
+                                              cellType:MarketViewCell.self)){(row, element, cell) in
+                                                cell.configureMarketCell(with: element)
+            }.disposed(by: self.disposeBag)
+    }
 }

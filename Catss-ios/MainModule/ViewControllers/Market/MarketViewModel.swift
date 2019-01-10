@@ -43,6 +43,7 @@ class MarketViewModel {
         return _searchResult.asDriver()
     }
     
+    var currentSortBy = 0
     /**
      * 0 - Market
      * 1 - Watchlist
@@ -51,6 +52,7 @@ class MarketViewModel {
         
         sortBy.drive(onNext: { [weak self] type in
             guard let `self` = self else{return}
+            self.currentSortBy = type
             switch type {
             case 0 :
                 self.fetchMarketSecurity().subscribe({_ in
@@ -67,12 +69,25 @@ class MarketViewModel {
             }
         }).disposed(by: disposeBag)
         
+        
         searchQuery.drive(onNext:{ [weak self] query in
             guard let `self` = self else {return}
             
-            let _result = self._marketSecurity.value.map{
-                $0.filter{$0.securityName.lowercased().contains(query.lowercased())}
+            var _result : [MarketSecurity]?
+            
+            switch self.currentSortBy  {
+            case 0:
+                _result = self._marketSecurity.value.map{
+                    $0.filter{$0.securityName.lowercased().contains(query.lowercased())}
+                }
+            case 1 :
+                _result = self._watchlist.value.map{
+                    $0.filter{$0.securityName.lowercased().contains(query.lowercased())}
+                }
+            default:
+                return
             }
+            
             self._searchResult.accept(_result)
             
         }).disposed(by: disposeBag)
