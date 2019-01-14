@@ -306,5 +306,63 @@ class MarketViewModel {
         })
     }
     
+    func buyOrder(secId: Int, quantity: Int, completion: @escaping AuthCompletion){
+        if let userId = self.getProfile?.id {
+            setMarketOrderBuyStreams(userId: userId, quantity: quantity, secId: secId, completion: completion)
+            .subscribe(onNext: { message in
+                                completion(message)
+                            }, onError: { error in
+                                print(String(describing: error.localizedDescription))
+                                completion(error.localizedDescription)
+                            }).disposed(by: disposeBag)
+        }
+    }
+    
+    
+    private func setMarketOrderSellStreams(userId : Int, quantity : Int, secId : Int, completion: @escaping AuthCompletion)->Observable<String>{
+        return Observable<String>.create({ observer in
+            
+            let request = self.provider.request(.marketOrderSell(userId: userId, total: quantity, secId: secId)){[weak self] result in
+                
+                guard `self` != nil else{return}
+                
+                switch result {
+                    
+                case .success(let response):
+                    do{
+                        let data = try JSONDecoder().decode(AuthResponse.self, from: response.data)
+                        
+                        if let message = data.message{
+                            observer.onNext(message)
+                        }
+                        observer.onCompleted()
+                    }catch let err{
+                        print(String(describing: err.localizedDescription))
+                    }
+                    
+                case .failure(let error):
+                    print(error)
+                    completion(error.localizedDescription)
+                }
+            }
+            
+            return Disposables.create {
+                request.cancel()
+            }
+        })
+    }
+    
+    func sellOrder(secId: Int, quantity: Int, completion: @escaping AuthCompletion){
+        if let userId = self.getProfile?.id {
+            setMarketOrderSellStreams(userId: userId, quantity: quantity, secId: secId, completion: completion)
+                .subscribe(onNext: { message in
+                    completion(message)
+                }, onError: { error in
+                    print(String(describing: error.localizedDescription))
+                    completion(error.localizedDescription)
+                }).disposed(by: disposeBag)
+        }
+    }
+    
     
 }

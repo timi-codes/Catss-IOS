@@ -12,32 +12,43 @@ import RxCocoa
 
 class OrderViewController: UIViewController {
     
-    @IBOutlet weak var onBoardView: UIView!
-    
     private let loginModel = OnBoardingViewModel()
     private let disposeBag = DisposeBag()
+    
+    private lazy var titleView : UIButton = {
+        let button =  UIButton(type: .custom)
+        
+        let myImage = #imageLiteral(resourceName: "arrow_drop_down")
+        button.setImage(myImage, for: UIControlState.normal)
+        
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 160, bottom: 0, right: 0)
+        button.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
+        
+        button.titleLabel?.textColor = .white
+        button.setTitle("SELECT A SECURITY", for: .normal)
+        button.titleLabel?.font = UIFont.setFont(of: 13)
+        
+        button.addTarget(self, action: #selector(self.selectSecurity), for: .touchUpInside)
+        
+        return button
+    }()
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         setDefaultNavigationBar()
-        
-        loginModel.isUserLoggedIn.subscribe(onNext:{ [unowned self] loggedIn in
-            if loggedIn {
-                self.setupViews()
-                self.onBoardView.isHidden = true
-                
-            }else{
-                self.onBoardView.isHidden = false
-                self.setDefaultNavigationBar()
-            }
-        }).disposed(by: disposeBag)
+        setupViews()
+
     }
     
-    
     private func setupViews(){
-        
+        self.tabBarController?.navigationItem.titleView = titleView
+        self.tabBarController?.navigationItem.titleView?.isHidden = false
+        setUpNavBarItem()
+    }
+    
+    @objc func selectSecurity(){
+        print("select button clicked")
     }
     
     @IBAction func onAuthenticateUser(_ sender: UIButton) {

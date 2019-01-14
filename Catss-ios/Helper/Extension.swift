@@ -57,7 +57,9 @@ extension UIViewController {
     func setDefaultNavigationBar(){
         if let nav = self.navigationController {
             nav.navigationItem.setRightBarButtonItems(nil, animated: true)
+            
             nav.navigationBar.topItem?.rightBarButtonItems = []
+        self.tabBarController?.navigationItem.titleView?.isHidden = true
         }
     }
     
@@ -157,5 +159,38 @@ extension UIStoryboard {
     
     func dialogControllerFor(identifier: String) -> UIViewController {
         return UIStoryboard(name: "Dialog", bundle: nil).instantiateViewController(withIdentifier: identifier)
+    }
+}
+
+
+extension UILabel{
+    
+    func addImageWith(name: String, behindText: Bool) {
+        
+        let attachment = NSTextAttachment()
+        attachment.image = UIImage(named: name)
+
+        let attachmentString = NSAttributedString(attachment: attachment)
+        
+        guard let txt = self.text else {
+            return
+        }
+        
+        if behindText {
+            let strLabelText = NSMutableAttributedString(string: txt)
+            strLabelText.append(attachmentString)
+            self.attributedText = strLabelText
+        } else {
+            let strLabelText = NSAttributedString(string: txt)
+            let mutableAttachmentString = NSMutableAttributedString(attributedString: attachmentString)
+            mutableAttachmentString.append(strLabelText)
+            self.attributedText = mutableAttachmentString
+        }
+    }
+    
+    func removeImage() {
+        let text = self.text
+        self.attributedText = nil
+        self.text = text
     }
 }

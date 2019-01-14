@@ -17,6 +17,7 @@ class MarketViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var rightHeaderLabel: UILabel!
     
+    
     internal var marketModel : MarketViewModel?
     private let  searchController = UISearchController(searchResultsController: nil)
     
@@ -127,7 +128,7 @@ class MarketViewController: UIViewController {
                                 .when(.recognized)
                                 .subscribe(onNext: { _ in
                                     if self.segmentedControl.selectedSegmentIndex == 0 {
-//                                        self.showBuySellDialog(element.securityName, element.newPrice, Double?)
+                                        self.showBuySellDialog(element.securityName, element.id, element.newPrice)
                                     }
                                 })
                                 .disposed(by: self.disposeBag)
@@ -159,8 +160,8 @@ class MarketViewController: UIViewController {
             .filterNil()
             .bind(to:
                 self.marketTableView.rx.items(cellIdentifier: MarketViewCell.Identifier,
-                                              cellType:MarketViewCell.self)){(row, element, cell) in
-                                                cell.configureMarketCell(with: element)
+                    cellType:MarketViewCell.self)){(row, element, cell) in
+                    cell.configureMarketCell(with: element)
             }.disposed(by: self.disposeBag)
     }
 }

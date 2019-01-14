@@ -76,7 +76,7 @@ extension MarketViewController : SetPriceDialogDelegate, BuySellDialogDelegate{
     }
     
     
-     func showBuySellDialog(_ name:String, _ secid: Int, _ price : Double?){
+     func showBuySellDialog(_ name: String, _ secid: Int, _ price : Double?){
         
         let customAlert = UIStoryboard().dialogControllerFor(identifier: "BuySellDialog") as! BuySellDialogVC
         
@@ -106,11 +106,25 @@ extension MarketViewController : SetPriceDialogDelegate, BuySellDialogDelegate{
     }
     
     func didSelectBuy(secId: Int, quantity: Int) {
-       // marketModel?.
+        marketModel?.buyOrder(secId: secId, quantity: quantity, completion: { message in
+            guard let message = message else{
+                //hide progress
+                return
+            }
+            //hide progress
+            self.showBanner(subtitle: message, style: .danger)
+        })
     }
     
     func didSelectSell(secId: Int, quantity: Int) {
-        
+        marketModel?.sellOrder(secId: secId, quantity: quantity, completion: { message in
+            guard let message = message else{
+                //hide progress
+                return
+            }
+            //hide progress
+            self.showBanner(subtitle: message, style: .danger)
+        })
     }
     
 }

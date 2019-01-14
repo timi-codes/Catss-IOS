@@ -56,6 +56,7 @@ class BuySellDialogVC: UIViewController {
             return
         }
         delegate?.didSelectSell(secId: currentSecurityId!,quantity: Int(quantity)!)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func buyButtonTapped(_ sender: UIButton) {
@@ -63,6 +64,7 @@ class BuySellDialogVC: UIViewController {
             return
         }
         delegate?.didSelectBuy(secId: currentSecurityId!,quantity: Int(quantity)!)
+        dismiss(animated: true, completion: nil)
     }
     
     

@@ -419,6 +419,7 @@
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
                     <connections>
+                        <outlet property="containerView" destination="Xh8-eG-IJV" id="M94-JE-nvg"/>
                         <outlet property="marketPriceTextField" destination="12P-Us-ON6" id="lR5-2A-SlI"/>
                         <outlet property="quantityTextField" destination="wJd-QD-2zF" id="bu3-2a-z8V"/>
                         <outlet property="securityNameLabel" destination="aVb-fe-7gP" id="YXQ-8V-g0b"/>
