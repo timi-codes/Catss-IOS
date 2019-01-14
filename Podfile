@@ -8,6 +8,7 @@ target 'Catss-ios' do
 pod 'RxSwift'
 pod 'RxOptional'
 pod 'RxCocoa'
+pod 'RxGesture'
 pod 'Moya/RxSwift'
 pod 'Alamofire'
 pod 'CreditCardForm'

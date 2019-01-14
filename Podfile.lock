@@ -15,22 +15,25 @@ PODS:
   - Moya/RxSwift (12.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
-  - NotificationBannerSwift (1.8.0):
+  - NotificationBannerSwift (2.0.1):
     - MarqueeLabel/Swift (~> 3.2.0)
-    - SnapKit (~> 4.0.1)
+    - SnapKit (~> 4.2.0)
   - Paystack (3.0.5):
     - Paystack/Core (= 3.0.5)
   - Paystack/Core (3.0.5)
-  - Result (4.0.0)
+  - Result (4.1.0)
   - RxAtomic (4.4.0)
   - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
+  - RxGesture (2.1.0):
+    - RxCocoa (~> 4.4.0)
+    - RxSwift (~> 4.4.0)
   - RxOptional (3.6.2):
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
-  - SnapKit (4.0.1)
+  - SnapKit (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -45,6 +48,7 @@ DEPENDENCIES:
   - NotificationBannerSwift
   - Paystack
   - RxCocoa
+  - RxGesture
   - RxOptional
   - RxSwift
 
@@ -65,6 +69,7 @@ SPEC REPOS:
     - Result
     - RxAtomic
     - RxCocoa
+    - RxGesture
     - RxOptional
     - RxSwift
     - SnapKit
@@ -80,15 +85,16 @@ SPEC CHECKSUMS:
   Kingfisher: 4f771421b9208185217550528a06fd48756cb7c2
   MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
-  NotificationBannerSwift: 49fc4be7fabada55b189b50e72184c92edd5f7f7
+  NotificationBannerSwift: 007774aa590cc9680647b92b2f217bef5c00c32c
   Paystack: 21a16fe02cca6cc94618a2b68b7402917179ca0b
-  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxGesture: 7f6dfb45dbde06e618c24442d38493e3144f2c95
   RxOptional: 80426a0ddbd092573e4c482d8cc13302078c4d5e
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
-  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 3fc48f07534ad8b76c744806ce86586da19ea5a8
+PODFILE CHECKSUM: 4321beba3367431e8f4272f344f12897ffa79557
 
 COCOAPODS: 1.6.0.beta.2

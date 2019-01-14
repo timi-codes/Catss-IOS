@@ -33,7 +33,7 @@ class MarketViewCell: UITableViewCell {
     func configureMarketCell(with marketItem : MarketSecurity){
         securityNameLabel.text = marketItem.securityName
         
-        statusLabel.text = marketItem.status
+        statusLabel.text = "\(marketItem.id)"
         
         
         if let newPrice = marketItem.newPrice {
@@ -79,7 +79,7 @@ class MarketViewCell: UITableViewCell {
         
     }
     
-    override func prepareForReuse() {
-        disposeBag = DisposeBag()
-    }
+//    override func prepareForReuse() {
+//        disposeBag = DisposeBag()
+//    }
 }

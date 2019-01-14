@@ -12,12 +12,12 @@ import Alamofire
 
 public enum MarketRequest{
     case loadSecurities()
-    case marketOrderBuy(userId: Int, total: String, secId: Int)
-    case marketOrderSell(userId: Int, total: String, secId: Int)
-    case setWatchlist(userId: Int, secId: Int)
+    case marketOrderBuy(userId: Int, total: Int, secId: Int)
+    case marketOrderSell(userId: Int, total: Int, secId: Int)
+    case addToWatchlist(userId: Int, secId: Int)
     case loadWatchlist(userId: Int)
     case removeWatchlist(userId: Int, secId: Int)
-    case setPriceAlert(userId: Int, secId: Int, price: String)
+    case setPriceAlert(userId: Int, secId: Int, price: Double)
 }
 
 extension MarketRequest : TargetType {
@@ -33,7 +33,7 @@ extension MarketRequest : TargetType {
             return Constant.MARKET_ORDER_BUY
         case .marketOrderSell(_):
             return Constant.MARKET_ORDER_SELL
-        case .setWatchlist(_):
+        case .addToWatchlist(_):
             return Constant.SET_WATCHLIST
         case .loadWatchlist(_):
             return Constant.GET_WATCHLIST
@@ -48,7 +48,7 @@ extension MarketRequest : TargetType {
         switch self {
         case .loadSecurities(), .loadWatchlist(_):
             return .get
-        case .marketOrderBuy(_), .marketOrderSell(_), .setWatchlist(_), .removeWatchlist(_), .setPriceAlert(_):
+        case .marketOrderBuy(_), .marketOrderSell(_), .addToWatchlist(_), .removeWatchlist(_), .setPriceAlert(_):
             return .post
         }
     }
@@ -67,7 +67,7 @@ extension MarketRequest : TargetType {
             return .requestParameters(parameters: ["userid" : userId, "total" : total, "secid" : secId], encoding: URLEncoding.queryString)
         case .marketOrderSell(let userId, let total, let secId):
             return .requestParameters(parameters: ["userid" : userId, "total" : total, "secid" : secId], encoding: URLEncoding.queryString)
-        case .setWatchlist(let userId, let secId):
+        case .addToWatchlist(let userId, let secId):
             return .requestParameters(parameters: ["userid" : userId, "secid" : secId], encoding: URLEncoding.queryString)
         case .removeWatchlist(let userId, let secId):
             return .requestParameters(parameters: ["userid" : userId, "secid" : secId], encoding: URLEncoding.queryString)

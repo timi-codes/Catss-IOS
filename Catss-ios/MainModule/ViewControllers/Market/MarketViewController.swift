@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxGesture
 
 class MarketViewController: UIViewController {
     
@@ -16,8 +17,7 @@ class MarketViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var rightHeaderLabel: UILabel!
     
-    
-    private var marketModel : MarketViewModel?
+    internal var marketModel : MarketViewModel?
     private let  searchController = UISearchController(searchResultsController: nil)
     
     private let disposeBag = DisposeBag()
@@ -25,7 +25,7 @@ class MarketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initMarketSecurities()
-        
+    
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.searchBar.keyboardType = UIKeyboardType.asciiCapable
         searchController.dimsBackgroundDuringPresentation = false
@@ -70,7 +70,6 @@ class MarketViewController: UIViewController {
             }
             print("search bar observer")
         }).disposed(by: disposeBag)
-        
     }
     
     @IBAction func segmentedValueChanged(_ sender: UISegmentedControl) {
@@ -101,11 +100,40 @@ class MarketViewController: UIViewController {
         marketModel?.marketSecurity.asObservable()
             .filterNil()
             .bind(to:
-                self.marketTableView.rx.items(cellIdentifier: MarketViewCell.Identifier,
-                                              cellType : MarketViewCell.self)){(row, element, cell) in
-                                                cell.configureMarketCell(with: element)
-                                                
-            }.disposed(by: disposeBag)
+                self.marketTableView
+                    .rx
+                    .items(cellIdentifier: MarketViewCell .Identifier,
+                           cellType : MarketViewCell.self)){(row, element, cell) in
+                            cell.configureMarketCell(with: element)
+                            cell.rx.longPressGesture().when(.began)
+                                .subscribe(onNext: { _ in
+                                    switch self.segmentedControl.selectedSegmentIndex {
+                                    case 0 :
+                                        if let userId = self.marketModel?.getProfile?.id {
+                                        self.createMarketActionAlertController(element.securityName, userId, element.id, element.newPrice)
+                                        }
+                                    case 1:
+                                        if let userId = self.marketModel?.getProfile?.id {
+                                            self.createWatchListActionAlertController(userId, element.id)
+                                        }
+                                    default:
+                                        return
+                                    }
+                                    
+                                }).disposed(by: self.disposeBag)
+                            
+                            cell.rx
+                                .tapGesture()
+                                .when(.recognized)
+                                .subscribe(onNext: { _ in
+                                    if self.segmentedControl.selectedSegmentIndex == 0 {
+//                                        self.showBuySellDialog(element.securityName, element.newPrice, Double?)
+                                    }
+                                })
+                                .disposed(by: self.disposeBag)
+                            
+                            
+            }.disposed(by: self.disposeBag)
     }
     
     

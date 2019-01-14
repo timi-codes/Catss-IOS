@@ -14,6 +14,7 @@ import RxSwift
 import KeychainAccess
 
 class MarketViewModel {
+    
     let provider = MoyaProvider<MarketRequest>(plugins:[NetworkLoggerPlugin(verbose:true)])
     
     private let disposeBag = DisposeBag()
@@ -151,4 +152,159 @@ class MarketViewModel {
             }
         })
     }
+    
+    private func removeFromWatchListStreams(userid: Int, secid: Int, completion: @escaping AuthCompletion)->Observable<String>{
+        return Observable<String>.create({ observer  in
+
+             let request = self.provider.request(.removeWatchlist(userId: userid, secId: secid)) {[weak self] result in
+                guard `self` != nil else{return}
+                switch result {
+                case .success(let response):
+                    do {
+                        let data = try JSONDecoder().decode(AuthResponse.self, from: response.data)
+                        if let message = data.message{
+                            observer.onNext(message)
+                        }
+                        observer.onCompleted()
+                    }catch let err{
+                        print(String(describing: err.localizedDescription))
+                    }
+                case .failure(let error):
+                    print(error)
+                    completion(error.localizedDescription)
+                }
+            }
+            
+            return Disposables.create {
+                request.cancel()
+            }
+        })
+    }
+    
+    func removeFromWatchList(userId: Int, securityId: Int, completion: @escaping AuthCompletion) {
+        removeFromWatchListStreams(userid: userId, secid: securityId, completion: completion)
+            .subscribe(onNext: { message in
+                completion(message)
+            }, onError: { error in
+                print(String(describing: error.localizedDescription))
+                completion(error.localizedDescription)
+            }).disposed(by: disposeBag)
+    }
+    
+    
+    private func addToWatchListStreams(userid: Int, secid: Int, completion: @escaping AuthCompletion)->Observable<String>{
+        return Observable<String>.create({ observer  in
+            
+            let request = self.provider.request(.addToWatchlist(userId: userid, secId: secid)) {[weak self] result in
+                guard `self` != nil else{return}
+                switch result {
+                case .success(let response):
+                    do {
+                        let data = try JSONDecoder().decode(AuthResponse.self, from: response.data)
+                        if let message = data.message{
+                            observer.onNext(message)
+                        }
+                        observer.onCompleted()
+                    }catch let err{
+                        print(String(describing: err.localizedDescription))
+                    }
+                case .failure(let error):
+                    print(error)
+                    completion(error.localizedDescription)
+                }
+            }
+            
+            return Disposables.create {
+                request.cancel()
+            }
+        })
+    }
+    
+    func addToWatchList(userId: Int, securityId: Int, completion: @escaping AuthCompletion) {
+        addToWatchListStreams(userid: userId, secid: securityId, completion: completion)
+            .subscribe(onNext: { message in
+                completion(message)
+            }, onError: { error in
+                print(String(describing: error.localizedDescription))
+                completion(error.localizedDescription)
+            }).disposed(by: disposeBag)
+    }
+    
+    
+    private func setPriceAlertStreams(userid: Int, secid: Int,price: Double, completion: @escaping AuthCompletion)->Observable<String>{
+        return Observable<String>.create({ observer  in
+            
+            let request = self.provider.request(.setPriceAlert(userId: userid, secId: secid, price: price)) {[weak self] result in
+                guard `self` != nil else{return}
+                switch result {
+                case .success(let response):
+                    do {
+                        let data = try JSONDecoder().decode(AuthResponse.self, from: response.data)
+                        if let message = data.message{
+                            observer.onNext(message)
+                        }
+                        observer.onCompleted()
+                    }catch let err{
+                        print(String(describing: err.localizedDescription))
+                    }
+                case .failure(let error):
+                    print(error)
+                    completion(error.localizedDescription)
+                }
+            }
+            
+            return Disposables.create {
+                request.cancel()
+            }
+        })
+    }
+    
+    
+    func setPriceAlert(secId: Int, price: Double, completion: @escaping AuthCompletion) {
+        
+        if let userId = self.getProfile?.id {
+            setPriceAlertStreams(userid: userId, secid: secId, price: price, completion: completion)
+                .subscribe(onNext: { message in
+                    completion(message)
+                }, onError: { error in
+                    print(String(describing: error.localizedDescription))
+                    completion(error.localizedDescription)
+                }).disposed(by: disposeBag)
+        }
+    }
+    
+    private func setMarketOrderBuyStreams(userId : Int, quantity : Int, secId : Int, completion: @escaping AuthCompletion)->Observable<String>{
+        return Observable<String>.create({ observer in
+            
+            let request = self.provider.request(.marketOrderBuy(userId: userId, total: quantity, secId: secId)){[weak self] result in
+                
+                guard `self` != nil else{return}
+
+                switch result {
+                    
+                case .success(let response):
+                    do{
+                        let data = try JSONDecoder().decode(AuthResponse.self, from: response.data)
+                        
+                        if let message = data.message{
+                            observer.onNext(message)
+                        }
+                        observer.onCompleted()
+                    }catch let err{
+                        print(String(describing: err.localizedDescription))
+                    }
+                    
+                case .failure(let error):
+                    print(error)
+                    completion(error.localizedDescription)
+                }
+            }
+            
+            return Disposables.create {
+                request.cancel()
+            }
+        })
+    }
+    
+    
 }

@@ -22,7 +22,6 @@ struct MarketSecurity : Codable {
     let newPrice : Double?
     let status : String?
     let date : String
-    
     let trade : Int?
     let price : String?
     let gap : Int?
@@ -38,5 +37,5 @@ struct MarketSecurity : Codable {
         case realPrice = "real_price"
         case newPrice = "new_price"
     }
-    
 }
+
