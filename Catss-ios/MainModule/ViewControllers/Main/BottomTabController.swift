@@ -43,9 +43,9 @@ class BottomTabController: UITabBarController {
     func configure(){
         self.tabBar.unselectedItemTintColor = Color.tabItemTintColor
         setupBarItems()
+        
         let tabBarItemAppearance = UITabBarItem.appearance()
         tabBarItemAppearance.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.setLightFont(of:10), NSAttributedString.Key.foregroundColor: Color.tabItemTintColor], for: .normal)
-        
         tabBarItemAppearance.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.setBoldFont(of:10), NSAttributedString.Key.foregroundColor: Color.accentColor], for: .selected)
         
     }

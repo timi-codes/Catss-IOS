@@ -37,7 +37,7 @@ class HomeViewController : UIViewController {
         setupRankCellConfiguration(with: homeViewModel)
         setupNewsCellConfiguration(with: homeViewModel)
         setupStockIndexCellConfiguration(with: homeViewModel)
-        notifyScrollStart()
+        //notifyScrollStart()
     }
     
     private func setupRankCellConfiguration(with viewModel: HomeViewModel) {

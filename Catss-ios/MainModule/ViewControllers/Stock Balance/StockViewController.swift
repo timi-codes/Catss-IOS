@@ -34,7 +34,6 @@ class StockViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         setDefaultNavigationBar()
         
         loginModel.isUserLoggedIn.subscribe(onNext:{ [unowned self] loggedIn in

@@ -36,7 +36,7 @@ class MarketViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
-        setDefaultNavigationBar()
+        self.setDefaultNavigationBar()
         self.setupViews()
     }
     
@@ -44,6 +44,8 @@ class MarketViewController: UIViewController {
         let searchButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_search"), style: .plain, target: self, action: #selector(showUISearchController))
         self.tabBarController?.navigationItem.setRightBarButton(searchButtonItem, animated: true)
         setUpNavBarItem()
+        
+        marketTableView.register(UINib(nibName: "MarketViewCell", bundle: nil), forCellReuseIdentifier: MarketViewCell.Identifier)
     }
     
     @objc private func showUISearchController(){

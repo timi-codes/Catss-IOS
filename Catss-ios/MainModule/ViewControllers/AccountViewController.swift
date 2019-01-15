@@ -21,7 +21,7 @@ class AccountViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.setDefaultNavigationBar()
         loginModel.isUserLoggedIn.subscribe(onNext:{ [unowned self] loggedIn in
             if loggedIn {
                 self.setupViews()
@@ -30,7 +30,6 @@ class AccountViewController: UIViewController {
             }else{
                 self.actionTileView.isHidden = true
                 self.onBoardView.isHidden = false
-                self.setDefaultNavigationBar()
             }
         }).disposed(by: disposeBag)
         

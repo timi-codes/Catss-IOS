@@ -10,10 +10,17 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class OrderViewController: UIViewController {
+class OrderViewController: UIViewController , PickSecurityDelegate {
     
-    private let loginModel = OnBoardingViewModel()
+    @IBOutlet weak var buyOrSellSegmentControl: UISegmentedControl!
+    
+    @IBOutlet weak var priceTextField: BorderTextField!
+    @IBOutlet weak var quantityTextField: BorderTextField!
+    @IBOutlet weak var totalTextField: BorderTextField!
+    @IBOutlet weak var recentOrderTableView: UITableView!
+    
     private let disposeBag = DisposeBag()
+    
     
     private lazy var titleView : UIButton = {
         let button =  UIButton(type: .custom)
@@ -36,33 +43,37 @@ class OrderViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setDefaultNavigationBar()
-        setupViews()
-
+        self.setDefaultNavigationBar()
+        self.setupViews()
     }
     
     private func setupViews(){
         self.tabBarController?.navigationItem.titleView = titleView
         self.tabBarController?.navigationItem.titleView?.isHidden = false
         setUpNavBarItem()
+        
     }
     
     @objc func selectSecurity(){
-        print("select button clicked")
+        let searchVC = PickSecurityVC()
+        searchVC.delegate = self
+        //searchVC.hidesBottomBarWhenPushed = true
+        let backButton = UIBarButtonItem()
+        backButton.title = " "
+        backButton.tintColor = .white
+        navigationItem.backBarButtonItem = backButton
+        self.navigationController?.pushViewController(searchVC, animated: true)
     }
     
-    @IBAction func onAuthenticateUser(_ sender: UIButton) {
-        switch sender.tag {
-        case 1:
-            let signUpVC = UIStoryboard().controllerFor(identifier: "SignUpVC")
-            present(signUpVC, animated: true, completion: nil)
-            break;
-        case 2:
-            let loginVC = UIStoryboard().controllerFor(identifier: "LoginVC")
-            present(loginVC, animated: true, completion: nil)
-            break;
-        default:
-            return
-        }
+    @IBAction func openOrderButtonPressed(_ sender: UIButton) {
+        
     }
+    
+    func didPickSecurity(name: String, secId: Int, price: Double) {
+        titleView.setTitle(name, for: .normal)
+        priceTextField.text = String(format: "%.4f%", price)
+        quantityTextField.text = "1"
+    }
+    
+
 }

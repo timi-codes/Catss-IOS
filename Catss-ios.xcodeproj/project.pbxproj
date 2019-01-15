@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B400867221C951CF00134DB9 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400867121C951CF00134DB9 /* NewsCell.swift */; };
 		B400867821C95F2100134DB9 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B400867621C95F2100134DB9 /* NewsCell.xib */; };
+		B419633421EDE94800FF6E39 /* PickSecurityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419633321EDE94800FF6E39 /* PickSecurityVC.swift */; };
+		B419634321EE201600FF6E39 /* MarketViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B419634121EE201600FF6E39 /* MarketViewCell.xib */; };
+		B419634521EE3E2300FF6E39 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634421EE3E2300FF6E39 /* OrderViewModel.swift */; };
 		B42452C3219F719300820952 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42452C2219F719300820952 /* Constants.swift */; };
 		B456E72721B9743B00D06356 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72621B9743B00D06356 /* AccountViewController.swift */; };
 		B456E72921B9745A00D06356 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72821B9745A00D06356 /* OrderViewController.swift */; };
@@ -65,6 +68,9 @@
 		9F9F27483176E699D7198525 /* Pods-Catss-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catss-iosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Catss-iosUITests/Pods-Catss-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B400867121C951CF00134DB9 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		B400867621C95F2100134DB9 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		B419633321EDE94800FF6E39 /* PickSecurityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickSecurityVC.swift; sourceTree = "<group>"; };
+		B419634121EE201600FF6E39 /* MarketViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketViewCell.xib; sourceTree = "<group>"; };
+		B419634421EE3E2300FF6E39 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		B42452C2219F719300820952 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B456E72621B9743B00D06356 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B456E72821B9745A00D06356 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +151,16 @@
 				1514B13D2E005A56A275121E /* Pods_Catss_iosUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B419633921EE1E6100FF6E39 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				B456E72821B9745A00D06356 /* OrderViewController.swift */,
+				B419633321EDE94800FF6E39 /* PickSecurityVC.swift */,
+				B419634421EE3E2300FF6E39 /* OrderViewModel.swift */,
+			);
+			path = Order;
 			sourceTree = "<group>";
 		};
 		B42452C1219F715700820952 /* Helper */ = {
@@ -230,10 +246,10 @@
 				B4D5934A21ADEBE2006F166A /* Main */,
 				B4D5934B21ADEBFD006F166A /* Dialog */,
 				B456E72621B9743B00D06356 /* AccountViewController.swift */,
-				B456E72821B9745A00D06356 /* OrderViewController.swift */,
 				B4AD17E721CCFE6900DA4B40 /* Stock Balance */,
 				B4AD17F221CD4F5D00DA4B40 /* Market */,
 				B479657421C2B2D800EC1DF3 /* Home */,
+				B419633921EE1E6100FF6E39 /* Order */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -265,6 +281,7 @@
 				B4AD17F021CD4F5000DA4B40 /* MarketViewCell.swift */,
 				B4E3EB3E21E377FF003C3014 /* MarketViewModel.swift */,
 				B4BFC9E921E8E889009E9A08 /* MarketViewController+alertControllers.swift */,
+				B419634121EE201600FF6E39 /* MarketViewCell.xib */,
 			);
 			path = Market;
 			sourceTree = "<group>";
@@ -408,6 +425,7 @@
 				B483BA2821B6D292004AF85C /* Dialog.storyboard in Resources */,
 				B483BA2A21B6D2B2004AF85C /* Main.storyboard in Resources */,
 				B4DF0E9C2195906B00966FDA /* LaunchScreen.storyboard in Resources */,
+				B419634321EE201600FF6E39 /* MarketViewCell.xib in Resources */,
 				B400867821C95F2100134DB9 /* NewsCell.xib in Resources */,
 				B4DF0E992195906B00966FDA /* Assets.xcassets in Resources */,
 				B4F44C9221CB8E83007C542F /* StockIndexCell.xib in Resources */,
@@ -524,6 +542,7 @@
 				B4DF0E972195906500966FDA /* Catss_ios.xcdatamodeld in Sources */,
 				B4DF0E8F2195906500966FDA /* AppDelegate.swift in Sources */,
 				B4AD17EF21CD346900DA4B40 /* StockCell.swift in Sources */,
+				B419633421EDE94800FF6E39 /* PickSecurityVC.swift in Sources */,
 				B42452C3219F719300820952 /* Constants.swift in Sources */,
 				B4E51BFF21A5C6C5000AE67B /* BorderTextField.swift in Sources */,
 				B456E72B21B9747F00D06356 /* StockViewController.swift in Sources */,
@@ -540,6 +559,7 @@
 				B490AE7221A8404800A23AFD /* Extension.swift in Sources */,
 				B479657821C2B41D00EC1DF3 /* RankingCell.swift in Sources */,
 				B456E72921B9745A00D06356 /* OrderViewController.swift in Sources */,
+				B419634521EE3E2300FF6E39 /* OrderViewModel.swift in Sources */,
 				B400867221C951CF00134DB9 /* NewsCell.swift in Sources */,
 				B4AD17E921CD005500DA4B40 /* StockViewModel.swift in Sources */,
 			);
