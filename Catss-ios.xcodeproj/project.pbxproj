@@ -12,6 +12,7 @@
 		B419633421EDE94800FF6E39 /* PickSecurityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419633321EDE94800FF6E39 /* PickSecurityVC.swift */; };
 		B419634321EE201600FF6E39 /* MarketViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B419634121EE201600FF6E39 /* MarketViewCell.xib */; };
 		B419634521EE3E2300FF6E39 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634421EE3E2300FF6E39 /* OrderViewModel.swift */; };
+		B419634721EE3F3600FF6E39 /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634621EE3F3600FF6E39 /* OrderRequest.swift */; };
 		B42452C3219F719300820952 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42452C2219F719300820952 /* Constants.swift */; };
 		B456E72721B9743B00D06356 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72621B9743B00D06356 /* AccountViewController.swift */; };
 		B456E72921B9745A00D06356 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72821B9745A00D06356 /* OrderViewController.swift */; };
@@ -71,6 +72,7 @@
 		B419633321EDE94800FF6E39 /* PickSecurityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickSecurityVC.swift; sourceTree = "<group>"; };
 		B419634121EE201600FF6E39 /* MarketViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketViewCell.xib; sourceTree = "<group>"; };
 		B419634421EE3E2300FF6E39 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		B419634621EE3F3600FF6E39 /* OrderRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequest.swift; sourceTree = "<group>"; };
 		B42452C2219F719300820952 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B456E72621B9743B00D06356 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B456E72821B9745A00D06356 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				B4D5934E21AEFF4C006F166A /* UserRequest.swift */,
 				B479657921C362A800EC1DF3 /* HomeRequest.swift */,
 				B4E3EB4021E37911003C3014 /* MarketRequest.swift */,
+				B419634621EE3F3600FF6E39 /* OrderRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 			files = (
 				B479657621C2B30000EC1DF3 /* HomeViewModel.swift in Sources */,
 				B4E3EB3D21E36BCE003C3014 /* MarketSecurity.swift in Sources */,
+				B419634721EE3F3600FF6E39 /* OrderRequest.swift in Sources */,
 				B483BA2621B6AF64004AF85C /* BottomTabController.swift in Sources */,
 				B4E3EB4121E37911003C3014 /* MarketRequest.swift in Sources */,
 				B4D5934D21ADF7C0006F166A /* OnBoardingViewModel.swift in Sources */,

@@ -12,8 +12,8 @@ import Alamofire
 
 public enum MarketRequest{
     case loadSecurities()
-    case marketOrderBuy(userId: Int, total: Int, secId: Int)
-    case marketOrderSell(userId: Int, total: Int, secId: Int)
+    case marketBuy(userId: Int, total: Int, secId: Int)
+    case marketSell(userId: Int, total: Int, secId: Int)
     case addToWatchlist(userId: Int, secId: Int)
     case loadWatchlist(userId: Int)
     case removeWatchlist(userId: Int, secId: Int)
@@ -29,10 +29,10 @@ extension MarketRequest : TargetType {
         switch self {
         case .loadSecurities():
             return Constant.SECURITIES
-        case .marketOrderBuy(_):
-            return Constant.MARKET_ORDER_BUY
-        case .marketOrderSell(_):
-            return Constant.MARKET_ORDER_SELL
+        case .marketBuy(_):
+            return Constant.MARKET_BUY
+        case .marketSell(_):
+            return Constant.MARKET_SELL
         case .addToWatchlist(_):
             return Constant.SET_WATCHLIST
         case .loadWatchlist(_):
@@ -48,7 +48,7 @@ extension MarketRequest : TargetType {
         switch self {
         case .loadSecurities(), .loadWatchlist(_):
             return .get
-        case .marketOrderBuy(_), .marketOrderSell(_), .addToWatchlist(_), .removeWatchlist(_), .setPriceAlert(_):
+        case .marketBuy(_), .marketSell(_), .addToWatchlist(_), .removeWatchlist(_), .setPriceAlert(_):
             return .post
         }
     }
@@ -63,9 +63,9 @@ extension MarketRequest : TargetType {
             return .requestPlain
         case .loadWatchlist(let userId):
             return .requestParameters(parameters: ["userid" : userId], encoding: URLEncoding.queryString)
-        case .marketOrderBuy(let userId, let total, let secId):
+        case .marketBuy(let userId, let total, let secId):
             return .requestParameters(parameters: ["userid" : userId, "total" : total, "secid" : secId], encoding: URLEncoding.queryString)
-        case .marketOrderSell(let userId, let total, let secId):
+        case .marketSell(let userId, let total, let secId):
             return .requestParameters(parameters: ["userid" : userId, "total" : total, "secid" : secId], encoding: URLEncoding.queryString)
         case .addToWatchlist(let userId, let secId):
             return .requestParameters(parameters: ["userid" : userId, "secid" : secId], encoding: URLEncoding.queryString)

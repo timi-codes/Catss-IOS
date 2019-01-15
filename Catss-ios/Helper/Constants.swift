@@ -33,11 +33,17 @@ class Constant {
     static let BUY = "/buy"
     static let SELL = "/sell"
     static let POST_REF = "deposit/payment"
-    static let MARKET_ORDER_BUY = "trade/request"+BUY
-    static let MARKET_ORDER_SELL = "trade/request"+SELL
+    
+    static let MARKET_BUY = "trade/request" + BUY
+    static let MARKET_SELL = "trade/request" + SELL
+    
+    
     static let PLACE_ORDER_ASK = "place/order" + SELL
     static let PLACE_ORDER_BID = "place/order" + BUY
+    static let CANCEL_ORDER = "cancel/order"
+
     static let LOAD_OPEN_ORDER = "load/orders/all"
+    
     static let SET_WATCHLIST = "set/watchlist"
     static let GET_WATCHLIST = "load/watchlist"
     static let REMOVE_FROM_WATCHLIST = "cancel/watchlist"

@@ -86,12 +86,12 @@ class MarketViewModel {
     private func searchStream(_ searchQuery : Driver<String>){
         
         searchQuery.drive(onNext:{ [weak self] query in
-            guard let `self` = self else {return}
-            
+        guard let `self` = self else {return}
+    
             let _result = self._marketSecurity.value.map{
-                $0.filter{$0.securityName.lowercased().contains(query.lowercased())}
-            }
-            self._searchResult.accept(_result)
+    $0.filter{$0.securityName.lowercased().contains(query.lowercased())}
+        }
+        self._searchResult.accept(_result)
         }).disposed(by: disposeBag)
     }
     
@@ -148,14 +148,15 @@ class MarketViewModel {
             
             return Disposables.create{
                 request.cancel()
+                
             }
         })
     }
     
     private func removeFromWatchListStreams(userid: Int, secid: Int, completion: @escaping AuthCompletion)->Observable<String>{
         return Observable<String>.create({ observer  in
-            
-            let request = self.provider.request(.removeWatchlist(userId: userid, secId: secid)) {[weak self] result in
+
+             let request = self.provider.request(.removeWatchlist(userId: userid, secId: secid)) {[weak self] result in
                 guard `self` != nil else{return}
                 switch result {
                 case .success(let response):
@@ -271,4 +272,97 @@ class MarketViewModel {
                 }).disposed(by: disposeBag)
         }
     }
+    
+    private func setMarketOrderBuyStreams(userId : Int, quantity : Int, secId : Int, completion: @escaping AuthCompletion)->Observable<String>{
+        return Observable<String>.create({ observer in
+            
+            let request = self.provider.request(.marketBuy(userId: userId, total: quantity, secId: secId)){[weak self] result in
+                
+                guard `self` != nil else{return}
+
+                switch result {
+                    
+                case .success(let response):
+                    do{
+                        let data = try JSONDecoder().decode(AuthResponse.self, from: response.data)
+                        
+                        if let message = data.message{
+                            observer.onNext(message)
+                        }
+                        observer.onCompleted()
+                    }catch let err{
+                        print(String(describing: err.localizedDescription))
+                    }
+                    
+                case .failure(let error):
+                    print(error)
+                    completion(error.localizedDescription)
+                }
+            }
+            
+            return Disposables.create {
+                request.cancel()
+            }
+        })
+    }
+    
+    func buyOrder(secId: Int, quantity: Int, completion: @escaping AuthCompletion){
+        if let userId = self.getProfile?.id {
+            setMarketOrderBuyStreams(userId: userId, quantity: quantity, secId: secId, completion: completion)
+            .subscribe(onNext: { message in
+                                completion(message)
+                            }, onError: { error in
+                                print(String(describing: error.localizedDescription))
+                                completion(error.localizedDescription)
+                            }).disposed(by: disposeBag)
+        }
+    }
+    
+    
+    private func setMarketOrderSellStreams(userId : Int, quantity : Int, secId : Int, completion: @escaping AuthCompletion)->Observable<String>{
+        return Observable<String>.create({ observer in
+            
+            let request = self.provider.request(.marketSell(userId: userId, total: quantity, secId: secId)){[weak self] result in
+                
+                guard `self` != nil else{return}
+                
+                switch result {
+                    
+                case .success(let response):
+                    do{
+                        let data = try JSONDecoder().decode(AuthResponse.self, from: response.data)
+                        
+                        if let message = data.message{
+                            observer.onNext(message)
+                        }
+                        observer.onCompleted()
+                    }catch let err{
+                        print(String(describing: err.localizedDescription))
+                    }
+                    
+                case .failure(let error):
+                    print(error)
+                    completion(error.localizedDescription)
+                }
+            }
+            
+            return Disposables.create {
+                request.cancel()
+            }
+        })
+    }
+    
+    func sellOrder(secId: Int, quantity: Int, completion: @escaping AuthCompletion){
+        if let userId = self.getProfile?.id {
+            setMarketOrderSellStreams(userId: userId, quantity: quantity, secId: secId, completion: completion)
+                .subscribe(onNext: { message in
+                    completion(message)
+                }, onError: { error in
+                    print(String(describing: error.localizedDescription))
+                    completion(error.localizedDescription)
+                }).disposed(by: disposeBag)
+        }
+    }
+    
+    
 }

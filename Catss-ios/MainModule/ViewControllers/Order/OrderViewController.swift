@@ -18,9 +18,13 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
     @IBOutlet weak var quantityTextField: BorderTextField!
     @IBOutlet weak var totalTextField: BorderTextField!
     @IBOutlet weak var recentOrderTableView: UITableView!
+    @IBOutlet weak var askBidButton: UIButton!
     
     private let disposeBag = DisposeBag()
+    private let orderViewModel = OrderViewModel()
     
+    
+    private var selectedSecId : Int?
     
     private lazy var titleView : UIButton = {
         let button =  UIButton(type: .custom)
@@ -39,6 +43,27 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
         
         return button
     }()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        buyOrSellSegmentControl.rx.selectedSegmentIndex
+            .asDriver().drive(onNext:{
+                [weak self] type in
+                guard let `self` = self else{return}
+               
+                switch type {
+                case 0:
+                    self.askBidButton.backgroundColor = Color.successColor
+                case 1:
+                    self.askBidButton.backgroundColor = Color.warningColor
+                default:
+                    return
+                }
+            }).disposed(by: disposeBag)
+        
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,13 +91,28 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
     }
     
     @IBAction func openOrderButtonPressed(_ sender: UIButton) {
-        
+        print("clickred")
+       
     }
+    
+    @IBAction func askBidOrderPressed(_ sender: UIButton) {
+        if let price = priceTextField.text, price.count > 0, let quantity = quantityTextField.text, quantity.count > 0, let secid = selectedSecId{
+            orderViewModel.bidAskOrder(secId: secid, price: price.toDouble, quantity: Int(quantity)!, sortBy: (buyOrSellSegmentControl?.selectedSegmentIndex)!) { error  in
+                
+                guard let error = error else {
+                    return
+                }
+                self.showBanner(subtitle: error, style: .success)
+            }
+        }
+    }
+    
     
     func didPickSecurity(name: String, secId: Int, price: Double) {
         titleView.setTitle(name, for: .normal)
         priceTextField.text = String(format: "%.4f%", price)
         quantityTextField.text = "1"
+        selectedSecId = secId
     }
     
 
