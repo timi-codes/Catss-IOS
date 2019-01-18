@@ -21,12 +21,15 @@ class Constant {
     static let GET_ACCOUNT = "account" + USER
     static let GET_STOCK_BALANCE = "stocks" + USER
     static let GET_STOCK_HISTORY = "transaction" + USER
+    
     static let SEND_SUPPORT_MESSAGE = "contact/message"
     static let RESET_PASSWORD = "change/password"
+    
     static let USER_PROFILE = "profile-info/user"
+    
     static let UPDATE_PROFILE = "update/setting"
+    
     static let AUTHENTICATE_USER = "verify/authenticated"
-
     
     //path for TransactionRequest
     static let SECURITIES = "load/securities"
@@ -48,6 +51,7 @@ class Constant {
     static let GET_WATCHLIST = "load/watchlist"
     static let REMOVE_FROM_WATCHLIST = "cancel/watchlist"
     static let SET_PRICE_ALERT = "set/price-alert"
+    
     static let RANKING = "load/ranking"
     static let FINANCIALNEWS = "load/news"
     static let STOCKINDEX = "load/stockindex"

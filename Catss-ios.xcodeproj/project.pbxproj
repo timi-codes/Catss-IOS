@@ -13,6 +13,10 @@
 		B419634321EE201600FF6E39 /* MarketViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B419634121EE201600FF6E39 /* MarketViewCell.xib */; };
 		B419634521EE3E2300FF6E39 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634421EE3E2300FF6E39 /* OrderViewModel.swift */; };
 		B419634721EE3F3600FF6E39 /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634621EE3F3600FF6E39 /* OrderRequest.swift */; };
+		B419634A21EF300900FF6E39 /* OpenOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634821EF300900FF6E39 /* OpenOrderVC.swift */; };
+		B419634B21EF300900FF6E39 /* OpenOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B419634921EF300900FF6E39 /* OpenOrderCell.xib */; };
+		B419634D21EF35F100FF6E39 /* OpenOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634C21EF35F100FF6E39 /* OpenOrderCell.swift */; };
+		B419634F21EF3A5B00FF6E39 /* AllOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634E21EF3A5B00FF6E39 /* AllOrder.swift */; };
 		B42452C3219F719300820952 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42452C2219F719300820952 /* Constants.swift */; };
 		B456E72721B9743B00D06356 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72621B9743B00D06356 /* AccountViewController.swift */; };
 		B456E72921B9745A00D06356 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72821B9745A00D06356 /* OrderViewController.swift */; };
@@ -34,6 +38,12 @@
 		B4AD17F121CD4F5000DA4B40 /* MarketViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD17F021CD4F5000DA4B40 /* MarketViewCell.swift */; };
 		B4BFC9E821E8DC95009E9A08 /* BuySellDialogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFC9E721E8DC95009E9A08 /* BuySellDialogVC.swift */; };
 		B4BFC9EA21E8E88A009E9A08 /* MarketViewController+alertControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFC9E921E8E889009E9A08 /* MarketViewController+alertControllers.swift */; };
+		B4C4286921F09B0400CB551D /* SecurityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4286821F09B0400CB551D /* SecurityVC.swift */; };
+		B4C4286B21F09B2300CB551D /* SupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4286A21F09B2300CB551D /* SupportVC.swift */; };
+		B4C4286D21F09B6400CB551D /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4286C21F09B6400CB551D /* SettingVC.swift */; };
+		B4C4286F21F09B7900CB551D /* DepositVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4286E21F09B7900CB551D /* DepositVC.swift */; };
+		B4C4287121F0A1EB00CB551D /* AccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4287021F0A1EB00CB551D /* AccountRequest.swift */; };
+		B4C4287321F0AD4B00CB551D /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4287221F0AD4B00CB551D /* AccountViewModel.swift */; };
 		B4C99BF021A713240041F48D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C99BEF21A713240041F48D /* SignUpViewController.swift */; };
 		B4CE427821B543BF001E4B3D /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE427721B543BF001E4B3D /* AuthResponse.swift */; };
 		B4CE427A21B5528A001E4B3D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE427921B5528A001E4B3D /* Profile.swift */; };
@@ -73,6 +83,10 @@
 		B419634121EE201600FF6E39 /* MarketViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketViewCell.xib; sourceTree = "<group>"; };
 		B419634421EE3E2300FF6E39 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		B419634621EE3F3600FF6E39 /* OrderRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequest.swift; sourceTree = "<group>"; };
+		B419634821EF300900FF6E39 /* OpenOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOrderVC.swift; sourceTree = "<group>"; };
+		B419634921EF300900FF6E39 /* OpenOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenOrderCell.xib; sourceTree = "<group>"; };
+		B419634C21EF35F100FF6E39 /* OpenOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOrderCell.swift; sourceTree = "<group>"; };
+		B419634E21EF3A5B00FF6E39 /* AllOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOrder.swift; sourceTree = "<group>"; };
 		B42452C2219F719300820952 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B456E72621B9743B00D06356 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B456E72821B9745A00D06356 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +108,12 @@
 		B4AD17F021CD4F5000DA4B40 /* MarketViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewCell.swift; sourceTree = "<group>"; };
 		B4BFC9E721E8DC95009E9A08 /* BuySellDialogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuySellDialogVC.swift; sourceTree = "<group>"; };
 		B4BFC9E921E8E889009E9A08 /* MarketViewController+alertControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketViewController+alertControllers.swift"; sourceTree = "<group>"; };
+		B4C4286821F09B0400CB551D /* SecurityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityVC.swift; sourceTree = "<group>"; };
+		B4C4286A21F09B2300CB551D /* SupportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportVC.swift; sourceTree = "<group>"; };
+		B4C4286C21F09B6400CB551D /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		B4C4286E21F09B7900CB551D /* DepositVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositVC.swift; sourceTree = "<group>"; };
+		B4C4287021F0A1EB00CB551D /* AccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRequest.swift; sourceTree = "<group>"; };
+		B4C4287221F0AD4B00CB551D /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		B4C99BEF21A713240041F48D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B4CE427721B543BF001E4B3D /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		B4CE427921B5528A001E4B3D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -161,6 +181,9 @@
 				B456E72821B9745A00D06356 /* OrderViewController.swift */,
 				B419633321EDE94800FF6E39 /* PickSecurityVC.swift */,
 				B419634421EE3E2300FF6E39 /* OrderViewModel.swift */,
+				B419634821EF300900FF6E39 /* OpenOrderVC.swift */,
+				B419634921EF300900FF6E39 /* OpenOrderCell.xib */,
+				B419634C21EF35F100FF6E39 /* OpenOrderCell.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -180,11 +203,11 @@
 			children = (
 				B479657221C2B2BF00EC1DF3 /* HomeViewController.swift */,
 				B479657521C2B30000EC1DF3 /* HomeViewModel.swift */,
-				B479657721C2B41D00EC1DF3 /* RankingCell.swift */,
 				B400867121C951CF00134DB9 /* NewsCell.swift */,
 				B400867621C95F2100134DB9 /* NewsCell.xib */,
 				B4F44C8F21CB8E83007C542F /* StockIndexCell.swift */,
 				B4F44C9021CB8E83007C542F /* StockIndexCell.xib */,
+				B479657721C2B41D00EC1DF3 /* RankingCell.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -215,6 +238,7 @@
 				B479657921C362A800EC1DF3 /* HomeRequest.swift */,
 				B4E3EB4021E37911003C3014 /* MarketRequest.swift */,
 				B419634621EE3F3600FF6E39 /* OrderRequest.swift */,
+				B4C4287021F0A1EB00CB551D /* AccountRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -229,6 +253,7 @@
 				B4F44C9321CB96B8007C542F /* StockIndex.swift */,
 				B4AD17EC21CD057600DA4B40 /* StockRecord.swift */,
 				B4E3EB3C21E36BCE003C3014 /* MarketSecurity.swift */,
+				B419634E21EF3A5B00FF6E39 /* AllOrder.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -248,7 +273,7 @@
 				B4D5934921ADEBBF006F166A /* OnBoarding */,
 				B4D5934A21ADEBE2006F166A /* Main */,
 				B4D5934B21ADEBFD006F166A /* Dialog */,
-				B456E72621B9743B00D06356 /* AccountViewController.swift */,
+				B4C4286721F09AA400CB551D /* Account */,
 				B4AD17E721CCFE6900DA4B40 /* Stock Balance */,
 				B4AD17F221CD4F5D00DA4B40 /* Market */,
 				B479657421C2B2D800EC1DF3 /* Home */,
@@ -287,6 +312,19 @@
 				B419634121EE201600FF6E39 /* MarketViewCell.xib */,
 			);
 			path = Market;
+			sourceTree = "<group>";
+		};
+		B4C4286721F09AA400CB551D /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				B456E72621B9743B00D06356 /* AccountViewController.swift */,
+				B4C4286821F09B0400CB551D /* SecurityVC.swift */,
+				B4C4286A21F09B2300CB551D /* SupportVC.swift */,
+				B4C4286C21F09B6400CB551D /* SettingVC.swift */,
+				B4C4286E21F09B7900CB551D /* DepositVC.swift */,
+				B4C4287221F0AD4B00CB551D /* AccountViewModel.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		B4C99BF121A71A5E0041F48D /* AppDelegate */ = {
@@ -429,6 +467,7 @@
 				B483BA2A21B6D2B2004AF85C /* Main.storyboard in Resources */,
 				B4DF0E9C2195906B00966FDA /* LaunchScreen.storyboard in Resources */,
 				B419634321EE201600FF6E39 /* MarketViewCell.xib in Resources */,
+				B419634B21EF300900FF6E39 /* OpenOrderCell.xib in Resources */,
 				B400867821C95F2100134DB9 /* NewsCell.xib in Resources */,
 				B4DF0E992195906B00966FDA /* Assets.xcassets in Resources */,
 				B4F44C9221CB8E83007C542F /* StockIndexCell.xib in Resources */,
@@ -531,20 +570,24 @@
 				B419634721EE3F3600FF6E39 /* OrderRequest.swift in Sources */,
 				B483BA2621B6AF64004AF85C /* BottomTabController.swift in Sources */,
 				B4E3EB4121E37911003C3014 /* MarketRequest.swift in Sources */,
+				B4C4287121F0A1EB00CB551D /* AccountRequest.swift in Sources */,
 				B4D5934D21ADF7C0006F166A /* OnBoardingViewModel.swift in Sources */,
 				B4BFC9E821E8DC95009E9A08 /* BuySellDialogVC.swift in Sources */,
 				B4CE427A21B5528A001E4B3D /* Profile.swift in Sources */,
 				B4F44C9421CB96B8007C542F /* StockIndex.swift in Sources */,
 				B479657E21C367E000EC1DF3 /* FinancialNews.swift in Sources */,
+				B419634A21EF300900FF6E39 /* OpenOrderVC.swift in Sources */,
 				B4D316A621E8AD5B00D9CDBF /* SetPriceAlertVC.swift in Sources */,
 				B479657C21C367CB00EC1DF3 /* Ranking.swift in Sources */,
 				B4DF0E912195906500966FDA /* LoginViewController.swift in Sources */,
+				B4C4286F21F09B7900CB551D /* DepositVC.swift in Sources */,
 				B4C99BF021A713240041F48D /* SignUpViewController.swift in Sources */,
 				B479657A21C362A800EC1DF3 /* HomeRequest.swift in Sources */,
 				B4AD17ED21CD057600DA4B40 /* StockRecord.swift in Sources */,
 				B479657321C2B2BF00EC1DF3 /* HomeViewController.swift in Sources */,
 				B4DF0E972195906500966FDA /* Catss_ios.xcdatamodeld in Sources */,
 				B4DF0E8F2195906500966FDA /* AppDelegate.swift in Sources */,
+				B419634D21EF35F100FF6E39 /* OpenOrderCell.swift in Sources */,
 				B4AD17EF21CD346900DA4B40 /* StockCell.swift in Sources */,
 				B419633421EDE94800FF6E39 /* PickSecurityVC.swift in Sources */,
 				B42452C3219F719300820952 /* Constants.swift in Sources */,
@@ -556,11 +599,16 @@
 				B46A731521C7EF520088D2D0 /* MarketViewController.swift in Sources */,
 				B4CE427821B543BF001E4B3D /* AuthResponse.swift in Sources */,
 				B456E72721B9743B00D06356 /* AccountViewController.swift in Sources */,
+				B4C4286B21F09B2300CB551D /* SupportVC.swift in Sources */,
+				B4C4286921F09B0400CB551D /* SecurityVC.swift in Sources */,
 				B4CE427C21B5CCDD001E4B3D /* UserKeychainAccess.swift in Sources */,
 				B4D5934F21AEFF4C006F166A /* UserRequest.swift in Sources */,
 				B4AD17F121CD4F5000DA4B40 /* MarketViewCell.swift in Sources */,
 				B4F44C9121CB8E83007C542F /* StockIndexCell.swift in Sources */,
 				B490AE7221A8404800A23AFD /* Extension.swift in Sources */,
+				B4C4286D21F09B6400CB551D /* SettingVC.swift in Sources */,
+				B419634F21EF3A5B00FF6E39 /* AllOrder.swift in Sources */,
+				B4C4287321F0AD4B00CB551D /* AccountViewModel.swift in Sources */,
 				B479657821C2B41D00EC1DF3 /* RankingCell.swift in Sources */,
 				B456E72921B9745A00D06356 /* OrderViewController.swift in Sources */,
 				B419634521EE3E2300FF6E39 /* OrderViewModel.swift in Sources */,

@@ -19,14 +19,8 @@ class PickSecurityVC: UIViewController {
     
     var delegate : PickSecurityDelegate?
     
-    var isSearchBarActive = false
-    
     private var marketModel : MarketViewModel?
     private let disposeBag = DisposeBag()
-    
-    //    private var filtered = [](){
-    //
-    //    }
     
     var refreshControl : UIRefreshControl!
     

@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import Alamofire
 
 
-struct StockIndex :   Codable {
+struct StockIndex : Codable {
     let id: Int
     let pairs, stockIndexOpen, close: String
     

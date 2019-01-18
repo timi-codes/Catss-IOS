@@ -363,6 +363,4 @@ class MarketViewModel {
                 }).disposed(by: disposeBag)
         }
     }
-    
-    
 }

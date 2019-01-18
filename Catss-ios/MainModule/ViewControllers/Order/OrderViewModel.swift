@@ -21,29 +21,61 @@ class OrderViewModel {
     private let disposeBag = DisposeBag()
     typealias AuthCompletion = (_ error: String?)-> Void
     
-//    private var _marketSecurity = BehaviorRelay<[MarketSecurity]?>(value:nil)
-//
-//    private var _watchlist = BehaviorRelay<[MarketSecurity]?>(value: nil)
-//
-//    private var _searchResult = BehaviorRelay<[MarketSecurity]?>(value: nil)
-//
-//
+    private var _order = BehaviorRelay<AllOrder?>(value:nil)
+
+    private var _openorder = BehaviorRelay<[Order]?>(value: nil)
+
     var getProfile: Profile? {
         guard let profile = UserKeychainAccess.getUserProfile() else{ return nil }
         return profile
     }
     
-//    var marketSecurity: Driver<[MarketSecurity]?> {
-//        return _marketSecurity.asDriver()
-//    }
-//
-//    var watchlist: Driver<[MarketSecurity]?> {
-//        return _watchlist.asDriver()
-//    }
-//
-//    var searchResult : Driver<[MarketSecurity]?>{
-//        return _searchResult.asDriver()
-//    }
+    var openOrder: Driver<[Order]?> {
+        return _openorder.asDriver()
+    }
+    
+    init(completion: @escaping AuthCompletion) {
+        if let id = getProfile?.id{
+            fetchAllOpenOrder(with: id).subscribe({_ in
+                print("fetch order successfully")
+            }).disposed(by: disposeBag)
+        }
+       
+    }
+    
+    init(){
+        
+    }
+
+    private func fetchAllOpenOrder(with id: Int)->Observable<String>{
+        return Observable.create({ (observer) -> Disposable in
+            let request = self.provider.request(.loadAllOrder(userId: id)){ [weak self] result in
+                guard let `self` = self else {return}
+                
+                switch result {
+                case .success(let response):
+                    do {
+                        let data = try JSONDecoder().decode(AllOrder.self, from: response.data)
+                        self._order.accept(data)
+                        self._openorder.accept(data.orders)
+                       
+                        observer.onCompleted()
+                        
+                    }catch let err {
+                        print(String(describing: err.localizedDescription))
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            
+            return Disposables.create{
+                request.cancel()
+                
+            }
+        })
+    }
+    
     
 
     func bidAskOrder(secId: Int, price: Double, quantity: Int, sortBy : Int, completion: @escaping AuthCompletion){
