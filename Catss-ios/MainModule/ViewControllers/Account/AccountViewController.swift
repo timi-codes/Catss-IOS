@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import KeychainAccess
+import RxGesture
 
 class AccountViewController: UIViewController {
     
@@ -19,6 +20,13 @@ class AccountViewController: UIViewController {
     private let loginModel = OnBoardingViewModel()
     private let disposeBag = DisposeBag()
     
+    @IBOutlet weak var supportUIView: UIView!
+    @IBOutlet weak var securityUIView: UIView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setUpActionView()
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setDefaultNavigationBar()
@@ -41,8 +49,30 @@ class AccountViewController: UIViewController {
     private func setupViews(){
         let logoutButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutUser))
         self.tabBarController?.navigationItem.setRightBarButton(logoutButtonItem, animated: true)
-        setUpNavBarItem()
+                setUpNavBarItem()
+    }
+    
+    private func setUpActionView(){
+        supportUIView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext:{ _ in
+                let supportVC = UIStoryboard().controllerFor(identifier: "SupportVC")
+                supportVC.hidesBottomBarWhenPushed = true
+//                let backButton = UIBarButtonItem()
+//                backButton.title = ""
+//                backButton.tintColor = .white
+//                self.navigationItem.leftBarButtonItem = backButton
+                self.navigationController?.pushViewController(supportVC, animated: true)
+            }).disposed(by: disposeBag)
         
+        
+        securityUIView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext:{ _ in
+                let securityVC = UIStoryboard().controllerFor(identifier: "SecurityVC")
+                securityVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(securityVC, animated: true)
+            }).disposed(by: disposeBag)
     }
     
     @objc private func logoutUser(){
