@@ -11,6 +11,7 @@ import CoreData
 import IQKeyboardManagerSwift
 import RxSwift
 import RxCocoa
+import Paystack
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.keyboardAppearance = .dark
+        
+        Paystack.setDefaultPublicKey(Constant.PAYSTACK_KEY)
         
         
         //prints resources count every one seconds

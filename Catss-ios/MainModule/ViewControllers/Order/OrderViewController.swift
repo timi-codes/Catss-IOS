@@ -12,19 +12,11 @@ import RxCocoa
 
 class OrderViewController: UIViewController , PickSecurityDelegate {
     
-    @IBOutlet weak var buyOrSellSegmentControl: UISegmentedControl!
-    @IBOutlet weak var priceTextField: BorderTextField!
-    @IBOutlet weak var quantityTextField: BorderTextField!
-    @IBOutlet weak var totalTextField: BorderTextField!
-    @IBOutlet weak var recentOrderTableView: UITableView!
-    @IBOutlet weak var askBidButton: UIButton!
-    
-    
+    // MARK : Properties
     private let disposeBag = DisposeBag()
     private var orderViewModel : OrderViewModel?
-    
-    
     private var selectedSecId : Int?
+    private let cashTextFieldDelegate = CashTextFieldDelegate()
     
     private lazy var titleView : UIButton = {
         let button =  UIButton(type: .custom)
@@ -44,14 +36,21 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
         return button
     }()
     
+    
+    // MARK : Outlets
+    @IBOutlet weak var buyOrSellSegmentControl: UISegmentedControl!
+    @IBOutlet weak var priceTextField: BorderTextField!
+    @IBOutlet weak var quantityTextField: BorderTextField!
+    @IBOutlet weak var totalTextField: BorderTextField!
+    @IBOutlet weak var recentOrderTableView: UITableView!
+    @IBOutlet weak var askBidButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //askBidButton.titleLabel?.sizeToFit()
 
-//        askBidButton.titleLabel?.minimumScaleFactor = 1
-//        askBidButton.titleLabel?.numberOfLines = 2
-//        askBidButton.titleLabel?.adjustsFontSizeToFitWidth = true
-
+        self.priceTextField.delegate = self.cashTextFieldDelegate
+        
+        
         buyOrSellSegmentControl.rx.selectedSegmentIndex
             .asDriver().drive(onNext:{
                 [weak self] type in

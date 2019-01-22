@@ -13,6 +13,8 @@ class Constant {
     static let BASE_URL = "http://equities.catss.ng/api/droid/"
     static let AUTH_TOKEN_KEY = "x-access-token";
     static let AUTH_TOKEN = "yc3ROYW1lIjoiQnJldHQiLCJsYXN0TmFtZSI6Ikxhd3NvbiIsInBob25lTnVtYmVyIjoiNTIxMzM4MTQwOCIsInVybCI6InRlam"
+    
+    static let PAYSTACK_KEY = "pk_test_ec6da628ba73e57a21663ec7ed569a4fc56645b8"
 
     //path for UserRequest
     static let USER = "/user"

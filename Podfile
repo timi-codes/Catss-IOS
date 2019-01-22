@@ -20,6 +20,7 @@ pod 'IQKeyboardManagerSwift'
 pod 'EGFormValidator'
 pod 'JGProgressHUD'
 pod 'Kingfisher'
+pod 'Stripe'
 
 
 #post_install do |installer|

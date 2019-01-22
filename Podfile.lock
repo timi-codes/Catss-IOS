@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.8.0)
+  - Alamofire (4.8.1)
   - AlamofireImage (3.5.0):
     - Alamofire (~> 4.8)
   - CreditCardForm (0.1.8)
@@ -7,7 +7,7 @@ PODS:
   - IQKeyboardManagerSwift (6.2.0)
   - JGProgressHUD (2.0.3)
   - KeychainAccess (3.1.2)
-  - Kingfisher (5.0.1)
+  - Kingfisher (5.1.0)
   - MarqueeLabel/Swift (3.2.0)
   - Moya/Core (12.0.1):
     - Alamofire (~> 4.1)
@@ -34,6 +34,7 @@ PODS:
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
   - SnapKit (4.2.0)
+  - Stripe (14.0.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -51,6 +52,7 @@ DEPENDENCIES:
   - RxGesture
   - RxOptional
   - RxSwift
+  - Stripe
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -73,16 +75,17 @@ SPEC REPOS:
     - RxOptional
     - RxSwift
     - SnapKit
+    - Stripe
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   CreditCardForm: 7e67bc394545eda9e502652af0858552b4931728
   EGFormValidator: 075803c0227c2f17c7e87ba43311adbf9beae704
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
-  Kingfisher: 4f771421b9208185217550528a06fd48756cb7c2
+  Kingfisher: fcec238063d17404fca89bf0a850583211c4cbf6
   MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   NotificationBannerSwift: 007774aa590cc9680647b92b2f217bef5c00c32c
@@ -94,7 +97,8 @@ SPEC CHECKSUMS:
   RxOptional: 80426a0ddbd092573e4c482d8cc13302078c4d5e
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
 
-PODFILE CHECKSUM: 4321beba3367431e8f4272f344f12897ffa79557
+PODFILE CHECKSUM: 2f5479aebb1a31a1d98cf3f6b85a8bd3e54652a7
 
 COCOAPODS: 1.6.0.beta.2

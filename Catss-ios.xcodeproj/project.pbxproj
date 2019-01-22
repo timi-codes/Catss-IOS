@@ -21,6 +21,14 @@
 		B456E72721B9743B00D06356 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72621B9743B00D06356 /* AccountViewController.swift */; };
 		B456E72921B9745A00D06356 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72821B9745A00D06356 /* OrderViewController.swift */; };
 		B456E72B21B9747F00D06356 /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72A21B9747F00D06356 /* StockViewController.swift */; };
+		B458987A21F5D2CC0081EAC6 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B458987921F5D2CC0081EAC6 /* CardView.xib */; };
+		B458987C21F5D2ED0081EAC6 /* SummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B458987B21F5D2ED0081EAC6 /* SummaryView.xib */; };
+		B458987E21F5D9C10081EAC6 /* PaystackPaymentLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458987D21F5D9C10081EAC6 /* PaystackPaymentLauncher.swift */; };
+		B458988021F5DBF80081EAC6 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458987F21F5DBF80081EAC6 /* CardView.swift */; };
+		B458988321F5DC2A0081EAC6 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458988221F5DC2A0081EAC6 /* SummaryView.swift */; };
+		B458988621F757B40081EAC6 /* CashTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458988521F757B40081EAC6 /* CashTextFieldDelegate.swift */; };
+		B458988821F75CE10081EAC6 /* ExpiryDateTextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458988721F75CE10081EAC6 /* ExpiryDateTextDelegate.swift */; };
+		B458988A21F782440081EAC6 /* CardNumberTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458988921F782440081EAC6 /* CardNumberTextFieldDelegate.swift */; };
 		B46A731521C7EF520088D2D0 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46A731421C7EF520088D2D0 /* MarketViewController.swift */; };
 		B479657321C2B2BF00EC1DF3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B479657221C2B2BF00EC1DF3 /* HomeViewController.swift */; };
 		B479657621C2B30000EC1DF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B479657521C2B30000EC1DF3 /* HomeViewModel.swift */; };
@@ -41,7 +49,6 @@
 		B4C4286921F09B0400CB551D /* SecurityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4286821F09B0400CB551D /* SecurityVC.swift */; };
 		B4C4286B21F09B2300CB551D /* SupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4286A21F09B2300CB551D /* SupportVC.swift */; };
 		B4C4286D21F09B6400CB551D /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4286C21F09B6400CB551D /* SettingVC.swift */; };
-		B4C4286F21F09B7900CB551D /* DepositVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4286E21F09B7900CB551D /* DepositVC.swift */; };
 		B4C4287121F0A1EB00CB551D /* AccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4287021F0A1EB00CB551D /* AccountRequest.swift */; };
 		B4C4287321F0AD4B00CB551D /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4287221F0AD4B00CB551D /* AccountViewModel.swift */; };
 		B4C99BF021A713240041F48D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C99BEF21A713240041F48D /* SignUpViewController.swift */; };
@@ -91,6 +98,14 @@
 		B456E72621B9743B00D06356 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B456E72821B9745A00D06356 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		B456E72A21B9747F00D06356 /* StockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
+		B458987921F5D2CC0081EAC6 /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		B458987B21F5D2ED0081EAC6 /* SummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryView.xib; sourceTree = "<group>"; };
+		B458987D21F5D9C10081EAC6 /* PaystackPaymentLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaystackPaymentLauncher.swift; sourceTree = "<group>"; };
+		B458987F21F5DBF80081EAC6 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		B458988221F5DC2A0081EAC6 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		B458988521F757B40081EAC6 /* CashTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashTextFieldDelegate.swift; sourceTree = "<group>"; };
+		B458988721F75CE10081EAC6 /* ExpiryDateTextDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryDateTextDelegate.swift; sourceTree = "<group>"; };
+		B458988921F782440081EAC6 /* CardNumberTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberTextFieldDelegate.swift; sourceTree = "<group>"; };
 		B46A731421C7EF520088D2D0 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		B479657221C2B2BF00EC1DF3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B479657521C2B30000EC1DF3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -111,7 +126,6 @@
 		B4C4286821F09B0400CB551D /* SecurityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityVC.swift; sourceTree = "<group>"; };
 		B4C4286A21F09B2300CB551D /* SupportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportVC.swift; sourceTree = "<group>"; };
 		B4C4286C21F09B6400CB551D /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
-		B4C4286E21F09B7900CB551D /* DepositVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositVC.swift; sourceTree = "<group>"; };
 		B4C4287021F0A1EB00CB551D /* AccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRequest.swift; sourceTree = "<group>"; };
 		B4C4287221F0AD4B00CB551D /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		B4C99BEF21A713240041F48D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +210,34 @@
 				B4CE427B21B5CCDD001E4B3D /* UserKeychainAccess.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		B458987821F5D2970081EAC6 /* Deposit */ = {
+			isa = PBXGroup;
+			children = (
+				B458988121F5DC080081EAC6 /* CardView */,
+				B458988421F5DC340081EAC6 /* Summary */,
+				B458987D21F5D9C10081EAC6 /* PaystackPaymentLauncher.swift */,
+			);
+			path = Deposit;
+			sourceTree = "<group>";
+		};
+		B458988121F5DC080081EAC6 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				B458987921F5D2CC0081EAC6 /* CardView.xib */,
+				B458987F21F5DBF80081EAC6 /* CardView.swift */,
+			);
+			path = CardView;
+			sourceTree = "<group>";
+		};
+		B458988421F5DC340081EAC6 /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				B458987B21F5D2ED0081EAC6 /* SummaryView.xib */,
+				B458988221F5DC2A0081EAC6 /* SummaryView.swift */,
+			);
+			path = Summary;
 			sourceTree = "<group>";
 		};
 		B479657421C2B2D800EC1DF3 /* Home */ = {
@@ -317,11 +359,11 @@
 		B4C4286721F09AA400CB551D /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				B458987821F5D2970081EAC6 /* Deposit */,
 				B456E72621B9743B00D06356 /* AccountViewController.swift */,
 				B4C4286821F09B0400CB551D /* SecurityVC.swift */,
 				B4C4286A21F09B2300CB551D /* SupportVC.swift */,
 				B4C4286C21F09B6400CB551D /* SettingVC.swift */,
-				B4C4286E21F09B7900CB551D /* DepositVC.swift */,
 				B4C4287221F0AD4B00CB551D /* AccountViewModel.swift */,
 			);
 			path = Account;
@@ -331,6 +373,9 @@
 			isa = PBXGroup;
 			children = (
 				B4DF0E8E2195906500966FDA /* AppDelegate.swift */,
+				B458988521F757B40081EAC6 /* CashTextFieldDelegate.swift */,
+				B458988721F75CE10081EAC6 /* ExpiryDateTextDelegate.swift */,
+				B458988921F782440081EAC6 /* CardNumberTextFieldDelegate.swift */,
 			);
 			name = AppDelegate;
 			sourceTree = "<group>";
@@ -467,11 +512,13 @@
 				B483BA2A21B6D2B2004AF85C /* Main.storyboard in Resources */,
 				B4DF0E9C2195906B00966FDA /* LaunchScreen.storyboard in Resources */,
 				B419634321EE201600FF6E39 /* MarketViewCell.xib in Resources */,
+				B458987C21F5D2ED0081EAC6 /* SummaryView.xib in Resources */,
 				B419634B21EF300900FF6E39 /* OpenOrderCell.xib in Resources */,
 				B400867821C95F2100134DB9 /* NewsCell.xib in Resources */,
 				B4DF0E992195906B00966FDA /* Assets.xcassets in Resources */,
 				B4F44C9221CB8E83007C542F /* StockIndexCell.xib in Resources */,
 				B4DF0E942195906500966FDA /* OnBoard.storyboard in Resources */,
+				B458987A21F5D2CC0081EAC6 /* CardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +575,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -552,6 +600,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -572,6 +621,8 @@
 				B4E3EB4121E37911003C3014 /* MarketRequest.swift in Sources */,
 				B4C4287121F0A1EB00CB551D /* AccountRequest.swift in Sources */,
 				B4D5934D21ADF7C0006F166A /* OnBoardingViewModel.swift in Sources */,
+				B458988621F757B40081EAC6 /* CashTextFieldDelegate.swift in Sources */,
+				B458987E21F5D9C10081EAC6 /* PaystackPaymentLauncher.swift in Sources */,
 				B4BFC9E821E8DC95009E9A08 /* BuySellDialogVC.swift in Sources */,
 				B4CE427A21B5528A001E4B3D /* Profile.swift in Sources */,
 				B4F44C9421CB96B8007C542F /* StockIndex.swift in Sources */,
@@ -580,7 +631,7 @@
 				B4D316A621E8AD5B00D9CDBF /* SetPriceAlertVC.swift in Sources */,
 				B479657C21C367CB00EC1DF3 /* Ranking.swift in Sources */,
 				B4DF0E912195906500966FDA /* LoginViewController.swift in Sources */,
-				B4C4286F21F09B7900CB551D /* DepositVC.swift in Sources */,
+				B458988321F5DC2A0081EAC6 /* SummaryView.swift in Sources */,
 				B4C99BF021A713240041F48D /* SignUpViewController.swift in Sources */,
 				B479657A21C362A800EC1DF3 /* HomeRequest.swift in Sources */,
 				B4AD17ED21CD057600DA4B40 /* StockRecord.swift in Sources */,
@@ -609,9 +660,12 @@
 				B4C4286D21F09B6400CB551D /* SettingVC.swift in Sources */,
 				B419634F21EF3A5B00FF6E39 /* AllOrder.swift in Sources */,
 				B4C4287321F0AD4B00CB551D /* AccountViewModel.swift in Sources */,
+				B458988021F5DBF80081EAC6 /* CardView.swift in Sources */,
+				B458988A21F782440081EAC6 /* CardNumberTextFieldDelegate.swift in Sources */,
 				B479657821C2B41D00EC1DF3 /* RankingCell.swift in Sources */,
 				B456E72921B9745A00D06356 /* OrderViewController.swift in Sources */,
 				B419634521EE3E2300FF6E39 /* OrderViewModel.swift in Sources */,
+				B458988821F75CE10081EAC6 /* ExpiryDateTextDelegate.swift in Sources */,
 				B400867221C951CF00134DB9 /* NewsCell.swift in Sources */,
 				B4AD17E921CD005500DA4B40 /* StockViewModel.swift in Sources */,
 			);

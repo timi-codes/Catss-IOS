@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import KeychainAccess
 import RxGesture
+import Paystack
 
 class AccountViewController: UIViewController {
     
@@ -18,10 +19,18 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var onBoardView: UIView!
     @IBOutlet weak var emailAddressLable: UILabel!
     private let loginModel = OnBoardingViewModel()
+    private let accountModel = AccountViewModel()
     private let disposeBag = DisposeBag()
     
     @IBOutlet weak var supportUIView: UIView!
     @IBOutlet weak var securityUIView: UIView!
+    
+    @IBOutlet weak var depositUIView: UIView!
+    
+    lazy var paymentLauncher: PaystackPaymentLauncher = {
+        let launcher = PaystackPaymentLauncher()
+        return launcher
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +74,6 @@ class AccountViewController: UIViewController {
                 self.navigationController?.pushViewController(supportVC, animated: true)
             }).disposed(by: disposeBag)
         
-        
         securityUIView.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext:{ _ in
@@ -73,9 +81,18 @@ class AccountViewController: UIViewController {
                 securityVC.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(securityVC, animated: true)
             }).disposed(by: disposeBag)
+        
+        depositUIView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext:{ _ in
+                self.paymentLauncher.accountVC = self
+                self.paymentLauncher.setUpViews()
+                print("Paystack")
+            }).disposed(by: disposeBag)
     }
     
     @objc private func logoutUser(){
+        
         let alertVC = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Yes", style: .default) { (action) in
@@ -103,6 +120,15 @@ class AccountViewController: UIViewController {
             break;
         default:
             return
+        }
+    }
+    
+    func handlePaymentWithPaystack(cardParams: PSTCKCardParams, completed: @escaping () -> ()){
+        accountModel.processPayment(cardParams: cardParams, vc: self) { error in
+            if let error = error {
+                self.showBanner(subtitle: error, style: .success)
+                completed()
+            }
         }
     }
 }
