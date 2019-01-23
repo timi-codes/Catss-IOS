@@ -18,6 +18,8 @@
 		B419634D21EF35F100FF6E39 /* OpenOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634C21EF35F100FF6E39 /* OpenOrderCell.swift */; };
 		B419634F21EF3A5B00FF6E39 /* AllOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634E21EF3A5B00FF6E39 /* AllOrder.swift */; };
 		B42452C3219F719300820952 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42452C2219F719300820952 /* Constants.swift */; };
+		B431FDDC21F897D000D7D5D7 /* AuthenticateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431FDDB21F897D000D7D5D7 /* AuthenticateView.swift */; };
+		B431FDDE21F8980300D7D5D7 /* AuthenticateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B431FDDD21F8980300D7D5D7 /* AuthenticateView.xib */; };
 		B456E72721B9743B00D06356 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72621B9743B00D06356 /* AccountViewController.swift */; };
 		B456E72921B9745A00D06356 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72821B9745A00D06356 /* OrderViewController.swift */; };
 		B456E72B21B9747F00D06356 /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72A21B9747F00D06356 /* StockViewController.swift */; };
@@ -48,7 +50,7 @@
 		B4BFC9EA21E8E88A009E9A08 /* MarketViewController+alertControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFC9E921E8E889009E9A08 /* MarketViewController+alertControllers.swift */; };
 		B4C4286921F09B0400CB551D /* SecurityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4286821F09B0400CB551D /* SecurityVC.swift */; };
 		B4C4286B21F09B2300CB551D /* SupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4286A21F09B2300CB551D /* SupportVC.swift */; };
-		B4C4286D21F09B6400CB551D /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4286C21F09B6400CB551D /* SettingVC.swift */; };
+		B4C4286D21F09B6400CB551D /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4286C21F09B6400CB551D /* SettingsVC.swift */; };
 		B4C4287121F0A1EB00CB551D /* AccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4287021F0A1EB00CB551D /* AccountRequest.swift */; };
 		B4C4287321F0AD4B00CB551D /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4287221F0AD4B00CB551D /* AccountViewModel.swift */; };
 		B4C99BF021A713240041F48D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C99BEF21A713240041F48D /* SignUpViewController.swift */; };
@@ -95,6 +97,8 @@
 		B419634C21EF35F100FF6E39 /* OpenOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOrderCell.swift; sourceTree = "<group>"; };
 		B419634E21EF3A5B00FF6E39 /* AllOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOrder.swift; sourceTree = "<group>"; };
 		B42452C2219F719300820952 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B431FDDB21F897D000D7D5D7 /* AuthenticateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateView.swift; sourceTree = "<group>"; };
+		B431FDDD21F8980300D7D5D7 /* AuthenticateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticateView.xib; sourceTree = "<group>"; };
 		B456E72621B9743B00D06356 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B456E72821B9745A00D06356 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		B456E72A21B9747F00D06356 /* StockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
@@ -125,7 +129,7 @@
 		B4BFC9E921E8E889009E9A08 /* MarketViewController+alertControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketViewController+alertControllers.swift"; sourceTree = "<group>"; };
 		B4C4286821F09B0400CB551D /* SecurityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityVC.swift; sourceTree = "<group>"; };
 		B4C4286A21F09B2300CB551D /* SupportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportVC.swift; sourceTree = "<group>"; };
-		B4C4286C21F09B6400CB551D /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		B4C4286C21F09B6400CB551D /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		B4C4287021F0A1EB00CB551D /* AccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRequest.swift; sourceTree = "<group>"; };
 		B4C4287221F0AD4B00CB551D /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		B4C99BEF21A713240041F48D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +214,15 @@
 				B4CE427B21B5CCDD001E4B3D /* UserKeychainAccess.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		B431FDDF21F8981A00D7D5D7 /* AuthenticateView */ = {
+			isa = PBXGroup;
+			children = (
+				B431FDDB21F897D000D7D5D7 /* AuthenticateView.swift */,
+				B431FDDD21F8980300D7D5D7 /* AuthenticateView.xib */,
+			);
+			path = AuthenticateView;
 			sourceTree = "<group>";
 		};
 		B458987821F5D2970081EAC6 /* Deposit */ = {
@@ -361,9 +374,10 @@
 			children = (
 				B458987821F5D2970081EAC6 /* Deposit */,
 				B456E72621B9743B00D06356 /* AccountViewController.swift */,
+				B431FDDF21F8981A00D7D5D7 /* AuthenticateView */,
 				B4C4286821F09B0400CB551D /* SecurityVC.swift */,
 				B4C4286A21F09B2300CB551D /* SupportVC.swift */,
-				B4C4286C21F09B6400CB551D /* SettingVC.swift */,
+				B4C4286C21F09B6400CB551D /* SettingsVC.swift */,
 				B4C4287221F0AD4B00CB551D /* AccountViewModel.swift */,
 			);
 			path = Account;
@@ -511,6 +525,7 @@
 				B483BA2821B6D292004AF85C /* Dialog.storyboard in Resources */,
 				B483BA2A21B6D2B2004AF85C /* Main.storyboard in Resources */,
 				B4DF0E9C2195906B00966FDA /* LaunchScreen.storyboard in Resources */,
+				B431FDDE21F8980300D7D5D7 /* AuthenticateView.xib in Resources */,
 				B419634321EE201600FF6E39 /* MarketViewCell.xib in Resources */,
 				B458987C21F5D2ED0081EAC6 /* SummaryView.xib in Resources */,
 				B419634B21EF300900FF6E39 /* OpenOrderCell.xib in Resources */,
@@ -647,6 +662,7 @@
 				B4E51C0121A5D00C000AE67B /* BorderButton.swift in Sources */,
 				B4BFC9EA21E8E88A009E9A08 /* MarketViewController+alertControllers.swift in Sources */,
 				B4E3EB3F21E377FF003C3014 /* MarketViewModel.swift in Sources */,
+				B431FDDC21F897D000D7D5D7 /* AuthenticateView.swift in Sources */,
 				B46A731521C7EF520088D2D0 /* MarketViewController.swift in Sources */,
 				B4CE427821B543BF001E4B3D /* AuthResponse.swift in Sources */,
 				B456E72721B9743B00D06356 /* AccountViewController.swift in Sources */,
@@ -657,7 +673,7 @@
 				B4AD17F121CD4F5000DA4B40 /* MarketViewCell.swift in Sources */,
 				B4F44C9121CB8E83007C542F /* StockIndexCell.swift in Sources */,
 				B490AE7221A8404800A23AFD /* Extension.swift in Sources */,
-				B4C4286D21F09B6400CB551D /* SettingVC.swift in Sources */,
+				B4C4286D21F09B6400CB551D /* SettingsVC.swift in Sources */,
 				B419634F21EF3A5B00FF6E39 /* AllOrder.swift in Sources */,
 				B4C4287321F0AD4B00CB551D /* AccountViewModel.swift in Sources */,
 				B458988021F5DBF80081EAC6 /* CardView.swift in Sources */,

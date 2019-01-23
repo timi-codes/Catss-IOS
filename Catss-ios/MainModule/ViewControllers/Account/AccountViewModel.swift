@@ -188,4 +188,44 @@ class AccountViewModel {
         }
     }
     
+    
+    func authenticate(password : String, completion: @escaping AuthCompletion){
+        if let id = self.getProfile?.id {
+            provider.request(.authenticate(userId: id, password: password)){ result in
+                switch result {
+                case .success(let response):
+                    do {
+                        print(try response.mapJSON())
+                        let output = try JSONDecoder().decode(AuthResponse.self, from: response.data)
+                        completion(output.status)
+                    } catch let error {
+                        completion(error.localizedDescription)
+                    }
+                case .failure(let error):
+                    completion(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    
+    func updateUserProfile(phone : Int, address : String, state: String, completion: @escaping AuthCompletion){
+        if let id = self.getProfile?.id {
+            provider.request(.updateUserDetail(userId: id, phone: phone,  address: address, state: state)){ result in
+                switch result {
+                case .success(let response):
+                    do {
+                        print(try response.mapJSON())
+                        let output = try JSONDecoder().decode(AuthResponse.self, from: response.data)
+                        completion(output.message)
+                    } catch let error {
+                        completion(error.localizedDescription)
+                    }
+                case .failure(let error):
+                    completion(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
 }

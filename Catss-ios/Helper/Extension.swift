@@ -216,3 +216,60 @@ extension UIView
         NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
     }
 }
+
+
+// MARK : - Add Border Layer View
+extension UITextField {
+    
+    enum Position {
+        case up, bottom, right, left
+    }
+    
+    //  MARK: - Add Single Line Layer
+    func addLayer(_ position: Position) -> UITextField {
+        
+        // bottom layer
+        let bottomLayer = CALayer()
+        // set width
+        let height = CGFloat(1.0)
+        bottomLayer.borderWidth = height
+        // set color
+        bottomLayer.borderColor = UIColor.white.cgColor
+        // set frame
+        // y position changes according to the position
+        let yOrigin = position == .up ? 0.0 : frame.size.height - height
+        bottomLayer.frame = CGRect.init(x: 0, y: yOrigin, width: frame.size.width, height: height)
+        layer.addSublayer(bottomLayer)
+        layer.masksToBounds = true
+        
+        return self
+    }
+    
+    func removeLayer(){
+        self.layer.sublayers?.first?.removeFromSuperlayer()
+    }
+    
+    // Add right/left padding view in textfield
+    func addPadding(_ position: Position, withImage image: UIImage? = nil) {
+        let paddingHeight = frame.size.height
+        let paddingViewFrame = CGRect.init(x: 0.0, y: 0.0, width: paddingHeight * 0.6, height: paddingHeight)
+        let paddingImageView = UIImageView.init(frame: paddingViewFrame)
+        paddingImageView.contentMode = .scaleAspectFit
+        
+        if let paddingImage = image {
+            paddingImageView.image = paddingImage
+        }
+        
+        // Add Left/Right view mode
+        switch position {
+        case .left:
+            leftView        = paddingImageView
+            leftViewMode    = .always
+        case .right:
+            rightView       = paddingImageView
+            rightViewMode    = .always
+        default:
+            break
+        }
+    }
+}

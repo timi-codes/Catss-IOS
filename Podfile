@@ -19,7 +19,7 @@ pod 'KeychainAccess'
 pod 'IQKeyboardManagerSwift'
 pod 'EGFormValidator'
 pod 'JGProgressHUD'
-pod 'Kingfisher'
+pod 'Kingfisher' #, '~> 4.0'
 pod 'Stripe'
 
 

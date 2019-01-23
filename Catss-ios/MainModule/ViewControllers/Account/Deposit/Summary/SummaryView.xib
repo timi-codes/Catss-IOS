@@ -122,6 +122,12 @@
                         <constraint firstItem="JmB-IX-9wg" firstAttribute="top" secondItem="GQE-Bu-0Tl" secondAttribute="top" id="hGq-ut-eYE"/>
                         <constraint firstItem="JmB-IX-9wg" firstAttribute="leading" secondItem="GQE-Bu-0Tl" secondAttribute="leading" id="jOc-3I-O1O"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFP-2D-SVZ">
                     <rect key="frame" x="307.5" y="104" width="47.5" height="20"/>

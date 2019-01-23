@@ -146,7 +146,6 @@ class PaystackPaymentLauncher: NSObject{
         }
     }
     
-    
     private func showCardBrand(){
         if let number = cardParams.number {
             let cardBrand = STPCardValidator.brand(forNumber: number)

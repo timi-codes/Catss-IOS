@@ -22,9 +22,9 @@ class AccountViewController: UIViewController {
     private let accountModel = AccountViewModel()
     private let disposeBag = DisposeBag()
     
+    @IBOutlet weak var settingsUIView: UIView!
     @IBOutlet weak var supportUIView: UIView!
     @IBOutlet weak var securityUIView: UIView!
-    
     @IBOutlet weak var depositUIView: UIView!
     
     lazy var paymentLauncher: PaystackPaymentLauncher = {
@@ -89,6 +89,15 @@ class AccountViewController: UIViewController {
                 self.paymentLauncher.setUpViews()
                 print("Paystack")
             }).disposed(by: disposeBag)
+        
+        settingsUIView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext:{ _ in
+                let settingsVC = UIStoryboard().controllerFor(identifier: "SettingsVC")
+                settingsVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(settingsVC, animated: true)
+            }).disposed(by: disposeBag)
+        
     }
     
     @objc private func logoutUser(){
