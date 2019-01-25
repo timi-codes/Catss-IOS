@@ -10,24 +10,68 @@ import UIKit
 import RxSwift
 import RxOptional
 import RxCocoa
+import Paystack
 
 class HomeViewController : UIViewController {
     
+    @IBOutlet weak var homeScrollView: UIScrollView!
     @IBOutlet weak var rankingTableView: UITableView!
     @IBOutlet weak var newsCollectionView: UICollectionView!
     @IBOutlet weak var stockIndexCollectionView: UICollectionView!
+    @IBOutlet weak var newsActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var stockIndexActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var rankingActivityIndicator: UIActivityIndicatorView!
+    var refreshControl: UIRefreshControl!
+    @IBOutlet weak var supportButton: UIView!
+    @IBOutlet weak var depositButton: UIView!
+    @IBOutlet weak var withdrawButton: UIView!
+    
+    lazy var paymentLauncher: PaystackPaymentLauncher = {
+        let launcher = PaystackPaymentLauncher()
+        return launcher
+    }()
     
     var homeViewModel : HomeViewModel!
+    var accountModel =  AccountViewModel()
+
     let disposeBag = DisposeBag()
     
     var currentNewsScrollPosition = 0
     var currentStockIndexPosition = 0
+    
+    //MARK : - View State
+    private var state: State = .loading("all") {
+        didSet {
+            switch state {
+            case .ready(let item):
+                readyState(item)
+            case .loading(let item):
+                loadingState(item)
+            case .error:
+                errorState()
+            }
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         setDefaultNavigationBar()
     }
     
     override func viewDidLoad() {
+        state = .loading("all")
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "")
+        refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+        homeScrollView.refreshControl = refreshControl
+        
+        self.reloadData()
+        self.cTAButton()
+    }
+    
+    
+    @objc func reloadData(){
+        
+        
         homeViewModel = HomeViewModel(completion: { [unowned self](error) in
             guard let error = error else {return}
             self.showBanner(subtitle: error, style: .danger)
@@ -37,20 +81,58 @@ class HomeViewController : UIViewController {
         setupRankCellConfiguration(with: homeViewModel)
         setupNewsCellConfiguration(with: homeViewModel)
         setupStockIndexCellConfiguration(with: homeViewModel)
-        //notifyScrollStart()
+    }
+    
+    
+    private func cTAButton(){
+        depositButton.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext:{ _ in
+                if let _ = self.homeViewModel.getProfile?.id {
+                    self.paymentLauncher.currentVC = self
+                    self.paymentLauncher.setUpViews()
+                }else{
+                    let loginVC = UIStoryboard().controllerFor(identifier: "LoginVC")
+                    self.present(loginVC, animated: true, completion: nil)
+                }
+            }).disposed(by: disposeBag)
+        
+        
+        supportButton.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext:{ _ in
+                if let _ = self.homeViewModel.getProfile?.id {
+                    let supportVC = UIStoryboard().controllerFor(identifier: "SupportVC")
+                    supportVC.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(supportVC, animated: true)
+                }else{
+                    let loginVC = UIStoryboard().controllerFor(identifier: "LoginVC")
+                    self.present(loginVC, animated: true, completion: nil)
+                }
+            }).disposed(by: disposeBag)
     }
     
     private func setupRankCellConfiguration(with viewModel: HomeViewModel) {
+        self.state = .loading("ranking")
+        
+        rankingTableView.delegate = nil
+        rankingTableView.dataSource = nil
+
         viewModel.rankedUsers.asObservable()
             .filterNil()
             .bind(to: self.rankingTableView.rx.items(cellIdentifier: RankingCell.Identifier, cellType: RankingCell.self)) { (row, element, cell) in
                 cell.configureRankCell(index: row, rankUser: element)
+                self.state = .ready("ranking")
             }
             .disposed(by: disposeBag)
     }
     
     
     private func setupNewsCellConfiguration(with viewModel:HomeViewModel) {
+        self.state = .loading("news")
+        
+        newsCollectionView.delegate = nil
+        newsCollectionView.dataSource = nil
         
         newsCollectionView.register(UINib(nibName: "NewsCell", bundle: nil), forCellWithReuseIdentifier: NewsCell.Identifier)
         
@@ -59,6 +141,8 @@ class HomeViewController : UIViewController {
             .bind(to: self.newsCollectionView.rx.items(cellIdentifier: NewsCell.Identifier, cellType: NewsCell.self)){
                 (row, element, cell) in
                 cell.configureNewsCollectionView(newsItem: element)
+                self.state = .ready("news")
+
             }.disposed(by: disposeBag)
         
         //SELECTION MODEL
@@ -70,6 +154,11 @@ class HomeViewController : UIViewController {
     }
     
     private func setupStockIndexCellConfiguration(with viewModel:HomeViewModel) {
+        self.state = .loading("stock")
+        
+        stockIndexCollectionView.delegate = nil
+        stockIndexCollectionView.dataSource = nil
+        
         stockIndexCollectionView.register(UINib(nibName: "StockIndexCell", bundle: nil), forCellWithReuseIdentifier: StockIndexCell.Indentifier)
         
         viewModel.stockIndexList.asObservable()
@@ -77,6 +166,7 @@ class HomeViewController : UIViewController {
             .bind(to: self.stockIndexCollectionView.rx.items(cellIdentifier: StockIndexCell.Indentifier, cellType: StockIndexCell.self)){
                 (row, element, cell) in
                 cell.configureStockindexCollectionView(with : element)
+                self.state = .ready("stock")
             }.disposed(by: disposeBag)
     }
     
@@ -126,4 +216,72 @@ class HomeViewController : UIViewController {
             self.stockIndexCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
         }
     }
+    
+    func handlePaymentWithPaystack(cardParams: PSTCKCardParams, completed: @escaping () -> ()){
+        accountModel.processPayment(cardParams: cardParams, vc: self) { error in
+            if let error = error {
+                self.showBanner(subtitle: error, style: .success)
+                completed()
+            }
+        }
+    }
 }
+
+
+extension HomeViewController {
+    enum State {
+        case loading(_ item : String)
+        case ready(_ item : String)
+        case error
+    }
+    
+    private func readyState(_ item : String){
+        switch item {
+        case "news":
+            newsActivityIndicator.stopAnimating()
+            newsCollectionView.isHidden = false
+        case "stock":
+            stockIndexActivityIndicator.stopAnimating()
+            stockIndexCollectionView.isHidden = false
+        case "ranking":
+            rankingActivityIndicator.stopAnimating()
+            rankingTableView.isHidden = false
+            self.refreshControl.endRefreshing()
+        default :
+            return
+        }
+    }
+    
+    private func loadingState(_ item : String){
+        switch item {
+        case "news" :
+            newsActivityIndicator.startAnimating()
+        case "stock":
+            stockIndexActivityIndicator.startAnimating()
+        case "ranking":
+            rankingActivityIndicator.startAnimating()
+            rankingTableView.isHidden = true
+        case "all":
+            return
+        default :
+            return
+        }
+    }
+    
+    private func errorState(){
+//        switch currentLoadingViewIndex {
+//        case 0:
+//            newsActivityIndicator.startAnimating()
+//            newsCollectionView.isHidden = true
+//        case 1:
+//            stockIndexActivityIndicator.startAnimating()
+//            stockIndexCollectionView.isHidden = true
+//        case 2:
+//            rankingActivityIndicator.startAnimating()
+//            rankingTableView.isHidden = true
+//        default :
+//            return
+//        }
+    }
+}
+

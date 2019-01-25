@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 
 protocol BuySellDialogDelegate {
@@ -28,9 +30,13 @@ class BuySellDialogVC: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
     
+    @IBOutlet weak var buySellActivityIndicator: UIActivityIndicatorView!
+    
+    
     var securityName : String = ""
     var securityMarketPrice : Double?
     var currentSecurityId: Int?
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +46,18 @@ class BuySellDialogVC: UIViewController {
         if let price = securityMarketPrice{
             marketPriceTextField.text = String(format: "%.4f", price)
         }
+        
+        buySellActivityIndicator.stopAnimating()
+        
+        Driver.combineLatest(marketPriceTextField.rx.text.asDriver(), quantityTextField.rx.text.asDriver()){
+            price, quantity in
+            self.marketPriceTextField.text!.toDouble * self.quantityTextField.text!.toDouble
+            }.drive(onNext:{ total in
+                let totalInString = String(format: "%.4f%", total)
+                self.totalAmountTextField.text = totalInString.nairaEquivalent
+            }).disposed(by: disposeBag)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +74,7 @@ class BuySellDialogVC: UIViewController {
             return
         }
         delegate?.didSelectSell(secId: currentSecurityId!,quantity: Int(quantity)!)
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
     }
     
     @IBAction func buyButtonTapped(_ sender: UIButton) {

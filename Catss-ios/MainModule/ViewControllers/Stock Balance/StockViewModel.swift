@@ -25,6 +25,12 @@ class StockViewModel {
     
     private var _stockRevaluation = BehaviorRelay<StockRevaluation?>(value:nil)
     
+    private var _isLoading = BehaviorRelay<Bool>(value: false)
+    
+    
+    var isLoading: Driver<Bool> {return _isLoading.asDriver()}
+    
+    
     var accountBalance: Driver<String?> {
         return _accountBalance.asDriver()
     }
@@ -45,6 +51,7 @@ class StockViewModel {
     }
     
     private func fetchStockRecord(with id: Int)->Observable<String>{
+        _isLoading.accept(true)
         return Observable.create({ (observer) -> Disposable in
             let request = self.provider.request(.getStockBalance(userId: id)){ [weak self] result in
                 guard let `self` = self else {return}
@@ -56,13 +63,18 @@ class StockViewModel {
                         self._accountBalance.accept(data.accountBalance)
                         self._stockBalance.accept(data.stockBalance)
                         self._stockRevaluation.accept(data.stockRevaluation)
+                        self._isLoading.accept(false)
+
                         observer.onCompleted()
                         
                     }catch let err {
                         print(String(describing: err.localizedDescription))
+                        self._isLoading.accept(false)
+
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
+                    self._isLoading.accept(false)
                 }
             }
             

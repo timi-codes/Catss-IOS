@@ -15,7 +15,9 @@ import RxCocoa
 
 class PaystackPaymentLauncher: NSObject{
     
-    var accountVC : AccountViewController?
+    var currentVC : UIViewController?
+    //var homeVC : AccountViewController?
+
     let cardView = CardView()
     let summaryView = SummaryView()
     private let expiryDateTextFieldDelegate = ExpiryDateTextDelegate()
@@ -184,13 +186,26 @@ class PaystackPaymentLauncher: NSObject{
         summaryView.chargeCardButton.isEnabled = false
         summaryView.activityIndicatorView.isHidden = false
         summaryView.backButton.isEnabled = false
-        accountVC?.handlePaymentWithPaystack(cardParams: cardParams, completed: {
-            self.summaryView.chargeCardButton.isEnabled = true
-            self.summaryView.backButton.isEnabled = true
-            self.cardView.cardNumberTextField.text = ""
-            self.cardView.cvvNumberTextField.text = ""
-            self.cardView.expiryDateTextField.text = ""
-            self.handleSummaryDismiss()
-        })
+        
+        if currentVC is AccountViewController {
+            (currentVC as! AccountViewController).handlePaymentWithPaystack(cardParams: cardParams, completed: {
+                self.summaryView.chargeCardButton.isEnabled = true
+                self.summaryView.backButton.isEnabled = true
+                self.cardView.cardNumberTextField.text = ""
+                self.cardView.cvvNumberTextField.text = ""
+                self.cardView.expiryDateTextField.text = ""
+                self.handleSummaryDismiss()
+            })
+        }else if currentVC is HomeViewController {
+            (currentVC as! HomeViewController).handlePaymentWithPaystack(cardParams: cardParams, completed: {
+                self.summaryView.chargeCardButton.isEnabled = true
+                self.summaryView.backButton.isEnabled = true
+                self.cardView.cardNumberTextField.text = ""
+                self.cardView.cvvNumberTextField.text = ""
+                self.cardView.expiryDateTextField.text = ""
+                self.handleSummaryDismiss()
+            })
+        }
+        
     }
 }

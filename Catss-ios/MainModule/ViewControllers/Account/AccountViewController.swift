@@ -85,10 +85,10 @@ class AccountViewController: UIViewController {
         depositUIView.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext:{ _ in
-                self.paymentLauncher.accountVC = self
+                self.paymentLauncher.currentVC = self
                 self.paymentLauncher.setUpViews()
-                print("Paystack")
             }).disposed(by: disposeBag)
+        
         
         settingsUIView.rx.tapGesture()
             .when(.recognized)

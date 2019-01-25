@@ -29,7 +29,6 @@ class HomeViewModel {
     
     private var stockIndex = BehaviorRelay<[StockIndex]?>(value: nil)
 
-    
 
     var rankedUsers : Driver<[Rank]?> {
         return _rankedUsers.asDriver()
@@ -65,6 +64,11 @@ class HomeViewModel {
         return result[index]
     }
     
+    
+    var getProfile: Profile? {
+        guard let profile = UserKeychainAccess.getUserProfile() else{ return nil }
+        return profile
+    }
     
      init(completion: @escaping AuthCompletion) {
         

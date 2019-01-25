@@ -62,24 +62,34 @@ class PickSecurityVC: UIViewController {
         
         view.addSubview(tableView)
         view.addSubview(activityIndicator)
-        
+
         activityIndicator.widthAnchor.isEqual(40)
         activityIndicator.heightAnchor.isEqual(40)
-        activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         
+        activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.refreshControl = refreshControl
         
         tableView.register(UINib(nibName: "MarketViewCell", bundle: nil), forCellReuseIdentifier: MarketViewCell.Identifier)
         
-        
         initMarketSecurity()
+        
+        marketModel?.isLoading.asDriver()
+            .drive(onNext: {[unowned self] (isLoading) in
+                if isLoading {
+                    self.activityIndicator.startAnimating()
+                } else {
+                    self.activityIndicator.stopAnimating()
+                }
+            }).disposed(by: disposeBag)
+        
     }
     
     @objc fileprivate func refresh(){
-        
+        initMarketSecurity()
     }
     
     private func initMarketSecurity(){
@@ -124,6 +134,7 @@ class PickSecurityVC: UIViewController {
                     .items(cellIdentifier: MarketViewCell .Identifier,
                            cellType : MarketViewCell.self)){(row, element, cell) in
                             cell.configureMarketCell(with: element)
+                            self.refreshControl.endRefreshing()
             }.disposed(by: self.disposeBag)
         
         

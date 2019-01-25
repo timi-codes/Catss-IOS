@@ -26,6 +26,10 @@ class MarketViewModel {
     
     private var _searchResult = BehaviorRelay<[MarketSecurity]?>(value: nil)
     
+    private var _isLoading = BehaviorRelay<Bool>(value: false)
+    
+    
+    var isLoading: Driver<Bool> {return _isLoading.asDriver()}
     
     var getProfile: Profile? {
         guard let profile = UserKeychainAccess.getUserProfile() else{ return nil }
@@ -43,6 +47,7 @@ class MarketViewModel {
     var searchResult : Driver<[MarketSecurity]?>{
         return _searchResult.asDriver()
     }
+    
     
     var currentSortBy = 0
     /**
@@ -74,7 +79,7 @@ class MarketViewModel {
         
     }
     
-    
+    //MARK : - search in PickSecurityVC
     init(searchQuery : Driver<String>, completion: @escaping AuthCompletion) {
         self.fetchMarketSecurity().subscribe({_ in
             print("fetch market security successfully")
@@ -88,14 +93,26 @@ class MarketViewModel {
         searchQuery.drive(onNext:{ [weak self] query in
         guard let `self` = self else {return}
     
-            let _result = self._marketSecurity.value.map{
-    $0.filter{$0.securityName.lowercased().contains(query.lowercased())}
-        }
-        self._searchResult.accept(_result)
+            switch self.currentSortBy {
+            case 0 :
+                let _result = self._marketSecurity.value.map{
+                    $0.filter{$0.securityName.lowercased().contains(query.lowercased())}
+                }
+                self._searchResult.accept(_result)
+            case 1:
+                let _result = self._watchlist.value.map{
+                    $0.filter{$0.securityName.lowercased().contains(query.lowercased())}
+                }
+                self._searchResult.accept(_result)
+                
+            default:
+                return
+            }
         }).disposed(by: disposeBag)
     }
     
     private func fetchMarketSecurity()->Observable<String>{
+        _isLoading.accept(true)
         return Observable.create({ (observer) -> Disposable in
             let request = self.provider.request(.loadSecurities()){ [weak self] result in
                 guard let `self` = self else {return}
@@ -106,14 +123,16 @@ class MarketViewModel {
                         let data = try JSONDecoder().decode([MarketSecurity].self, from: response.data)
                         self._marketSecurity.accept(data)
                         observer.onCompleted()
-                        
+                        self._isLoading.accept(false)
                         print(data)
                         
                     }catch let err {
                         print(String(describing: err.localizedDescription))
+                        self._isLoading.accept(false)
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
+                    self._isLoading.accept(false)
                 }
             }
             
@@ -125,6 +144,7 @@ class MarketViewModel {
     }
     
     private func fetchWatchList(userid: Int)->Observable<String>{
+        self._isLoading.accept(true)
         return Observable.create({ (observer) -> Disposable in
             let request = self.provider.request(.loadWatchlist(userId:userid)){ [weak self] result in
                 guard let `self` = self else {return}
@@ -134,6 +154,7 @@ class MarketViewModel {
                     do {
                         let data = try JSONDecoder().decode([MarketSecurity].self, from: response.data)
                         self._watchlist.accept(data)
+                        self._isLoading.accept(false)
                         observer.onCompleted()
                         
                         print(data)
@@ -143,6 +164,7 @@ class MarketViewModel {
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
+                    self._isLoading.accept(false)
                 }
             }
             

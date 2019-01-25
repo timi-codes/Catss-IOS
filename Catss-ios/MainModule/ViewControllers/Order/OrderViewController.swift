@@ -17,6 +17,7 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
     private var orderViewModel : OrderViewModel?
     private var selectedSecId : Int?
     private let cashTextFieldDelegate = CashTextFieldDelegate()
+    @IBOutlet weak var openOrderActivityIndicator: UIActivityIndicatorView!
     
     private lazy var titleView : UIButton = {
         let button =  UIButton(type: .custom)
@@ -44,11 +45,17 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
     @IBOutlet weak var totalTextField: BorderTextField!
     @IBOutlet weak var recentOrderTableView: UITableView!
     @IBOutlet weak var askBidButton: UIButton!
+    var refreshControl : UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.priceTextField.delegate = self.cashTextFieldDelegate
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "")
+        refreshControl.addTarget(self, action: #selector(initOpenorder), for: .valueChanged)
+        recentOrderTableView.refreshControl = refreshControl
         
         
         buyOrSellSegmentControl.rx.selectedSegmentIndex
@@ -88,13 +95,21 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
         self.setDefaultNavigationBar()
         self.setupViews()
         initOpenorder()
+        
+        orderViewModel?.isLoading.asDriver()
+            .drive(onNext: {[unowned self] (isLoading) in
+                if isLoading {
+                    self.openOrderActivityIndicator.startAnimating()
+                } else {
+                    self.openOrderActivityIndicator.stopAnimating()
+                }
+            }).disposed(by: disposeBag)
     }
     
     private func setupViews(){
         self.tabBarController?.navigationItem.titleView = titleView
         self.tabBarController?.navigationItem.titleView?.isHidden = false
         setUpNavBarItem()
-
     }
     
     @objc func selectSecurity(){
@@ -137,7 +152,7 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
         selectedSecId = secId
     }
     
-    private func initOpenorder(){
+    @objc private func initOpenorder(){
         
         orderViewModel = OrderViewModel(completion: { [unowned self](error) in
             guard let error = error else {return}
@@ -153,6 +168,7 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
                 .rx
                 .items(cellIdentifier: OpenOrderCell.Indentifier, cellType: OpenOrderCell.self)){ (row, element, cell) in
                     cell.configureOpenOrder(with: element)
+                    self.refreshControl.endRefreshing()
             }.disposed(by:self.disposeBag)
     }
 }

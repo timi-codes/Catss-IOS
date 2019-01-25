@@ -16,7 +16,8 @@ class MarketViewController: UIViewController {
     @IBOutlet weak var marketTableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var rightHeaderLabel: UILabel!
-    
+    var refreshControl : UIRefreshControl!
+    @IBOutlet weak var marketActivityIndicator: UIActivityIndicatorView!
     
     internal var marketModel : MarketViewModel?
     private let  searchController = UISearchController(searchResultsController: nil)
@@ -26,6 +27,13 @@ class MarketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initMarketSecurities()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "")
+        refreshControl.addTarget(self, action: #selector(initMarketSecurities), for: .valueChanged)
+        
+        marketTableView.refreshControl = refreshControl
+        
     
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.searchBar.keyboardType = UIKeyboardType.asciiCapable
@@ -38,6 +46,17 @@ class MarketViewController: UIViewController {
         super.viewWillAppear(animated)
         self.setDefaultNavigationBar()
         self.setupViews()
+        
+        self.marketActivityIndicator.isHidden = true
+        
+        marketModel?.isLoading.asDriver()
+            .drive(onNext: {[unowned self] (isLoading) in
+                if isLoading {
+                    self.marketActivityIndicator.startAnimating()
+                } else {
+                    self.marketActivityIndicator.stopAnimating()
+                }
+            }).disposed(by: disposeBag)
     }
     
     private func setupViews(){
@@ -52,10 +71,10 @@ class MarketViewController: UIViewController {
         present(searchController, animated: true, completion: nil)
     }
     
-    private func initMarketSecurities(){
+    @objc private func initMarketSecurities(){
         marketModel = MarketViewModel(sortBy: segmentedControl.rx.selectedSegmentIndex.asDriver(), searchQuery: searchController.searchBar.rx.text.orEmpty.asDriver(), completion: { [unowned self](error) in
             guard let error = error else {return}
-            self.showBanner(subtitle: error, style: .danger)
+            self.showBanner(subtitle: error, style: .success)
         })
         
         searchController.searchBar.rx.text.orEmpty.asDriver().drive(onNext: { query in
@@ -108,7 +127,8 @@ class MarketViewController: UIViewController {
                     .items(cellIdentifier: MarketViewCell .Identifier,
                            cellType : MarketViewCell.self)){(row, element, cell) in
                             cell.configureMarketCell(with: element)
-                            cell.rx.longPressGesture().when(.began)
+                            self.refreshControl.endRefreshing()
+                            cell.rx.longPressGesture().when(.recognized)
                                 .subscribe(onNext: { _ in
                                     switch self.segmentedControl.selectedSegmentIndex {
                                     case 0 :
@@ -151,6 +171,8 @@ class MarketViewController: UIViewController {
                 self.marketTableView.rx.items(cellIdentifier: MarketViewCell.Identifier,
                                               cellType : MarketViewCell.self)){(row, element, cell) in
                                                 cell.configureMarketCell(with: element)
+                                                self.refreshControl.endRefreshing()
+                                                //self.marketActivityIndicator.isHidden = true
             }.disposed(by: disposeBag)
     }
     

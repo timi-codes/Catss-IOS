@@ -63,7 +63,6 @@ class MarketViewCell: UITableViewCell {
             }
         }
         
-        
         if let price = marketItem.price {
              newPriceLabel.text = price
         }
@@ -79,7 +78,8 @@ class MarketViewCell: UITableViewCell {
         
     }
     
-//    override func prepareForReuse() {
-//        disposeBag = DisposeBag()
-//    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        //disposeBag = DisposeBag()
+    }
 }

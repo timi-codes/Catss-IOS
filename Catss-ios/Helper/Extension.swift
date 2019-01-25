@@ -9,6 +9,7 @@
 import UIKit
 import JGProgressHUD
 import NotificationBannerSwift
+import Paystack
 
 
 // MARK - Keyboard helper method

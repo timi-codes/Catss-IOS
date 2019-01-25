@@ -216,11 +216,16 @@
                                                     <action selector="cancelButtonTapped:" destination="9xz-nB-mHn" eventType="touchUpInside" id="4YN-Z8-Nir"/>
                                                 </connections>
                                             </button>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="REd-e3-BXo">
+                                                <rect key="frame" x="147.5" y="14.5" width="20" height="20"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.1019607843" green="0.1529411765" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="6qe-iD-rdo" secondAttribute="trailing" id="543-uP-GHD"/>
                                             <constraint firstAttribute="height" constant="49" id="86V-P1-I9d"/>
+                                            <constraint firstItem="REd-e3-BXo" firstAttribute="centerX" secondItem="4zv-pq-aKX" secondAttribute="centerX" id="CUB-qc-Psq"/>
+                                            <constraint firstItem="REd-e3-BXo" firstAttribute="centerY" secondItem="4zv-pq-aKX" secondAttribute="centerY" id="Q0w-bV-xOP"/>
                                             <constraint firstItem="aVb-fe-7gP" firstAttribute="centerY" secondItem="4zv-pq-aKX" secondAttribute="centerY" id="SGk-Yn-pDK"/>
                                             <constraint firstItem="aVb-fe-7gP" firstAttribute="leading" secondItem="4zv-pq-aKX" secondAttribute="leading" constant="13" id="Wpb-Uz-9PJ"/>
                                             <constraint firstAttribute="bottom" secondItem="6qe-iD-rdo" secondAttribute="bottom" id="lIi-BO-7cV"/>
@@ -424,6 +429,7 @@
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
                     <connections>
+                        <outlet property="buySellActivityIndicator" destination="REd-e3-BXo" id="Aff-oz-zQI"/>
                         <outlet property="containerView" destination="Xh8-eG-IJV" id="M94-JE-nvg"/>
                         <outlet property="marketPriceTextField" destination="12P-Us-ON6" id="lR5-2A-SlI"/>
                         <outlet property="quantityTextField" destination="wJd-QD-2zF" id="bu3-2a-z8V"/>

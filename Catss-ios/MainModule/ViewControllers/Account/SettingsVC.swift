@@ -163,8 +163,8 @@ class SettingsVC: UIViewController {
                         
                         self.wasEdited = false
                     }
-                    
                 }
+                
             }else{
                 self.showBanner(subtitle: "Field cannot the empty", style: .danger)
                                         self.editSettingsButton.backgroundColor = Color.successColor

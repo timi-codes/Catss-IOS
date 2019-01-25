@@ -24,6 +24,12 @@ class OrderViewModel {
     private var _order = BehaviorRelay<AllOrder?>(value:nil)
 
     private var _openorder = BehaviorRelay<[Order]?>(value: nil)
+    
+    private var _isLoading = BehaviorRelay<Bool>(value: false)
+    
+    
+    var isLoading: Driver<Bool> {return _isLoading.asDriver()}
+    
 
     var getProfile: Profile? {
         guard let profile = UserKeychainAccess.getUserProfile() else{ return nil }
@@ -48,6 +54,7 @@ class OrderViewModel {
     }
 
     private func fetchAllOpenOrder(with id: Int)->Observable<String>{
+        self._isLoading.accept(true)
         return Observable.create({ (observer) -> Disposable in
             let request = self.provider.request(.loadAllOrder(userId: id)){ [weak self] result in
                 guard let `self` = self else {return}
@@ -58,14 +65,19 @@ class OrderViewModel {
                         let data = try JSONDecoder().decode(AllOrder.self, from: response.data)
                         self._order.accept(data)
                         self._openorder.accept(data.orders)
+                        self._isLoading.accept(false)
+
                        
                         observer.onCompleted()
                         
                     }catch let err {
                         print(String(describing: err.localizedDescription))
+                       self._isLoading.accept(false)
+
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
+                    self._isLoading.accept(false)
                 }
             }
             

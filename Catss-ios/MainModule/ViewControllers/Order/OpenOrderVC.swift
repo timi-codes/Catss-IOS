@@ -44,8 +44,9 @@ class OpenOrderVC: UIViewController {
         
         activityIndicator.widthAnchor.isEqual(40)
         activityIndicator.heightAnchor.isEqual(40)
-        activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        
+        activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -54,10 +55,22 @@ class OpenOrderVC: UIViewController {
 openOrderTableView.register(UINib(nibName: "OpenOrderCell", bundle: nil), forCellReuseIdentifier: OpenOrderCell.Indentifier)
         
         initOpenorder()
+        
+        
+        orderViewModel?.isLoading.asDriver()
+            .drive(onNext: {[unowned self] (isLoading) in
+                if isLoading {
+                    self.activityIndicator.startAnimating()
+                } else {
+                    self.activityIndicator.stopAnimating()
+                }
+            }).disposed(by: disposeBag)
+        
+
     }
 
     @objc fileprivate func refresh(){
-        
+        initOpenorder()
     }
     
     private func initOpenorder(){
@@ -78,6 +91,7 @@ openOrderTableView.register(UINib(nibName: "OpenOrderCell", bundle: nil), forCel
         .rx
             .items(cellIdentifier: OpenOrderCell.Indentifier, cellType: OpenOrderCell.self)){ (row, element, cell) in
                 cell.configureOpenOrder(with: element)
+                self.refreshControl.endRefreshing()
         }.disposed(by:self.disposeBag)
         
     }
