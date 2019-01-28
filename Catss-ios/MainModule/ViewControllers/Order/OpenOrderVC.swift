@@ -77,7 +77,7 @@ openOrderTableView.register(UINib(nibName: "OpenOrderCell", bundle: nil), forCel
        
         orderViewModel = OrderViewModel(completion: { [unowned self](error) in
                 guard let error = error else {return}
-                self.showBanner(subtitle: error, style: .danger)
+                self.showBanner(subtitle: error, style: .warning)
             })
 
         

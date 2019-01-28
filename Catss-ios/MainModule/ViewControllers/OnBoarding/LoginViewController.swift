@@ -102,7 +102,7 @@ class LoginViewController: UIViewController {
                 return
             }
             self.hideProgress()
-            self.showBanner(subtitle: error, style: .danger)
+            self.showBanner(subtitle: error, style: .warning)
         }
     }
 }

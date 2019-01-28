@@ -95,7 +95,7 @@ class MarketViewModel {
     
             switch self.currentSortBy {
             case 0 :
-                let _result = self._marketSecurity.value.map{
+                let _result = self._marketSecurity.value.map {
                     $0.filter{$0.securityName.lowercased().contains(query.lowercased())}
                 }
                 self._searchResult.accept(_result)
@@ -145,11 +145,13 @@ class MarketViewModel {
     
     private func fetchWatchList(userid: Int)->Observable<String>{
         self._isLoading.accept(true)
+        
         return Observable.create({ (observer) -> Disposable in
             let request = self.provider.request(.loadWatchlist(userId:userid)){ [weak self] result in
                 guard let `self` = self else {return}
                 
                 switch result {
+                    
                 case .success(let response):
                     do {
                         let data = try JSONDecoder().decode([MarketSecurity].self, from: response.data)
@@ -157,17 +159,15 @@ class MarketViewModel {
                         self._isLoading.accept(false)
                         observer.onCompleted()
                         
-                        print(data)
-                        
                     }catch let err {
                         print(String(describing: err.localizedDescription))
                     }
+                    
                 case .failure(let error):
                     print(error.localizedDescription)
                     self._isLoading.accept(false)
                 }
             }
-            
             return Disposables.create{
                 request.cancel()
                 
@@ -176,10 +176,13 @@ class MarketViewModel {
     }
     
     private func removeFromWatchListStreams(userid: Int, secid: Int, completion: @escaping AuthCompletion)->Observable<String>{
+        
+        self._isLoading.accept(true)
+        
         return Observable<String>.create({ observer  in
 
              let request = self.provider.request(.removeWatchlist(userId: userid, secId: secid)) {[weak self] result in
-                guard `self` != nil else{return}
+                guard let `self` = self else{return}
                 switch result {
                 case .success(let response):
                     do {
@@ -187,13 +190,16 @@ class MarketViewModel {
                         if let message = data.message{
                             observer.onNext(message)
                         }
+                        self._isLoading.accept(false)
                         observer.onCompleted()
                     }catch let err{
                         print(String(describing: err.localizedDescription))
+                        self._isLoading.accept(false)
                     }
                 case .failure(let error):
                     print(error)
                     completion(error.localizedDescription)
+                    self._isLoading.accept(false)
                 }
             }
             
@@ -215,10 +221,11 @@ class MarketViewModel {
     
     
     private func addToWatchListStreams(userid: Int, secid: Int, completion: @escaping AuthCompletion)->Observable<String>{
+        self._isLoading.accept(true)
         return Observable<String>.create({ observer  in
             
             let request = self.provider.request(.addToWatchlist(userId: userid, secId: secid)) {[weak self] result in
-                guard `self` != nil else{return}
+                guard let `self` = self else{return}
                 switch result {
                 case .success(let response):
                     do {
@@ -226,13 +233,16 @@ class MarketViewModel {
                         if let message = data.message{
                             observer.onNext(message)
                         }
+                        self._isLoading.accept(false)
                         observer.onCompleted()
                     }catch let err{
                         print(String(describing: err.localizedDescription))
+                        self._isLoading.accept(false)
                     }
                 case .failure(let error):
                     print(error)
                     completion(error.localizedDescription)
+                    self._isLoading.accept(false)
                 }
             }
             
@@ -254,10 +264,11 @@ class MarketViewModel {
     
     
     private func setPriceAlertStreams(userid: Int, secid: Int,price: Double, completion: @escaping AuthCompletion)->Observable<String>{
+        _isLoading.accept(true)
         return Observable<String>.create({ observer  in
             
             let request = self.provider.request(.setPriceAlert(userId: userid, secId: secid, price: price)) {[weak self] result in
-                guard `self` != nil else{return}
+                guard let `self` = self else{return}
                 switch result {
                 case .success(let response):
                     do {
@@ -265,13 +276,16 @@ class MarketViewModel {
                         if let message = data.message{
                             observer.onNext(message)
                         }
+                        self._isLoading.accept(false)
                         observer.onCompleted()
                     }catch let err{
                         print(String(describing: err.localizedDescription))
+                        self._isLoading.accept(false)
                     }
                 case .failure(let error):
                     print(error)
                     completion(error.localizedDescription)
+                    self._isLoading.accept(false)
                 }
             }
             

@@ -14,12 +14,14 @@ extension MarketViewController : SetPriceDialogDelegate, BuySellDialogDelegate{
     func createMarketActionAlertController(_ name: String, _ userid: Int, _ secid: Int, _ price: Double?){
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
+        alertController.definesPresentationContext = true
+        
         let addToWatchlistAction = UIAlertAction(title: "Add to watchlist", style: .default) { (UIAlertAction) in
             self.marketModel?.addToWatchList(userId: userid, securityId: secid, completion: { message in
                 guard let message = message else{
                     return
                 }
-                self.showBanner(subtitle: message, style: .success)
+                self.showBanner(subtitle: message, style: .warning)
             })
         }
         
@@ -33,9 +35,11 @@ extension MarketViewController : SetPriceDialogDelegate, BuySellDialogDelegate{
         alertController.addAction(setPriceAlertAction)
         alertController.addAction(cancelAction)
         
-        self.present(alertController, animated:true, completion:nil)
+        if presentedViewController == nil {
+            self.present(alertController, animated:true, completion:nil)
+        }
+        
     }
-    
     
      func createWatchListActionAlertController(_ userid: Int, _ secid: Int){
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -47,7 +51,7 @@ extension MarketViewController : SetPriceDialogDelegate, BuySellDialogDelegate{
                     return
                 }
                 //hide progress
-                self.showBanner(subtitle: message, style: .danger)
+                self.showBanner(subtitle: message, style: .warning)
             })
         }
         
@@ -55,7 +59,10 @@ extension MarketViewController : SetPriceDialogDelegate, BuySellDialogDelegate{
         alertController.addAction(cancelAction)
         alertController.addAction(removeSecurityAction)
         
-        self.present(alertController, animated:true, completion:nil)
+        if presentedViewController == nil {
+            self.present(alertController, animated:true, completion:nil)
+        }
+        
     }
     
     
@@ -71,28 +78,29 @@ extension MarketViewController : SetPriceDialogDelegate, BuySellDialogDelegate{
         customAlert.definesPresentationContext = true
         customAlert.modalPresentationStyle = .overCurrentContext
         customAlert.modalTransitionStyle = .crossDissolve
-        self.present(customAlert, animated: true, completion: nil)
         
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.present(customAlert, animated: true, completion: nil)
+        }
     }
     
     
      func showBuySellDialog(_ name: String, _ secid: Int, _ price : Double?){
-        
         let customAlert = UIStoryboard().dialogControllerFor(identifier: "BuySellDialog") as! BuySellDialogVC
-        
+
         customAlert.securityName = name
         customAlert.securityMarketPrice = price
         customAlert.currentSecurityId = secid
         customAlert.delegate = self
-        
         customAlert.providesPresentationContextTransitionStyle = true
         customAlert.definesPresentationContext = true
         customAlert.modalPresentationStyle = .overCurrentContext
         customAlert.modalTransitionStyle = .crossDissolve
-        self.present(customAlert, animated: true, completion: nil)
+        
+       DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1){
+            self.present(customAlert, animated: true, completion: nil)
+        }
     }
-    
-
     
     func didSetPrice(secId: Int, price: Double) {
         marketModel?.setPriceAlert(secId: secId, price: price, completion: { message in
@@ -101,18 +109,18 @@ extension MarketViewController : SetPriceDialogDelegate, BuySellDialogDelegate{
                 return
             }
             //hide progress
-            self.showBanner(subtitle: message, style: .danger)
+            self.showBanner(subtitle: message, style: .warning)
         })
     }
     
     func didSelectBuy(secId: Int, quantity: Int) {
         marketModel?.buyOrder(secId: secId, quantity: quantity, completion: { message in
-            guard let message = message else{
+            guard let message = message else {
                 //hide progress
                 return
             }
             //hide progress
-            self.showBanner(subtitle: message, style: .danger)
+            self.showBanner(subtitle: message, style: .warning)
         })
     }
     
@@ -123,7 +131,7 @@ extension MarketViewController : SetPriceDialogDelegate, BuySellDialogDelegate{
                 return
             }
             //hide progress
-            self.showBanner(subtitle: message, style: .danger)
+            self.showBanner(subtitle: message, style: .warning)
         })
     }
     

@@ -39,7 +39,7 @@ class SecurityVC: UIViewController {
             
             accountViewModel.resetPassword(oldPassword: oldPassword, newPassword: newPassword) { [unowned self] error in
                 if let error = error {
-                    self.showBanner(subtitle: error, style: .success)
+                    self.showBanner(subtitle: error, style: .warning)
                 }
             }
         }

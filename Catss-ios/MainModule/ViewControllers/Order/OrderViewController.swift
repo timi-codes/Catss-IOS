@@ -139,7 +139,7 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
                 guard let error = error else {
                     return
                 }
-                self.showBanner(subtitle: error, style: .success)
+                self.showBanner(subtitle: error, style: .warning)
                 self.recentOrderTableView.reloadData()
             }
         }
@@ -156,7 +156,7 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
         
         orderViewModel = OrderViewModel(completion: { [unowned self](error) in
             guard let error = error else {return}
-            self.showBanner(subtitle: error, style: .danger)
+            self.showBanner(subtitle: error, style: .warning)
         })
         
         self.recentOrderTableView.delegate = nil

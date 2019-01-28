@@ -62,7 +62,7 @@ class SignUpViewController: ValidatorViewController {
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
         signUpModel.isValid.subscribe(onNext:{ [unowned self]
             valid in
-            valid ? self.signUpUser() :  self.showBanner(subtitle: "All input field are required", style: .danger)
+            valid ? self.signUpUser() :  self.showBanner(subtitle: "All input field are required", style: .warning)
         }).disposed(by: disposeBag)
     }
     
@@ -94,11 +94,11 @@ class SignUpViewController: ValidatorViewController {
             guard let error = error else {
                 self.hideProgress()
                 self.emptyTextField()
-                self.showBanner(subtitle: "Account was created successfully!", style: .success)
+                self.showBanner(subtitle: "Account was created successfully!", style: .warning)
                 return
             }
             self.hideProgress()
-            self.showBanner(subtitle: error, style: .danger)
+            self.showBanner(subtitle: error, style: .warning)
         }
     }
 }

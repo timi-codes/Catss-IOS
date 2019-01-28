@@ -30,10 +30,27 @@ class MarketViewCell: UITableViewCell {
         selectionStyle = .none
     }
     
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        if(selected)  {
+//            contentView.backgroundColor = UIColor.red
+//        } else {
+//            contentView.backgroundColor = UIColor.white
+//        }
+//    }
+//
+//    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+//
+//        if(highlighted) {
+//            contentView.backgroundColor = UIColor.red
+//        } else {
+//            contentView.backgroundColor = UIColor.white
+//        }
+//    }
+    
     func configureMarketCell(with marketItem : MarketSecurity){
         securityNameLabel.text = marketItem.securityName
         
-        statusLabel.text = "\(marketItem.id)"
+        statusLabel.text = "open"
         
         
         if let newPrice = marketItem.newPrice {
@@ -80,6 +97,6 @@ class MarketViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        //disposeBag = DisposeBag()
+        disposeBag = DisposeBag()
     }
 }

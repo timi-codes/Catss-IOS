@@ -54,7 +54,7 @@ class SupportVC: UIViewController {
             
             accountViewModel.sendSupportMessage(subject: subject, message: message) { [unowned self] error in
                 if let error = error {
-                    self.showBanner(subtitle: error, style: .success)
+                    self.showBanner(subtitle: error, style: .warning)
                 }
             }
         }

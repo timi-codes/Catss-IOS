@@ -48,7 +48,7 @@ extension UIViewController {
     }
     
     func showBanner(subtitle: String, style:BannerStyle){
-        let banner = NotificationBanner(title: "", subtitle: subtitle, style: style)
+        let banner = NotificationBanner(title: "", subtitle: subtitle, style: style, colors: CustomBannerColors())
         banner.show()
         banner.dismissOnTap = true
         banner.dismissOnSwipeUp = true

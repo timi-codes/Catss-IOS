@@ -127,7 +127,7 @@ class SettingsVC: UIViewController {
                     self.editSettingsButton.imageView?.image = #imageLiteral(resourceName: "done")
                     self.handleDismiss()
                 case "error":
-                    self.showBanner(subtitle: "Invalid password", style: .danger)
+                    self.showBanner(subtitle: "Invalid password", style: .warning)
                 case .none:
                     return
                 case .some(_):
@@ -147,7 +147,7 @@ class SettingsVC: UIViewController {
                 accountViewModel.updateUserProfile(phone: Int(phone)!, address: address, state: "Lagos"){ [unowned self] message in
                     if let message = message {
                         
-                        self.showBanner(subtitle: message, style: .success)
+                        self.showBanner(subtitle: message, style: .warning)
                         self.userNameTextField.removeLayer()
                         self.phoneNumberTextField.removeLayer()
                         self.zipTextField.removeLayer()
@@ -166,7 +166,7 @@ class SettingsVC: UIViewController {
                 }
                 
             }else{
-                self.showBanner(subtitle: "Field cannot the empty", style: .danger)
+                self.showBanner(subtitle: "Field cannot the empty", style: .warning)
                                         self.editSettingsButton.backgroundColor = Color.successColor
                                         self.editSettingsButton.imageView?.image = #imageLiteral(resourceName: "done")
             }

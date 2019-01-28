@@ -32,6 +32,7 @@
 		B458988821F75CE10081EAC6 /* ExpiryDateTextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458988721F75CE10081EAC6 /* ExpiryDateTextDelegate.swift */; };
 		B458988A21F782440081EAC6 /* CardNumberTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458988921F782440081EAC6 /* CardNumberTextFieldDelegate.swift */; };
 		B46A731521C7EF520088D2D0 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46A731421C7EF520088D2D0 /* MarketViewController.swift */; };
+		B4781B4F21FF0EAF00891458 /* CustomBannerColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4781B4E21FF0EAF00891458 /* CustomBannerColors.swift */; };
 		B479657321C2B2BF00EC1DF3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B479657221C2B2BF00EC1DF3 /* HomeViewController.swift */; };
 		B479657621C2B30000EC1DF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B479657521C2B30000EC1DF3 /* HomeViewModel.swift */; };
 		B479657821C2B41D00EC1DF3 /* RankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B479657721C2B41D00EC1DF3 /* RankingCell.swift */; };
@@ -111,6 +112,7 @@
 		B458988721F75CE10081EAC6 /* ExpiryDateTextDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryDateTextDelegate.swift; sourceTree = "<group>"; };
 		B458988921F782440081EAC6 /* CardNumberTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberTextFieldDelegate.swift; sourceTree = "<group>"; };
 		B46A731421C7EF520088D2D0 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		B4781B4E21FF0EAF00891458 /* CustomBannerColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBannerColors.swift; sourceTree = "<group>"; };
 		B479657221C2B2BF00EC1DF3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B479657521C2B30000EC1DF3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B479657721C2B41D00EC1DF3 /* RankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCell.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 			children = (
 				B4E51BFE21A5C6C5000AE67B /* BorderTextField.swift */,
 				B4E51C0021A5D00C000AE67B /* BorderButton.swift */,
+				B4781B4E21FF0EAF00891458 /* CustomBannerColors.swift */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				B490AE7221A8404800A23AFD /* Extension.swift in Sources */,
 				B4C4286D21F09B6400CB551D /* SettingsVC.swift in Sources */,
 				B419634F21EF3A5B00FF6E39 /* AllOrder.swift in Sources */,
+				B4781B4F21FF0EAF00891458 /* CustomBannerColors.swift in Sources */,
 				B4C4287321F0AD4B00CB551D /* AccountViewModel.swift in Sources */,
 				B458988021F5DBF80081EAC6 /* CardView.swift in Sources */,
 				B458988A21F782440081EAC6 /* CardNumberTextFieldDelegate.swift in Sources */,

@@ -183,10 +183,10 @@
             </objects>
             <point key="canvasLocation" x="-42.399999999999999" y="-27.436281859070466"/>
         </scene>
-        <!--Buy Sell DialogVC-->
+        <!--BuySellDialogVC-->
         <scene sceneID="T5V-ez-zxT">
             <objects>
-                <viewController storyboardIdentifier="BuySellDialog" definesPresentationContext="YES" modalPresentationStyle="currentContext" id="9xz-nB-mHn" customClass="BuySellDialogVC" customModule="Catss_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BuySellDialog" title="BuySellDialogVC" definesPresentationContext="YES" modalPresentationStyle="overCurrentContext" id="9xz-nB-mHn" customClass="BuySellDialogVC" customModule="Catss_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fF3-oe-duR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

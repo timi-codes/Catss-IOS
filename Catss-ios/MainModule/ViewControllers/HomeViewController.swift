@@ -74,7 +74,7 @@ class HomeViewController : UIViewController {
         
         homeViewModel = HomeViewModel(completion: { [unowned self](error) in
             guard let error = error else {return}
-            self.showBanner(subtitle: error, style: .danger)
+            self.showBanner(subtitle: error, style: .warning)
         })
         setDefaultNavigationBar()
         setUpNavBarItem()
@@ -220,7 +220,7 @@ class HomeViewController : UIViewController {
     func handlePaymentWithPaystack(cardParams: PSTCKCardParams, completed: @escaping () -> ()){
         accountModel.processPayment(cardParams: cardParams, vc: self) { error in
             if let error = error {
-                self.showBanner(subtitle: error, style: .success)
+                self.showBanner(subtitle: error, style: .warning)
                 completed()
             }
         }

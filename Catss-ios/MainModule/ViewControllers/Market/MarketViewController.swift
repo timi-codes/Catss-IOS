@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxGesture
 
-class MarketViewController: UIViewController {
+class MarketViewController: UIViewController{
     
     @IBOutlet weak var marketTableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -34,7 +34,6 @@ class MarketViewController: UIViewController {
         
         marketTableView.refreshControl = refreshControl
         
-    
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.searchBar.keyboardType = UIKeyboardType.asciiCapable
         searchController.dimsBackgroundDuringPresentation = false
@@ -46,8 +45,6 @@ class MarketViewController: UIViewController {
         super.viewWillAppear(animated)
         self.setDefaultNavigationBar()
         self.setupViews()
-        
-        self.marketActivityIndicator.isHidden = true
         
         marketModel?.isLoading.asDriver()
             .drive(onNext: {[unowned self] (isLoading) in
@@ -70,6 +67,7 @@ class MarketViewController: UIViewController {
     @objc private func showUISearchController(){
         present(searchController, animated: true, completion: nil)
     }
+    
     
     @objc private func initMarketSecurities(){
         marketModel = MarketViewModel(sortBy: segmentedControl.rx.selectedSegmentIndex.asDriver(), searchQuery: searchController.searchBar.rx.text.orEmpty.asDriver(), completion: { [unowned self](error) in
@@ -114,6 +112,8 @@ class MarketViewController: UIViewController {
     }
     
     
+    //MARK :  - show market securities in tableview
+    
     private func loadMarket(){
         
         self.marketTableView.delegate = nil
@@ -126,40 +126,68 @@ class MarketViewController: UIViewController {
                     .rx
                     .items(cellIdentifier: MarketViewCell .Identifier,
                            cellType : MarketViewCell.self)){(row, element, cell) in
-                            cell.configureMarketCell(with: element)
                             self.refreshControl.endRefreshing()
-                            cell.rx.longPressGesture().when(.recognized)
-                                .subscribe(onNext: { _ in
-                                    switch self.segmentedControl.selectedSegmentIndex {
-                                    case 0 :
-                                        if let userId = self.marketModel?.getProfile?.id {
-                                        self.createMarketActionAlertController(element.securityName, userId, element.id, element.newPrice)
-                                        }
-                                    case 1:
-                                        if let userId = self.marketModel?.getProfile?.id {
-                                            self.createWatchListActionAlertController(userId, element.id)
-                                        }
-                                    default:
-                                        return
-                                    }
-                                    
-                                }).disposed(by: self.disposeBag)
-                            
-                            cell.rx
-                                .tapGesture()
-                                .when(.recognized)
-                                .subscribe(onNext: { _ in
-                                    if self.segmentedControl.selectedSegmentIndex == 0 {
-                                        self.showBuySellDialog(element.securityName, element.id, element.newPrice)
-                                    }
-                                })
-                                .disposed(by: self.disposeBag)
-                            
-                            
+                            cell.configureMarketCell(with: element)
             }.disposed(by: self.disposeBag)
+        
+        marketTableView.rx.modelSelected(MarketSecurity.self)
+            .subscribe(onNext: { [weak self] element in
+                guard let `self` = self else{return}
+                if self.segmentedControl.selectedSegmentIndex == 0 {
+                    self.showBuySellDialog(element.securityName, element.id, element.newPrice)
+                }
+            }).disposed(by: disposeBag)
+        
+        self.didLongPressSecurity()
+        
     }
     
     
+    private func didLongPressSecurity(){
+        
+        marketTableView.rx.longPressGesture().when(.began)
+            .subscribe(onNext: { recognizer in
+                
+                let point = recognizer.location(in: self.marketTableView)
+                
+                guard recognizer.state == .began,
+                    let indexPath = self.marketTableView.indexPathForRow(at: point) else {return}
+                
+                switch self.segmentedControl.selectedSegmentIndex {
+                case 0:
+                    self.marketModel?.marketSecurity.asDriver()
+                        .filterNil()
+                        .drive(onNext:{ element in
+                            print("Selected  MARKET at \(element[indexPath.row].id)")
+                            if let userId = self.marketModel?.getProfile?.id {
+                                
+                                if recognizer.state == .began {
+                                    self.createMarketActionAlertController(element[indexPath.row].securityName, userId, element[indexPath.row].id, element[indexPath.row].newPrice)
+                                }
+                            }
+                        }).disposed(by: self.disposeBag)
+                    break
+                case 1:
+                    self.marketModel?.watchlist.asDriver()
+                        .filterNil()
+                        .drive(onNext:{ element in
+                            print("Selected  watclist at \(element[indexPath.row].id)")
+                            if let userId = self.marketModel?.getProfile?.id {
+                                if recognizer.state == .began {
+                                    self.createWatchListActionAlertController(userId, element[indexPath.row].id)
+                                }
+                            }
+                        }).disposed(by: self.disposeBag)
+                    break
+                default:
+                    return
+                }
+                
+            }).disposed(by: self.disposeBag)
+    }
+    
+    
+    //MARK :  - show watchlist in tableview
     private func loadWatchList(){
         
         self.marketTableView.delegate = nil
@@ -169,11 +197,11 @@ class MarketViewController: UIViewController {
             .filterNil()
             .bind(to:
                 self.marketTableView.rx.items(cellIdentifier: MarketViewCell.Identifier,
-                                              cellType : MarketViewCell.self)){(row, element, cell) in
-                                                cell.configureMarketCell(with: element)
-                                                self.refreshControl.endRefreshing()
-                                                //self.marketActivityIndicator.isHidden = true
+                cellType : MarketViewCell.self)){(row, element, cell) in
+                cell.configureMarketCell(with: element)
+                self.refreshControl.endRefreshing()
             }.disposed(by: disposeBag)
+    
     }
     
     private func loadSearchResult(){

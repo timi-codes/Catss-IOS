@@ -135,7 +135,7 @@ class AccountViewController: UIViewController {
     func handlePaymentWithPaystack(cardParams: PSTCKCardParams, completed: @escaping () -> ()){
         accountModel.processPayment(cardParams: cardParams, vc: self) { error in
             if let error = error {
-                self.showBanner(subtitle: error, style: .success)
+                self.showBanner(subtitle: error, style: .warning)
                 completed()
             }
         }

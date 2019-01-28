@@ -82,12 +82,15 @@ class StockViewController: UIViewController{
             
             stockModel = StockViewModel(userId: profile.id!, completion: { [unowned self](error) in
                 guard let error = error else {return}
-                self.showBanner(subtitle: error, style: .danger)
+                self.showBanner(subtitle: error, style: .warning)
             })
 
             stockModel?.accountBalance.drive(onNext:{ [unowned self]
                 balance in
                 self.balanceLabel.text = balance?.nairaEquivalent
+                if self.refreshControl != nil {
+                    self.refreshControl.endRefreshing()
+                }
             }).disposed(by: disposeBag)
             
             stockModel?.stockRevaluation.drive(onNext:{
@@ -100,7 +103,6 @@ class StockViewController: UIViewController{
                 .filterNil()
                 .bind(to: self.stockTableView.rx.items(cellIdentifier: StockCell.Identifier, cellType: StockCell.self)) { (row, element, cell) in
                     cell.configureStockBalanceCell(stockBalance: element)
-                    self.refreshControl.endRefreshing()
                 }
                 .disposed(by: disposeBag)
         }
