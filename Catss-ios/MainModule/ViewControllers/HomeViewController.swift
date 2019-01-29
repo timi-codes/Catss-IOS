@@ -66,6 +66,7 @@ class HomeViewController : UIViewController {
         
         self.reloadData()
         self.cTAButton()
+        notifyScrollStart()
     }
     
     
@@ -173,22 +174,15 @@ class HomeViewController : UIViewController {
     
     private func notifyScrollStart(){
         Driver.combineLatest(homeViewModel.newsList.asDriver(),homeViewModel.stockIndexList.asDriver()).drive(onNext:{ [unowned self ] newsData,stockIndexData in
-            if let news = newsData{
-                if news.count > 0{
+            if let news = newsData, let stockIndex = stockIndexData {
+                if news.count > 0 && stockIndex.count > 0 {
                     DispatchQueue.main.async {
                         let _ = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.autoScrollNews), userInfo: nil, repeats: true)
-                    }
-                }
-            }
-            
-            if let stockIndex = stockIndexData {
-                if stockIndex.count > 0{
-                    DispatchQueue.main.async {
                         let _ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.autoScrollStockIndex), userInfo: nil, repeats: true)
+
                     }
                 }
             }
-            
         }).disposed(by: disposeBag)
     }
     

@@ -35,6 +35,13 @@ class OpenOrderCell: UITableViewCell {
         securityNameLabel.text = order.asset
         priceLabel.text = order.price
         quantityLabel.text = order.qty
+        
+        switch order.type {
+        case "buy" : typeLabel.textColor = Color.successColor
+        case "sell": typeLabel.textColor = Color.warningColor
+        default: return
+        }
+        
         typeLabel.text = order.type
         dateLabel.text = order.date
     }

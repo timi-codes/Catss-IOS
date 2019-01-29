@@ -51,17 +51,12 @@ public enum UserRequest{
     case login(loginParams:[String:String])
     case getAccount(userId: Int)
     case getStockBalance(userId: Int)
-    case getStockHistory(userId: String)
-    case messageSupport(userId: String, subject: String, message:String)
-    case resetPassword(userId: String, oldPassword: String, newPassword: String)
-    case getProfileInfo(userId: String)
-    case updateProfile(params: [String:String])
-    case authenticateUser(userId: String, password: String)
-    
+    case getStockHistory(userId: Int)
 }
 
 
 extension UserRequest : TargetType {
+    
     public var baseURL: URL {
         return URL(string: Constant.BASE_URL)!
     }
@@ -78,24 +73,14 @@ extension UserRequest : TargetType {
             return Constant.GET_STOCK_BALANCE
         case .getStockHistory:
             return Constant.GET_STOCK_HISTORY
-        case .messageSupport:
-            return Constant.SEND_SUPPORT_MESSAGE
-        case .resetPassword:
-            return Constant.RESET_PASSWORD
-        case .getProfileInfo:
-            return Constant.USER_PROFILE
-        case .updateProfile:
-            return Constant.UPDATE_PROFILE
-        case .authenticateUser:
-            return Constant.AUTHENTICATE_USER
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .login, .registerUser, .messageSupport, .resetPassword, .updateProfile, .authenticateUser:
+        case .login, .registerUser:
             return .post
-        case .getAccount, .getStockBalance, .getStockHistory, .getProfileInfo:
+        case .getAccount, .getStockBalance, .getStockHistory:
             return .get
         }
     }
@@ -114,19 +99,10 @@ extension UserRequest : TargetType {
             return .requestParameters(parameters:["userid" : userid], encoding: URLEncoding.queryString)
         case .getStockBalance(let userid):
             return .requestParameters(parameters:["userid" : userid], encoding: URLEncoding.queryString)
-        case .getStockHistory(_):
-            return .requestPlain
-        case .messageSupport(_):
-            return .requestPlain
-        case .resetPassword(_):
-            return .requestPlain
-        case .getProfileInfo(_):
-            return .requestPlain
-        case .updateProfile(_):
-            return .requestPlain
-        case .authenticateUser(_):
-            return .requestPlain
-        }
+        case .getStockHistory(let userid):
+            return .requestParameters(parameters:["userid" : userid], encoding: URLEncoding.queryString)
+    }
+        
     }
     
     public var headers: [String : String]? {

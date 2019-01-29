@@ -18,6 +18,8 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
     private var selectedSecId : Int?
     private let cashTextFieldDelegate = CashTextFieldDelegate()
     @IBOutlet weak var openOrderActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var buysellActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var buySellButton: UIButton!
     
     private lazy var titleView : UIButton = {
         let button =  UIButton(type: .custom)
@@ -56,6 +58,8 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
         refreshControl.attributedTitle = NSAttributedString(string: "")
         refreshControl.addTarget(self, action: #selector(initOpenorder), for: .valueChanged)
         recentOrderTableView.refreshControl = refreshControl
+        
+        buysellActivityIndicator.stopAnimating()
         
         
         buyOrSellSegmentControl.rx.selectedSegmentIndex
@@ -134,13 +138,24 @@ class OrderViewController: UIViewController , PickSecurityDelegate {
     }
     
     @IBAction func askBidOrderPressed(_ sender: UIButton) {
+       
+        
         if let price = priceTextField.text, price.count > 0, let quantity = quantityTextField.text, quantity.count > 0, let secid = selectedSecId{
+            buysellActivityIndicator.startAnimating()
+            buySellButton.isEnabled = false
+            
             orderViewModel?.bidAskOrder(secId: secid, price: price.toDouble, quantity: Int(quantity)!, sortBy: (buyOrSellSegmentControl?.selectedSegmentIndex)!) { error  in
+                
+                self.initOpenorder()
+                self.quantityTextField.text = ""
+                self.totalTextField.text = "₦0.00"
+                self.buysellActivityIndicator.stopAnimating()
+                self.buySellButton.isEnabled = true
+                
                 guard let error = error else {
                     return
                 }
                 self.showBanner(subtitle: error, style: .warning)
-                self.recentOrderTableView.reloadData()
             }
         }
     }

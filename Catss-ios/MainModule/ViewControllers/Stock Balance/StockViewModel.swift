@@ -30,6 +30,19 @@ class StockViewModel {
     
     var isLoading: Driver<Bool> {return _isLoading.asDriver()}
     
+    var getProfile: Profile? {
+        guard let profile = UserKeychainAccess.getUserProfile() else{ return nil }
+        return profile
+    }
+    
+    private var _order = BehaviorRelay<AllOrder?>(value:nil)
+    
+    private var _openorder = BehaviorRelay<[Order]?>(value: nil)
+    
+    var openOrder: Driver<[Order]?> {
+        return _openorder.asDriver()
+    }
+    
     
     var accountBalance: Driver<String?> {
         return _accountBalance.asDriver()
@@ -41,6 +54,10 @@ class StockViewModel {
     
     var stockRevaluation: Driver<StockRevaluation?> {
         return _stockRevaluation.asDriver()
+    }
+    
+    init(){
+        
     }
     
     init( userId: Int, completion: @escaping AuthCompletion) {
@@ -84,4 +101,50 @@ class StockViewModel {
             }
         })
     }
+    
+     func fetchTransactionLog(){
+        if let id = getProfile?.id {
+            fetchTransactionLogStream(with: id).subscribe({_ in
+                print("fetch transaction log successfully")
+            }).disposed(by: disposeBag)
+        }
+      
+    }
+    
+    
+    private func fetchTransactionLogStream(with id: Int)->Observable<String>{
+        self._isLoading.accept(true)
+        return Observable.create({ (observer) -> Disposable in
+            let request = self.provider.request(.getStockHistory(userId: id)){ [weak self] result in
+                guard let `self` = self else {return}
+                
+                switch result {
+                case .success(let response):
+                    do {
+                        let data = try JSONDecoder().decode(AllOrder.self, from: response.data)
+                        self._order.accept(data)
+                        self._openorder.accept(data.orders)
+                        self._isLoading.accept(false)
+                        
+                        
+                        observer.onCompleted()
+                        
+                    }catch let err {
+                        print(String(describing: err.localizedDescription))
+                        self._isLoading.accept(false)
+                        
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self._isLoading.accept(false)
+                }
+            }
+            
+            return Disposables.create{
+                request.cancel()
+                
+            }
+        })
+    }
+    
 }

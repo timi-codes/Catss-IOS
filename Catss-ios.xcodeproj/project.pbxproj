@@ -20,6 +20,8 @@
 		B42452C3219F719300820952 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42452C2219F719300820952 /* Constants.swift */; };
 		B431FDDC21F897D000D7D5D7 /* AuthenticateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431FDDB21F897D000D7D5D7 /* AuthenticateView.swift */; };
 		B431FDDE21F8980300D7D5D7 /* AuthenticateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B431FDDD21F8980300D7D5D7 /* AuthenticateView.xib */; };
+		B44AF9BD22005E2F005D1EF9 /* TransHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44AF9BC22005E2F005D1EF9 /* TransHistoryVC.swift */; };
+		B44AF9BF220064EB005D1EF9 /* TransactionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44AF9BE220064EB005D1EF9 /* TransactionLog.swift */; };
 		B456E72721B9743B00D06356 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72621B9743B00D06356 /* AccountViewController.swift */; };
 		B456E72921B9745A00D06356 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72821B9745A00D06356 /* OrderViewController.swift */; };
 		B456E72B21B9747F00D06356 /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72A21B9747F00D06356 /* StockViewController.swift */; };
@@ -100,6 +102,8 @@
 		B42452C2219F719300820952 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B431FDDB21F897D000D7D5D7 /* AuthenticateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateView.swift; sourceTree = "<group>"; };
 		B431FDDD21F8980300D7D5D7 /* AuthenticateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticateView.xib; sourceTree = "<group>"; };
+		B44AF9BC22005E2F005D1EF9 /* TransHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransHistoryVC.swift; sourceTree = "<group>"; };
+		B44AF9BE220064EB005D1EF9 /* TransactionLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionLog.swift; sourceTree = "<group>"; };
 		B456E72621B9743B00D06356 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B456E72821B9745A00D06356 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		B456E72A21B9747F00D06356 /* StockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 				B4AD17EC21CD057600DA4B40 /* StockRecord.swift */,
 				B4E3EB3C21E36BCE003C3014 /* MarketSecurity.swift */,
 				B419634E21EF3A5B00FF6E39 /* AllOrder.swift */,
+				B44AF9BE220064EB005D1EF9 /* TransactionLog.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 			children = (
 				B456E72A21B9747F00D06356 /* StockViewController.swift */,
 				B4AD17E821CD005500DA4B40 /* StockViewModel.swift */,
+				B44AF9BC22005E2F005D1EF9 /* TransHistoryVC.swift */,
 				B4AD17EE21CD346900DA4B40 /* StockCell.swift */,
 			);
 			path = "Stock Balance";
@@ -648,6 +654,7 @@
 				B419634A21EF300900FF6E39 /* OpenOrderVC.swift in Sources */,
 				B4D316A621E8AD5B00D9CDBF /* SetPriceAlertVC.swift in Sources */,
 				B479657C21C367CB00EC1DF3 /* Ranking.swift in Sources */,
+				B44AF9BD22005E2F005D1EF9 /* TransHistoryVC.swift in Sources */,
 				B4DF0E912195906500966FDA /* LoginViewController.swift in Sources */,
 				B458988321F5DC2A0081EAC6 /* SummaryView.swift in Sources */,
 				B4C99BF021A713240041F48D /* SignUpViewController.swift in Sources */,
@@ -662,6 +669,7 @@
 				B42452C3219F719300820952 /* Constants.swift in Sources */,
 				B4E51BFF21A5C6C5000AE67B /* BorderTextField.swift in Sources */,
 				B456E72B21B9747F00D06356 /* StockViewController.swift in Sources */,
+				B44AF9BF220064EB005D1EF9 /* TransactionLog.swift in Sources */,
 				B4E51C0121A5D00C000AE67B /* BorderButton.swift in Sources */,
 				B4BFC9EA21E8E88A009E9A08 /* MarketViewController+alertControllers.swift in Sources */,
 				B4E3EB3F21E377FF003C3014 /* MarketViewModel.swift in Sources */,

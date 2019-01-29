@@ -28,12 +28,7 @@ class StockViewController: UIViewController{
     
     
     override func viewDidLoad() {
-        loginModel.isUserLoggedIn.subscribe(onNext:{ [unowned self] loggedIn in
-            if loggedIn {
-                self.initUserStockRecord()
-                self.loadingindicatorSetup()
-            }
-        }).disposed(by: disposeBag)
+        
     }
     
     func loadingindicatorSetup(){
@@ -57,6 +52,14 @@ class StockViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        loginModel.isUserLoggedIn.subscribe(onNext:{ [unowned self] loggedIn in
+            if loggedIn {
+                self.initUserStockRecord()
+                self.loadingindicatorSetup()
+            }
+        }).disposed(by: disposeBag)
+        
         super.viewWillAppear(animated)
         setDefaultNavigationBar()
         
@@ -109,14 +112,19 @@ class StockViewController: UIViewController{
     }
     
     private func setupViews(){
-        let logoutButtonItem = UIBarButtonItem(title: "Transaction log", style: .done, target: self, action: #selector(logoutUser))
+        let logoutButtonItem = UIBarButtonItem(title: "Transaction log", style: .done, target: self, action: #selector(transactionLog))
         self.tabBarController?.navigationItem.setRightBarButton(logoutButtonItem, animated: true)
         setUpNavBarItem()
     }
     
-    
-    @objc private func logoutUser(){
-        print("logout clicked")
+    @objc private func transactionLog(){
+        let transLogVC = UIStoryboard().controllerFor(identifier: "TransHistoryVC")
+        transLogVC.hidesBottomBarWhenPushed = true
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        backButton.tintColor = .white
+        navigationItem.backBarButtonItem = backButton
+        self.navigationController?.pushViewController(transLogVC, animated: true)
     }
     
     @IBAction func onAuthenticateUser(_ sender: UIButton) {

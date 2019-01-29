@@ -310,11 +310,13 @@ class MarketViewModel {
     }
     
     private func setMarketOrderBuyStreams(userId : Int, quantity : Int, secId : Int, completion: @escaping AuthCompletion)->Observable<String>{
+        self._isLoading.accept(true)
+
         return Observable<String>.create({ observer in
             
             let request = self.provider.request(.marketBuy(userId: userId, total: quantity, secId: secId)){[weak self] result in
                 
-                guard `self` != nil else{return}
+                guard let `self` = self else{return}
 
                 switch result {
                     
@@ -325,14 +327,19 @@ class MarketViewModel {
                         if let message = data.message{
                             observer.onNext(message)
                         }
+                        self._isLoading.accept(false)
                         observer.onCompleted()
                     }catch let err{
                         print(String(describing: err.localizedDescription))
+                        self._isLoading.accept(false)
+
                     }
                     
                 case .failure(let error):
                     print(error)
                     completion(error.localizedDescription)
+                    self._isLoading.accept(false)
+
                 }
             }
             
@@ -356,11 +363,13 @@ class MarketViewModel {
     
     
     private func setMarketOrderSellStreams(userId : Int, quantity : Int, secId : Int, completion: @escaping AuthCompletion)->Observable<String>{
+        _isLoading.accept(true)
+
         return Observable<String>.create({ observer in
             
             let request = self.provider.request(.marketSell(userId: userId, total: quantity, secId: secId)){[weak self] result in
                 
-                guard `self` != nil else{return}
+                guard let `self` = self else{return}
                 
                 switch result {
                     
@@ -371,14 +380,18 @@ class MarketViewModel {
                         if let message = data.message{
                             observer.onNext(message)
                         }
+                        self._isLoading.accept(false)
+
                         observer.onCompleted()
                     }catch let err{
                         print(String(describing: err.localizedDescription))
+                        self._isLoading.accept(false)
                     }
                     
                 case .failure(let error):
                     print(error)
                     completion(error.localizedDescription)
+                    self._isLoading.accept(false)
                 }
             }
             
