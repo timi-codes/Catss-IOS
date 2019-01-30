@@ -25,6 +25,8 @@
 		B456E72721B9743B00D06356 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72621B9743B00D06356 /* AccountViewController.swift */; };
 		B456E72921B9745A00D06356 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72821B9745A00D06356 /* OrderViewController.swift */; };
 		B456E72B21B9747F00D06356 /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456E72A21B9747F00D06356 /* StockViewController.swift */; };
+		B4581CEB220213DF009B5EE3 /* TransLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4581CE9220213DF009B5EE3 /* TransLogCell.swift */; };
+		B4581CEC220213DF009B5EE3 /* TransLogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4581CEA220213DF009B5EE3 /* TransLogCell.xib */; };
 		B458987A21F5D2CC0081EAC6 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B458987921F5D2CC0081EAC6 /* CardView.xib */; };
 		B458987C21F5D2ED0081EAC6 /* SummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B458987B21F5D2ED0081EAC6 /* SummaryView.xib */; };
 		B458987E21F5D9C10081EAC6 /* PaystackPaymentLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458987D21F5D9C10081EAC6 /* PaystackPaymentLauncher.swift */; };
@@ -107,6 +109,8 @@
 		B456E72621B9743B00D06356 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B456E72821B9745A00D06356 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		B456E72A21B9747F00D06356 /* StockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
+		B4581CE9220213DF009B5EE3 /* TransLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransLogCell.swift; sourceTree = "<group>"; };
+		B4581CEA220213DF009B5EE3 /* TransLogCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransLogCell.xib; sourceTree = "<group>"; };
 		B458987921F5D2CC0081EAC6 /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
 		B458987B21F5D2ED0081EAC6 /* SummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryView.xib; sourceTree = "<group>"; };
 		B458987D21F5D9C10081EAC6 /* PaystackPaymentLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaystackPaymentLauncher.swift; sourceTree = "<group>"; };
@@ -361,6 +365,8 @@
 				B4AD17E821CD005500DA4B40 /* StockViewModel.swift */,
 				B44AF9BC22005E2F005D1EF9 /* TransHistoryVC.swift */,
 				B4AD17EE21CD346900DA4B40 /* StockCell.swift */,
+				B4581CE9220213DF009B5EE3 /* TransLogCell.swift */,
+				B4581CEA220213DF009B5EE3 /* TransLogCell.xib */,
 			);
 			path = "Stock Balance";
 			sourceTree = "<group>";
@@ -533,6 +539,7 @@
 			files = (
 				B483BA2821B6D292004AF85C /* Dialog.storyboard in Resources */,
 				B483BA2A21B6D2B2004AF85C /* Main.storyboard in Resources */,
+				B4581CEC220213DF009B5EE3 /* TransLogCell.xib in Resources */,
 				B4DF0E9C2195906B00966FDA /* LaunchScreen.storyboard in Resources */,
 				B431FDDE21F8980300D7D5D7 /* AuthenticateView.xib in Resources */,
 				B419634321EE201600FF6E39 /* MarketViewCell.xib in Resources */,
@@ -672,6 +679,7 @@
 				B44AF9BF220064EB005D1EF9 /* TransactionLog.swift in Sources */,
 				B4E51C0121A5D00C000AE67B /* BorderButton.swift in Sources */,
 				B4BFC9EA21E8E88A009E9A08 /* MarketViewController+alertControllers.swift in Sources */,
+				B4581CEB220213DF009B5EE3 /* TransLogCell.swift in Sources */,
 				B4E3EB3F21E377FF003C3014 /* MarketViewModel.swift in Sources */,
 				B431FDDC21F897D000D7D5D7 /* AuthenticateView.swift in Sources */,
 				B46A731521C7EF520088D2D0 /* MarketViewController.swift in Sources */,

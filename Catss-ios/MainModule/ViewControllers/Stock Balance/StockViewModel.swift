@@ -14,7 +14,7 @@ import RxSwift
 import KeychainAccess
 
 class StockViewModel {
-    let provider = MoyaProvider<UserRequest>()
+    let provider = MoyaProvider<UserRequest>(plugins:[NetworkLoggerPlugin(verbose:true)])
     
     private let disposeBag = DisposeBag()
     typealias AuthCompletion = (_ error: String?)-> Void
@@ -24,6 +24,9 @@ class StockViewModel {
     private var _stockBalance = BehaviorRelay<[StockBalance]?>(value:nil)
     
     private var _stockRevaluation = BehaviorRelay<StockRevaluation?>(value:nil)
+    
+    private var _transactionLog = BehaviorRelay<[TransactionLog]?>(value:nil)
+
     
     private var _isLoading = BehaviorRelay<Bool>(value: false)
     
@@ -41,6 +44,10 @@ class StockViewModel {
     
     var openOrder: Driver<[Order]?> {
         return _openorder.asDriver()
+    }
+    
+    var transactionLog: Driver<[TransactionLog]?> {
+        return _transactionLog.asDriver()
     }
     
     
@@ -121,12 +128,10 @@ class StockViewModel {
                 switch result {
                 case .success(let response):
                     do {
-                        let data = try JSONDecoder().decode(AllOrder.self, from: response.data)
-                        self._order.accept(data)
-                        self._openorder.accept(data.orders)
+                        let data = try JSONDecoder().decode([TransactionLog].self, from: response.data)
+                        print(data)
+                        self._transactionLog.accept(data)
                         self._isLoading.accept(false)
-                        
-                        
                         observer.onCompleted()
                         
                     }catch let err {

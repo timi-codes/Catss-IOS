@@ -19,7 +19,7 @@ class TransHistoryVC: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    @IBOutlet weak var stockTableView: UITableView!
+    @IBOutlet weak var transactionLogTableView: UITableView!
     
     private lazy var titleView : UILabel = {
         let label =  UILabel()
@@ -51,9 +51,9 @@ class TransHistoryVC: UIViewController {
         
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        stockTableView.refreshControl = refreshControl
+        transactionLogTableView.refreshControl = refreshControl
         
-        stockTableView.register(UINib(nibName: "OpenOrderCell", bundle: nil), forCellReuseIdentifier: OpenOrderCell.Indentifier)
+        transactionLogTableView.register(UINib(nibName: "TransLogCell", bundle: nil), forCellReuseIdentifier: TransLogCell.Indentifier)
         
         initStockHistory()
         
@@ -76,17 +76,17 @@ class TransHistoryVC: UIViewController {
     
     private func initStockHistory(){
         
-            stockModel.fetchTransactionLog()
+            self.transactionLogTableView.delegate = nil
+            self.transactionLogTableView.dataSource = nil
+        
+        stockModel.fetchTransactionLog()
             
-            self.stockTableView.delegate = nil
-            self.stockTableView.dataSource = nil
-            
-            stockModel.openOrder.asObservable()
+            stockModel.transactionLog.asObservable()
                 .filterNil()
-                .bind(to: self.stockTableView
+                .bind(to: self.transactionLogTableView
                     .rx
-                    .items(cellIdentifier: OpenOrderCell.Indentifier, cellType: OpenOrderCell.self)){ (row, element, cell) in
-                        cell.configureOpenOrder(with: element)
+                    .items(cellIdentifier: TransLogCell.Indentifier, cellType: TransLogCell.self)){ (row, element, cell) in
+                        cell.configureTransLog(with: element)
                         self.refreshControl.endRefreshing()
                 }.disposed(by:self.disposeBag)
 

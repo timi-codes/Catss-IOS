@@ -200,14 +200,14 @@ class HomeViewController : UIViewController {
     }
     
     @objc func autoScrollStockIndex() {
-        if self.currentStockIndexPosition < self.homeViewModel.newsCount {
+        if self.currentStockIndexPosition < self.homeViewModel.stockIndexCount {
             let indexPath = IndexPath(item: currentStockIndexPosition, section: 0)
             self.stockIndexCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             self.stockIndexCollectionView.setNeedsDisplay()
             self.currentStockIndexPosition = self.currentStockIndexPosition + 1
         } else {
             self.currentStockIndexPosition = 0
-            self.stockIndexCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+            self.stockIndexCollectionView.scrollToItem(at: IndexPath(item: currentStockIndexPosition, section: 0), at: .centeredHorizontally, animated: true)
         }
     }
     
