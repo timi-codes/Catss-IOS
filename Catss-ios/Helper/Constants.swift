@@ -23,6 +23,8 @@ class Constant {
     static let GET_ACCOUNT = "account" + USER
     static let GET_STOCK_BALANCE = "stocks" + USER
     static let GET_STOCK_HISTORY = "transaction" + USER
+    static let GET_WITHDRAWAL_LOG = "fetch/withdraw"
+
     
     static let SEND_SUPPORT_MESSAGE = "contact/message"
     static let RESET_PASSWORD = "change/password"
@@ -57,6 +59,8 @@ class Constant {
     static let RANKING = "load/ranking"
     static let FINANCIALNEWS = "load/news"
     static let STOCKINDEX = "load/stockindex"
+    static let WITHDRAW = "withdraw"
+
     
 }
 
@@ -77,5 +81,7 @@ struct Color {
     static let accentColor: UIColor = #colorLiteral(red: 0.4509803922, green: 0.4509803922, blue: 0.9254901961, alpha: 1)
     static let warningColor: UIColor = #colorLiteral(red: 0.8196078431, green: 0.1529411765, blue: 0.1529411765, alpha: 1)
     static let successColor: UIColor = #colorLiteral(red: 0.1294117647, green: 0.5882352941, blue: 0.3254901961, alpha: 1)
+    static let alertColor: UIColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+
 }
 

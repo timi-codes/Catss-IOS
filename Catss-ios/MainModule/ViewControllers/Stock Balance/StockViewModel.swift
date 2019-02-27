@@ -26,6 +26,8 @@ class StockViewModel {
     private var _stockRevaluation = BehaviorRelay<StockRevaluation?>(value:nil)
     
     private var _transactionLog = BehaviorRelay<[TransactionLog]?>(value:nil)
+    
+    private var _withdrawalLog = BehaviorRelay<[WithdrawLog]?>(value:nil)
 
     
     private var _isLoading = BehaviorRelay<Bool>(value: false)
@@ -50,6 +52,9 @@ class StockViewModel {
         return _transactionLog.asDriver()
     }
     
+    var withdrawalLog: Driver<[WithdrawLog]?> {
+        return _withdrawalLog.asDriver()
+    }
     
     var accountBalance: Driver<String?> {
         return _accountBalance.asDriver()
@@ -131,6 +136,50 @@ class StockViewModel {
                         let data = try JSONDecoder().decode([TransactionLog].self, from: response.data)
                         print(data)
                         self._transactionLog.accept(data)
+                        self._isLoading.accept(false)
+                        observer.onCompleted()
+                        
+                    }catch let err {
+                        print(String(describing: err.localizedDescription))
+                        self._isLoading.accept(false)
+                        
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self._isLoading.accept(false)
+                }
+            }
+            
+            return Disposables.create{
+                request.cancel()
+                
+            }
+        })
+    }
+    
+    
+    func fetchWithdrawalLog(){
+        if let id = getProfile?.id {
+            fetchWithdrawalLogStream(with: id).subscribe({_ in
+                print("fetch withdrawal log successfully")
+            }).disposed(by: disposeBag)
+        }
+        
+    }
+    
+    
+    private func fetchWithdrawalLogStream(with id: Int)->Observable<String>{
+        self._isLoading.accept(true)
+        return Observable.create({ (observer) -> Disposable in
+            let request = self.provider.request(.getWithdrawalLog(userId: id)){ [weak self] result in
+                guard let `self` = self else {return}
+                
+                switch result {
+                case .success(let response):
+                    do {
+                        let data = try JSONDecoder().decode([WithdrawLog].self, from: response.data)
+                        print(data)
+                        self._withdrawalLog.accept(data)
                         self._isLoading.accept(false)
                         observer.onCompleted()
                         

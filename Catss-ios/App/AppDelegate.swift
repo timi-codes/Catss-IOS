@@ -35,6 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navVc.navigationBar.barTintColor = Color.primaryColor
         navVc.navigationBar.isTranslucent = false
         navVc.navigationBar.tintColor = Color.tabItemTintColor
+        navVc.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        navVc.navigationBar.shadowImage = UIImage()
+        navVc.navigationBar.layoutIfNeeded()
 
         window?.rootViewController = navVc
         

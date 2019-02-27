@@ -49,7 +49,7 @@ class MarketViewController: UIViewController{
         marketModel?.isLoading.asDriver()
             .drive(onNext: {[unowned self] (isLoading) in
                 if isLoading {
-                    self.marketActivityIndicator.startAnimating()
+    self.marketActivityIndicator.startAnimating()
                 } else {
                     self.marketActivityIndicator.stopAnimating()
                 }

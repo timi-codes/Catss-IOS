@@ -141,4 +141,13 @@ class StockViewController: UIViewController{
             return
         }
     }
+    @IBAction func onWithdrawalPressed(_ sender: UIButton) {
+        let withdrawLogVC = UIStoryboard().controllerFor(identifier: "WithdrawalVC")
+        withdrawLogVC.hidesBottomBarWhenPushed = true
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        backButton.tintColor = .white
+        navigationItem.backBarButtonItem = backButton
+        self.navigationController?.pushViewController(withdrawLogVC, animated: true)
+    }
 }

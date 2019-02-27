@@ -954,6 +954,151 @@
             </objects>
             <point key="canvasLocation" x="1349.5999999999999" y="680.5097451274363"/>
         </scene>
+        <!--Withdraw DialogVC-->
+        <scene sceneID="IYL-Jh-29L">
+            <objects>
+                <viewController storyboardIdentifier="WithdrawDialog" definesPresentationContext="YES" modalPresentationStyle="currentContext" id="rEs-He-yVD" customClass="WithdrawDialogVC" customModule="Catss_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="chF-2S-ZPq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Fi-qo-iez" userLabel="containerView">
+                                <rect key="frame" x="30" y="165" width="315" height="261"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aa4-rK-tq6">
+                                        <rect key="frame" x="52.5" y="111.5" width="210" height="38"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V13-e4-KsY" customClass="BorderTextField" customModule="Catss_ios" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="210" height="38"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" red="0.1058823529" green="0.1137254902" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingX">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="Ee6-0z-CcP"/>
+                                            <constraint firstAttribute="width" constant="210" id="rEX-ov-rPV"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAQ-bI-foQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="49"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WITHDRAW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pof-MM-XgP">
+                                                <rect key="frame" x="13" y="15.5" width="82" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuh-tz-bwb">
+                                                <rect key="frame" x="267" y="0.0" width="48" height="49"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="49" id="0DZ-Uc-CdB"/>
+                                                    <constraint firstAttribute="width" constant="48" id="0Jm-7s-vgl"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                                <state key="normal" image="exit"/>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="rEs-He-yVD" eventType="touchUpInside" id="CvT-8b-6ea"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.1019607843" green="0.1529411765" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="cuh-tz-bwb" secondAttribute="bottom" id="6G8-d5-LNF"/>
+                                            <constraint firstItem="pof-MM-XgP" firstAttribute="centerY" secondItem="UAQ-bI-foQ" secondAttribute="centerY" id="NS5-Mc-CBj"/>
+                                            <constraint firstAttribute="height" constant="49" id="PPk-kX-alL"/>
+                                            <constraint firstItem="pof-MM-XgP" firstAttribute="leading" secondItem="UAQ-bI-foQ" secondAttribute="leading" constant="13" id="Ydc-OT-Gxo"/>
+                                            <constraint firstAttribute="trailing" secondItem="cuh-tz-bwb" secondAttribute="trailing" id="e4A-a2-DAR"/>
+                                            <constraint firstItem="cuh-tz-bwb" firstAttribute="top" secondItem="UAQ-bI-foQ" secondAttribute="top" id="fq4-Ob-iEA"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AMOUNT TO WITHDRAW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3N-Ca-Eaa">
+                                        <rect key="frame" x="52" y="77" width="133" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWJ-dA-E3Q">
+                                        <rect key="frame" x="52" y="167" width="211" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9d-y7-Dxf">
+                                                <rect key="frame" x="0.0" y="0.0" width="211" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="REQUEST WITHDRAWAL">
+                                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.30029965749999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBound" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="buyButtonTapped:" destination="9xz-nB-mHn" eventType="touchUpInside" id="IX5-vp-4hf"/>
+                                                    <action selector="buyButtonTapped:" destination="iaz-9c-pg2" eventType="touchUpInside" id="NWT-Dr-3NR"/>
+                                                    <action selector="onWithdrawPressed:" destination="rEs-He-yVD" eventType="touchUpInside" id="jO1-zb-tU4"/>
+                                                </connections>
+                                            </button>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Yic-UL-Ham">
+                                                <rect key="frame" x="95" y="12" width="20" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="a7P-gk-7gS"/>
+                                            <constraint firstAttribute="width" constant="211" id="f8R-K4-eg8"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="M3N-Ca-Eaa" firstAttribute="top" secondItem="0Fi-qo-iez" secondAttribute="top" constant="77" id="1UT-Fc-Bmi"/>
+                                    <constraint firstItem="xWJ-dA-E3Q" firstAttribute="centerX" secondItem="0Fi-qo-iez" secondAttribute="centerX" id="3No-62-nBb"/>
+                                    <constraint firstItem="aa4-rK-tq6" firstAttribute="centerX" secondItem="0Fi-qo-iez" secondAttribute="centerX" id="6H2-UC-xVW"/>
+                                    <constraint firstItem="aa4-rK-tq6" firstAttribute="centerY" secondItem="0Fi-qo-iez" secondAttribute="centerY" id="73D-Fl-NBn"/>
+                                    <constraint firstItem="UAQ-bI-foQ" firstAttribute="leading" secondItem="0Fi-qo-iez" secondAttribute="leading" id="TQz-hg-m5r"/>
+                                    <constraint firstItem="UAQ-bI-foQ" firstAttribute="top" secondItem="0Fi-qo-iez" secondAttribute="top" id="d6m-ao-b9O"/>
+                                    <constraint firstItem="M3N-Ca-Eaa" firstAttribute="leading" secondItem="0Fi-qo-iez" secondAttribute="leading" constant="52" id="iX5-BJ-P7Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="UAQ-bI-foQ" secondAttribute="trailing" id="lcM-T2-EqM"/>
+                                    <constraint firstItem="aa4-rK-tq6" firstAttribute="top" secondItem="M3N-Ca-Eaa" secondAttribute="bottom" constant="20" id="wwg-iH-ZIs"/>
+                                    <constraint firstItem="xWJ-dA-E3Q" firstAttribute="top" secondItem="aa4-rK-tq6" secondAttribute="bottom" constant="17.5" id="xHS-i1-TUo"/>
+                                    <constraint firstAttribute="height" constant="261" id="ycm-mb-Uvq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.55824058219999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0Fi-qo-iez" firstAttribute="leading" secondItem="yGR-eq-HxV" secondAttribute="leading" constant="30" id="4rQ-0w-qPZ"/>
+                            <constraint firstItem="0Fi-qo-iez" firstAttribute="centerY" secondItem="chF-2S-ZPq" secondAttribute="centerY" constant="-38" id="MAn-eN-kKO"/>
+                            <constraint firstItem="yGR-eq-HxV" firstAttribute="trailing" secondItem="0Fi-qo-iez" secondAttribute="trailing" constant="30" id="c4D-JZ-ji2"/>
+                            <constraint firstItem="0Fi-qo-iez" firstAttribute="centerX" secondItem="chF-2S-ZPq" secondAttribute="centerX" id="hjR-Up-U4B"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yGR-eq-HxV"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
+                    <connections>
+                        <outlet property="amountTextField" destination="V13-e4-KsY" id="off-cg-zC8"/>
+                        <outlet property="containerView" destination="0Fi-qo-iez" id="a4h-Hy-pPc"/>
+                        <outlet property="requestWithdrawBtn" destination="t9d-y7-Dxf" id="1Dt-fw-3vk"/>
+                        <outlet property="withdrawalActivityIndicator" destination="Yic-UL-Ham" id="5Qd-Qh-K1C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c5d-tu-JNj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-762.39999999999998" y="-27.436281859070466"/>
+        </scene>
     </scenes>
     <resources>
         <image name="MasterCard" width="418.90908813476562" height="418.90908813476562"/>
