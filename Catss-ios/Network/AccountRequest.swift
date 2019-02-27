@@ -17,6 +17,7 @@ public enum AccountRequest{
     case loadUserDetails(userId:Int)
     case updateUserDetail(userId : Int, phone : Int, address : String, state : String)
     case postDepositReference(userId : Int, refId:String, amount:Int)
+    case withdrawAmount(userId : Int, amount: Double)
 }
 
 extension AccountRequest : TargetType {
@@ -39,12 +40,14 @@ extension AccountRequest : TargetType {
             return Constant.UPDATE_PROFILE
         case .postDepositReference(_):
             return Constant.POST_REF
+        case .withdrawAmount(_):
+            return Constant.WITHDRAW
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .support(_),.authenticate(_),.passwordReset(_),.updateUserDetail(_),.postDepositReference(_):
+        case .support(_),.authenticate(_),.passwordReset(_),.updateUserDetail(_),.postDepositReference(_),.withdrawAmount(_):
             return .post
         case .loadUserDetails(_):
             return .get
@@ -69,7 +72,8 @@ extension AccountRequest : TargetType {
             return .requestParameters(parameters: ["userid":userId, "phone": phone, "address":address, "state":state], encoding: URLEncoding.queryString)
         case .postDepositReference(let userId, let refId, let amount):
             return .requestParameters(parameters: ["userid" : userId, "refid" : refId, "amount" : amount], encoding: URLEncoding.queryString)
-            
+        case .withdrawAmount(let userId, let amount):
+            return .requestParameters(parameters: ["userid" : userId, "amount" : amount], encoding: URLEncoding.queryString)
         }
     }
     

@@ -10,48 +10,14 @@ import Foundation
 import Moya
 import Alamofire
 
-//public static final String USER = "/user";
-//public static final String LOGIN = "login" + USER;
-//public static final String REGISTER = "signup" + USER;
-//public static final String GET_ACCOUNT = "account" + USER ;
-//public static final String GET_BALANCE = "stocks" + USER;
-//public static final String GET_STOCK_HISTORY = "transaction" + USER;
-//public static final String SEND_SUPPORT_MESSAGE = "contact/message";
-//public static final String CHANGE_PASSWORD = "change/password";
-//public static final String USER_PROFILE = "profile-info/user";
-//public static final String UPDATE_PROFILE = "update/setting";
-//public static final String AUTHENTICATE_USER = "verify/authenticated";
-
-//public static final String SECURITIES = "load/securities";
-//
-//public static final String BUY = "/buy";
-//public static final String SELL = "/sell";
-//
-//public static final String POST_REF = "deposit/payment";
-
-//public static final String MARKET_ORDER_BUY = "trade/request"+BUY;
-//public static final String MARKET_ORDER_SELL = "trade/request"+SELL;
-//public static final String PLACE_ORDER_ASK = "place/order" + SELL;
-//public static final String PLACE_ORDER_BID = "place/order" + BUY;
-//public static final String LOAD_OPEN_ORDER = "load/orders/all";
-//
-//public static final String SET_WATCHLIST = "set/watchlist";
-//public static final String GET_WATCHLIST = "load/watchlist";
-//public static final String REMOVE_FROM_WATCHLIST = "cancel/watchlist";
-//public static final String SET_PRICE_ALERT = "set/price-alert";
-//public static final String RANKING = "load/ranking";
-//public static final String FINANCIALNEWS = "load/news";
-//public static final String STOCKINDEX = "load/stockindex";
-///api/droid
-//public static final String API_HEADER_KEY = "x-access-token";
-//yc3ROYW1lIjoiQnJldHQiLCJsYXN0TmFtZSI6Ikxhd3NvbiIsInBob25lTnVtYmVyIjoiNTIxMzM4MTQwOCIsInVybCI6InRlam
-
 public enum UserRequest{
     case registerUser(_ userDetailParams:[String:String])
     case login(loginParams:[String:String])
     case getAccount(userId: Int)
     case getStockBalance(userId: Int)
     case getStockHistory(userId: Int)
+    case getWithdrawalLog(userId: Int)
+
 }
 
 
@@ -73,6 +39,8 @@ extension UserRequest : TargetType {
             return Constant.GET_STOCK_BALANCE
         case .getStockHistory:
             return Constant.GET_STOCK_HISTORY
+        case .getWithdrawalLog:
+            return Constant.GET_WITHDRAWAL_LOG
         }
     }
     
@@ -80,7 +48,7 @@ extension UserRequest : TargetType {
         switch self {
         case .login, .registerUser:
             return .post
-        case .getAccount, .getStockBalance, .getStockHistory:
+        case .getAccount, .getStockBalance, .getStockHistory, .getWithdrawalLog:
             return .get
         }
     }
@@ -101,6 +69,8 @@ extension UserRequest : TargetType {
             return .requestParameters(parameters:["userid" : userid], encoding: URLEncoding.queryString)
         case .getStockHistory(let userid):
             return .requestParameters(parameters:["userid" : userid], encoding: URLEncoding.queryString)
+        case .getWithdrawalLog(let userid):
+            return .requestParameters(parameters: ["userid" : userid], encoding: URLEncoding.queryString)
     }
         
     }

@@ -228,4 +228,23 @@ class AccountViewModel {
         }
     }
     
+    func requestWithdrawal(amount : Double, completion: @escaping AuthCompletion){
+        if let id = self.getProfile?.id {
+            provider.request(.withdrawAmount(userId: id, amount: amount)) { result in
+                switch result {
+                case .success(let response):
+                    do{
+                        print(try response.mapJSON())
+                        let output = try JSONDecoder().decode(AuthResponse.self, from: response.data)
+                        completion(output.message)
+                    } catch let error {
+                        completion(error.localizedDescription)
+                    }
+                case .failure(let error):
+                    completion(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
 }

@@ -98,6 +98,26 @@ class HomeViewController : UIViewController {
                 }
             }).disposed(by: disposeBag)
         
+        withdrawButton.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext:{ _ in
+                if let _ = self.homeViewModel.getProfile?.id {
+                    let customAlert = UIStoryboard().dialogControllerFor(identifier: "WithdrawDialog") as! WithdrawDialogVC
+
+                    customAlert.delegate = self
+                    
+                    customAlert.providesPresentationContextTransitionStyle = true
+                    customAlert.definesPresentationContext = true
+                    customAlert.modalPresentationStyle = .overCurrentContext
+                    customAlert.modalTransitionStyle = .crossDissolve
+                        self.present(customAlert, animated: true, completion: nil)
+                }else{
+                    let loginVC = UIStoryboard().controllerFor(identifier: "LoginVC")
+                    self.present(loginVC, animated: true, completion: nil)
+                }
+                
+            }).disposed(by: disposeBag)
+        
         
         supportButton.rx.tapGesture()
             .when(.recognized)
@@ -263,19 +283,20 @@ extension HomeViewController {
     }
     
     private func errorState(){
-//        switch currentLoadingViewIndex {
-//        case 0:
-//            newsActivityIndicator.startAnimating()
-//            newsCollectionView.isHidden = true
-//        case 1:
-//            stockIndexActivityIndicator.startAnimating()
-//            stockIndexCollectionView.isHidden = true
-//        case 2:
-//            rankingActivityIndicator.startAnimating()
-//            rankingTableView.isHidden = true
-//        default :
-//            return
-//        }
+
     }
 }
+
+extension HomeViewController : WithdrawDialogDelegate {
+    func didWithdraw(amount: Double) {
+        accountModel.requestWithdrawal(amount: amount) { message in
+            if let message = message {
+                self.showBanner(subtitle: message, style: .warning)
+            }
+        }
+    }
+    
+    
+}
+
 

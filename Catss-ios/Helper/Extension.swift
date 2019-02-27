@@ -145,6 +145,20 @@ extension String {
     mutating func insert(string:String,ind:Int) {
         self.insert(contentsOf: string, at:string.index(string.startIndex, offsetBy: ind) )
     }
+    
+    
+    func toDate(withFormat format: String = "yyyy-MM-dd HH:mm:ss.SSS")-> Date?{
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.timeZone = TimeZone(identifier: "Africa/Lagos")
+        dateFormatter.locale = Locale(identifier: "en_NG")
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        let date = dateFormatter.date(from: self)
+        return date
+
+        
+    }
 }
 
 extension Double {
