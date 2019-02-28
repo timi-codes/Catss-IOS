@@ -4,6 +4,7 @@ PODS:
     - Alamofire (~> 4.8)
   - CreditCardForm (0.1.8)
   - EGFormValidator (2.0.0)
+  - Font-Awesome-Swift (1.7.2)
   - IQKeyboardManagerSwift (6.2.0)
   - JGProgressHUD (2.0.3)
   - KeychainAccess (3.1.2)
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - AlamofireImage
   - CreditCardForm
   - EGFormValidator
+  - Font-Awesome-Swift (~> 1.7.2)
   - IQKeyboardManagerSwift
   - JGProgressHUD
   - KeychainAccess
@@ -60,6 +62,7 @@ SPEC REPOS:
     - AlamofireImage
     - CreditCardForm
     - EGFormValidator
+    - Font-Awesome-Swift
     - IQKeyboardManagerSwift
     - JGProgressHUD
     - KeychainAccess
@@ -82,6 +85,7 @@ SPEC CHECKSUMS:
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   CreditCardForm: 7e67bc394545eda9e502652af0858552b4931728
   EGFormValidator: 075803c0227c2f17c7e87ba43311adbf9beae704
+  Font-Awesome-Swift: 83ab9db365379ee6025167cec67bdc5d3226a811
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
@@ -99,6 +103,6 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
 
-PODFILE CHECKSUM: c760844849fdcff523c63c1d6e76f781e9786c3b
+PODFILE CHECKSUM: 137e861ac3d4daaa35ac2e9c22a22a466901a1f1
 
 COCOAPODS: 1.6.0.beta.2

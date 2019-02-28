@@ -32,6 +32,21 @@ extension UIViewController {
 }
 
 
+// MARK - UIImageTintColor
+extension UIImageView {
+    @IBInspectable var imageColor: UIColor! {
+        set {
+            self.image = self.image?.withRenderingMode(.alwaysTemplate)
+            
+            super.tintColor = newValue
+        }
+        get {
+            return super.tintColor
+        }
+    }
+}
+
+
 // MARK - View related helpers
 extension UIViewController {
     

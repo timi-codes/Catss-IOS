@@ -1,4 +1,5 @@
-platform :ios, '10.0'
+#platform :ios, '10.0'
+platform :ios, '8.0'
 
 target 'Catss-ios' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -21,6 +22,7 @@ pod 'EGFormValidator'
 pod 'JGProgressHUD'
 pod 'Kingfisher' #, '~> 4.0'
 pod 'Stripe'
+pod 'Font-Awesome-Swift', '~> 1.7.2'
 
 
 #post_install do |installer|
