@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import KeychainAccess
 import RxGesture
 import Paystack
 
@@ -67,10 +66,6 @@ class AccountViewController: UIViewController {
             .subscribe(onNext:{ _ in
                 let supportVC = UIStoryboard().controllerFor(identifier: "SupportVC")
                 supportVC.hidesBottomBarWhenPushed = true
-//                let backButton = UIBarButtonItem()
-//                backButton.title = ""
-//                backButton.tintColor = .white
-//                self.navigationItem.leftBarButtonItem = backButton
                 self.navigationController?.pushViewController(supportVC, animated: true)
             }).disposed(by: disposeBag)
         

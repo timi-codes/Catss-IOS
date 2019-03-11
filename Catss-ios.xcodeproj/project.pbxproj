@@ -17,7 +17,10 @@
 		B419634B21EF300900FF6E39 /* OpenOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B419634921EF300900FF6E39 /* OpenOrderCell.xib */; };
 		B419634D21EF35F100FF6E39 /* OpenOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634C21EF35F100FF6E39 /* OpenOrderCell.swift */; };
 		B419634F21EF3A5B00FF6E39 /* AllOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634E21EF3A5B00FF6E39 /* AllOrder.swift */; };
+		B41D38282232C39F00F9C656 /* BiometricDialogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41D38272232C39F00F9C656 /* BiometricDialogVC.swift */; };
+		B41D382A2232C6B000F9C656 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B41D38292232C6B000F9C656 /* LocalAuthentication.framework */; };
 		B42452C3219F719300820952 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42452C2219F719300820952 /* Constants.swift */; };
+		B425602422367B8000A1E5CE /* FingerPrintSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B425602322367B8000A1E5CE /* FingerPrintSettingsVC.swift */; };
 		B431FDDC21F897D000D7D5D7 /* AuthenticateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431FDDB21F897D000D7D5D7 /* AuthenticateView.swift */; };
 		B431FDDE21F8980300D7D5D7 /* AuthenticateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B431FDDD21F8980300D7D5D7 /* AuthenticateView.xib */; };
 		B44AF9BD22005E2F005D1EF9 /* TransHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44AF9BC22005E2F005D1EF9 /* TransHistoryVC.swift */; };
@@ -72,7 +75,6 @@
 		B4D5934F21AEFF4C006F166A /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D5934E21AEFF4C006F166A /* UserRequest.swift */; };
 		B4DF0E8F2195906500966FDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DF0E8E2195906500966FDA /* AppDelegate.swift */; };
 		B4DF0E912195906500966FDA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DF0E902195906500966FDA /* LoginViewController.swift */; };
-		B4DF0E942195906500966FDA /* OnBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4DF0E922195906500966FDA /* OnBoard.storyboard */; };
 		B4DF0E972195906500966FDA /* Catss_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4DF0E952195906500966FDA /* Catss_ios.xcdatamodeld */; };
 		B4DF0E992195906B00966FDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4DF0E982195906B00966FDA /* Assets.xcassets */; };
 		B4DF0E9C2195906B00966FDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4DF0E9A2195906B00966FDA /* LaunchScreen.storyboard */; };
@@ -107,7 +109,10 @@
 		B419634921EF300900FF6E39 /* OpenOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenOrderCell.xib; sourceTree = "<group>"; };
 		B419634C21EF35F100FF6E39 /* OpenOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOrderCell.swift; sourceTree = "<group>"; };
 		B419634E21EF3A5B00FF6E39 /* AllOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOrder.swift; sourceTree = "<group>"; };
+		B41D38272232C39F00F9C656 /* BiometricDialogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricDialogVC.swift; sourceTree = "<group>"; };
+		B41D38292232C6B000F9C656 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		B42452C2219F719300820952 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B425602322367B8000A1E5CE /* FingerPrintSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerPrintSettingsVC.swift; sourceTree = "<group>"; };
 		B431FDDB21F897D000D7D5D7 /* AuthenticateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateView.swift; sourceTree = "<group>"; };
 		B431FDDD21F8980300D7D5D7 /* AuthenticateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticateView.xib; sourceTree = "<group>"; };
 		B44AF9BC22005E2F005D1EF9 /* TransHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransHistoryVC.swift; sourceTree = "<group>"; };
@@ -163,7 +168,6 @@
 		B4DF0E8B2195906500966FDA /* Catss-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Catss-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4DF0E8E2195906500966FDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4DF0E902195906500966FDA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		B4DF0E932195906500966FDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OnBoard.storyboard; sourceTree = "<group>"; };
 		B4DF0E962195906500966FDA /* Catss_ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Catss_ios.xcdatamodel; sourceTree = "<group>"; };
 		B4DF0E982195906B00966FDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4DF0E9B2195906B00966FDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B41D382A2232C6B000F9C656 /* LocalAuthentication.framework in Frameworks */,
 				E93FCD80F91F35F41ACB0953 /* Pods_Catss_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +213,7 @@
 		5D6B43F0CB11A945DC87E2A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B41D38292232C6B000F9C656 /* LocalAuthentication.framework */,
 				BA5F4B7F4DD3E0164138E4E6 /* Pods_Catss_ios.framework */,
 				58AF11DE3A7CB84EE62183D9 /* Pods_Catss_iosTests.framework */,
 				1514B13D2E005A56A275121E /* Pods_Catss_iosUITests.framework */,
@@ -385,7 +391,6 @@
 		B4A7D4EA21A54F8C005B6A77 /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
-				B4DF0E922195906500966FDA /* OnBoard.storyboard */,
 				B483BA2721B6D292004AF85C /* Dialog.storyboard */,
 				B483BA2921B6D2B2004AF85C /* Main.storyboard */,
 			);
@@ -426,6 +431,7 @@
 				B4C4286A21F09B2300CB551D /* SupportVC.swift */,
 				B4C4286C21F09B6400CB551D /* SettingsVC.swift */,
 				B4C4287221F0AD4B00CB551D /* AccountViewModel.swift */,
+				B425602322367B8000A1E5CE /* FingerPrintSettingsVC.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -475,6 +481,7 @@
 				B4D316A521E8AD5B00D9CDBF /* SetPriceAlertVC.swift */,
 				B4BFC9E721E8DC95009E9A08 /* BuySellDialogVC.swift */,
 				B4E2A9712225357600DA8881 /* WithdrawDialogVC.swift */,
+				B41D38272232C39F00F9C656 /* BiometricDialogVC.swift */,
 			);
 			path = Dialog;
 			sourceTree = "<group>";
@@ -583,7 +590,6 @@
 				B400867821C95F2100134DB9 /* NewsCell.xib in Resources */,
 				B4DF0E992195906B00966FDA /* Assets.xcassets in Resources */,
 				B4F44C9221CB8E83007C542F /* StockIndexCell.xib in Resources */,
-				B4DF0E942195906500966FDA /* OnBoard.storyboard in Resources */,
 				B458987A21F5D2CC0081EAC6 /* CardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,6 +632,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/CreditCardForm/CreditCardForm.framework",
 				"${BUILT_PRODUCTS_DIR}/EGFormValidator/EGFormValidator.framework",
+				"${BUILT_PRODUCTS_DIR}/Font-Awesome-Swift/Font_Awesome_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
@@ -651,6 +658,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CreditCardForm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EGFormValidator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Font_Awesome_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
@@ -706,6 +714,7 @@
 				B479657321C2B2BF00EC1DF3 /* HomeViewController.swift in Sources */,
 				B4DF0E972195906500966FDA /* Catss_ios.xcdatamodeld in Sources */,
 				B4DF0E8F2195906500966FDA /* AppDelegate.swift in Sources */,
+				B41D38282232C39F00F9C656 /* BiometricDialogVC.swift in Sources */,
 				B419634D21EF35F100FF6E39 /* OpenOrderCell.swift in Sources */,
 				B4AD17EF21CD346900DA4B40 /* StockCell.swift in Sources */,
 				B4864C6B222591A2002C4FE4 /* WithdrawalLogCell.swift in Sources */,
@@ -741,6 +750,7 @@
 				B479657821C2B41D00EC1DF3 /* RankingCell.swift in Sources */,
 				B456E72921B9745A00D06356 /* OrderViewController.swift in Sources */,
 				B419634521EE3E2300FF6E39 /* OrderViewModel.swift in Sources */,
+				B425602422367B8000A1E5CE /* FingerPrintSettingsVC.swift in Sources */,
 				B458988821F75CE10081EAC6 /* ExpiryDateTextDelegate.swift in Sources */,
 				B400867221C951CF00134DB9 /* NewsCell.swift in Sources */,
 				B4AD17E921CD005500DA4B40 /* StockViewModel.swift in Sources */,
@@ -750,14 +760,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B4DF0E922195906500966FDA /* OnBoard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B4DF0E932195906500966FDA /* Base */,
-			);
-			name = OnBoard.storyboard;
-			sourceTree = "<group>";
-		};
 		B4DF0E9A2195906B00966FDA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

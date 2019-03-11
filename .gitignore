@@ -16,6 +16,8 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+Pods/Pods.xcodeproj/xcuserdata/codepreneur.xcuserdatad/xcschemes/xcschememanagement.plist
+Catss-ios.xcodeproj/xcuserdata/codepreneur.xcuserdatad/xcschemes/xcschememanagement.plist
 
 ## Other
 *.moved-aside
