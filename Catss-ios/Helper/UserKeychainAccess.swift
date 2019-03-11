@@ -13,6 +13,8 @@ import KeychainAccess
 struct UserKeychainAccess{
     
     private static let profileKey = "profile"
+    private static let fingerPrintEnabled = "fingerEnabled"
+
     private static let keychain = Keychain(service: "com.cavidel.Catss")
     
     static func saveUserProfile(dict: [String:Any]){
@@ -24,7 +26,6 @@ struct UserKeychainAccess{
             print("\(error.localizedDescription)")
         }
     }
-    
     
     static func getUserProfile() ->Profile? {
         do {
@@ -61,11 +62,59 @@ struct UserKeychainAccess{
         }
     }
     
+    static func setFingerPrintEnabled(_ isEnabled:Bool){
+        do{
+            print(isEnabled)
+            try keychain.set(isEnabled.description, key: fingerPrintEnabled)
+        }catch{
+            print("\(error.localizedDescription)")
+        }
+    }
+    
+    static func isFingerPrintEnabled()->Bool{
+        do {
+            guard let data = try keychain.get(fingerPrintEnabled) else{
+                fatalError()
+            }
+            
+            return data == "true" ? true : false
+            
+        }catch {
+            print("error: ", error.localizedDescription)
+            return false
+        }
+        
+    }
+    
     static func removeProfile() {
         do {
             try keychain.remove(profileKey)
         } catch let error {
-            print("error: \(error)")
+            print("error: \(error.localizedDescription)")
+        }
+    }
+    
+    static func saveAccountDetailsToKeychain(account: String, password: String){
+        guard !account.isEmpty, !password.isEmpty else { return }
+        
+        UserDefaults.standard.set(account, forKey: "lastAccessedUserName")
+
+        do{
+         try keychain.set(password, key: "password")
+            
+        }catch let error{
+        print("error: \(error.localizedDescription)")
+        }
+
+    }
+    
+    static func loadPasswordFromKeychain(account:String)->String?{
+        do {
+            let savedPassword = try keychain.get("password")
+            return savedPassword
+        } catch let error {
+            print("error: \(error.localizedDescription)")
+            return nil
         }
     }
 }

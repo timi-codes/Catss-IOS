@@ -42,8 +42,8 @@ class SettingsVC: UIViewController {
     
     @IBAction func onEditClicked(_ sender: BorderTextField) {
         bankTextField.isEnabled = false
-        
     }
+    
     private lazy var titleView : UILabel = {
         let label =  UILabel()
         label.text = "Settings"
@@ -61,7 +61,26 @@ class SettingsVC: UIViewController {
         backButton.title = " "
         backButton.tintColor = .white
         self.navigationItem.backBarButtonItem = backButton
+        
+        let rightButton = UIBarButtonItem(image: #imageLiteral(resourceName: "fingerprint"), style: .done, target: self, action: #selector(appSettings))
+        rightButton.customView?.translatesAutoresizingMaskIntoConstraints = false
+        rightButton.customView?.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        rightButton.customView?.widthAnchor.constraint(equalToConstant: 15).isActive = true
+        
+        self.navigationItem.rightBarButtonItem = rightButton
         setUpView()
+    }
+    
+    
+    
+    @objc private func appSettings(){
+        let fingerPrintVC = UIStoryboard().controllerFor(identifier: "FingerPrintSetting")
+        fingerPrintVC.hidesBottomBarWhenPushed = true
+        let label =  UILabel()
+        label.text = "Finger Print Setting"
+        label.textColor = .white
+        fingerPrintVC.navigationItem.titleView = label
+        self.navigationController?.pushViewController(fingerPrintVC, animated: true)
     }
     
     private func setUpView(){
@@ -74,7 +93,6 @@ class SettingsVC: UIViewController {
         
         self.editSettingsButton.backgroundColor = Color.accentColor
         self.editSettingsButton.imageView?.image = #imageLiteral(resourceName: "edit")
-        
     }
     
     private func setUpAuthenticateView(){
