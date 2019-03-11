@@ -1099,10 +1099,103 @@
             </objects>
             <point key="canvasLocation" x="-762.39999999999998" y="-27.436281859070466"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="wYL-Hq-9st">
+            <objects>
+                <viewController storyboardIdentifier="FingerAuthDialog" definesPresentationContext="YES" modalPresentationStyle="currentContext" id="Acy-ec-2gZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VCK-xT-PUE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFt-st-O6P" userLabel="containerView">
+                                <rect key="frame" x="30" y="165" width="315" height="308"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifO-er-6sw">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="49"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PpU-Kc-Pwc">
+                                                <rect key="frame" x="267" y="0.0" width="48" height="49"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="49" id="tli-dH-aiw"/>
+                                                    <constraint firstAttribute="width" constant="48" id="xre-ki-BIs"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="tintColor" red="0.1058823529" green="0.1137254902" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                                <state key="normal" image="ic_clear"/>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="Acy-ec-2gZ" eventType="touchUpInside" id="Bce-vF-GCa"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="DHr-rm-wrj"/>
+                                            <constraint firstAttribute="bottom" secondItem="PpU-Kc-Pwc" secondAttribute="bottom" id="Efp-zm-PIo"/>
+                                            <constraint firstItem="PpU-Kc-Pwc" firstAttribute="top" secondItem="ifO-er-6sw" secondAttribute="top" id="HFt-F9-1aq"/>
+                                            <constraint firstAttribute="trailing" secondItem="PpU-Kc-Pwc" secondAttribute="trailing" id="cdE-Wf-DmV"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FINGERPRINT AUTHENTICATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RS9-tp-4XY">
+                                        <rect key="frame" x="59.5" y="69" width="196" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place your fingertips on the Home Button to verify your identity " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXT-GY-v2M">
+                                        <rect key="frame" x="24" y="245" width="267" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="RS9-tp-4XY" firstAttribute="top" secondItem="ifO-er-6sw" secondAttribute="bottom" constant="20" id="NBS-kV-N3C"/>
+                                    <constraint firstItem="tXT-GY-v2M" firstAttribute="leading" secondItem="pFt-st-O6P" secondAttribute="leading" constant="24" id="NBt-NG-s5v"/>
+                                    <constraint firstItem="ifO-er-6sw" firstAttribute="top" secondItem="pFt-st-O6P" secondAttribute="top" id="NK9-UH-Kh0"/>
+                                    <constraint firstAttribute="trailing" secondItem="tXT-GY-v2M" secondAttribute="trailing" constant="24" id="RIH-yn-Oa4"/>
+                                    <constraint firstItem="RS9-tp-4XY" firstAttribute="centerX" secondItem="pFt-st-O6P" secondAttribute="centerX" id="VWV-y6-D9V"/>
+                                    <constraint firstAttribute="trailing" secondItem="ifO-er-6sw" secondAttribute="trailing" id="XNQ-tq-04c"/>
+                                    <constraint firstAttribute="bottom" secondItem="tXT-GY-v2M" secondAttribute="bottom" constant="28" id="c4N-cV-D7G"/>
+                                    <constraint firstItem="ifO-er-6sw" firstAttribute="leading" secondItem="pFt-st-O6P" secondAttribute="leading" id="ecd-ph-EqC"/>
+                                    <constraint firstAttribute="height" constant="308" id="fJJ-Jx-gCJ"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fingerprint" translatesAutoresizingMaskIntoConstraints="NO" id="COJ-1V-X9N">
+                                <rect key="frame" x="130.5" y="269.5" width="114" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="0Bl-aH-V72"/>
+                                    <constraint firstAttribute="width" constant="114" id="PdK-UE-1wA"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.55824058219999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="COJ-1V-X9N" firstAttribute="centerY" secondItem="VCK-xT-PUE" secondAttribute="centerY" id="JpW-wx-z6b"/>
+                            <constraint firstItem="pFt-st-O6P" firstAttribute="leading" secondItem="T8X-xS-R3B" secondAttribute="leading" constant="30" id="MV6-9Z-3kQ"/>
+                            <constraint firstItem="pFt-st-O6P" firstAttribute="centerX" secondItem="VCK-xT-PUE" secondAttribute="centerX" id="Mbi-Tm-8Nl"/>
+                            <constraint firstItem="pFt-st-O6P" firstAttribute="centerY" secondItem="VCK-xT-PUE" secondAttribute="centerY" constant="-14.5" id="PE1-EX-LPd"/>
+                            <constraint firstItem="tXT-GY-v2M" firstAttribute="top" secondItem="COJ-1V-X9N" secondAttribute="bottom" constant="12.5" id="Ugd-rw-kl2"/>
+                            <constraint firstItem="T8X-xS-R3B" firstAttribute="trailing" secondItem="pFt-st-O6P" secondAttribute="trailing" constant="30" id="WnM-1P-gOj"/>
+                            <constraint firstItem="COJ-1V-X9N" firstAttribute="centerX" secondItem="VCK-xT-PUE" secondAttribute="centerX" id="fmk-Nj-3LH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="T8X-xS-R3B"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
+                    <connections>
+                        <outlet property="containerView" destination="pFt-st-O6P" id="JLy-VB-YtR"/>
+                        <outlet property="securityNameLabel" destination="RS9-tp-4XY" id="sjH-VP-mEP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z8E-3X-nMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-762.39999999999998" y="681.40929535232385"/>
+        </scene>
     </scenes>
     <resources>
         <image name="MasterCard" width="418.90908813476562" height="418.90908813476562"/>
         <image name="exit" width="35" height="35"/>
+        <image name="fingerprint" width="170.5" height="170.5"/>
+        <image name="ic_clear" width="18.5" height="18.5"/>
         <image name="ic_decrease_price" width="82" height="74.5"/>
         <image name="ic_increase_price" width="41" height="37"/>
     </resources>
