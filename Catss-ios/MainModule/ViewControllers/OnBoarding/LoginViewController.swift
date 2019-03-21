@@ -14,9 +14,7 @@ import LocalAuthentication
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var fingerPrintButton: UIButton!
     
