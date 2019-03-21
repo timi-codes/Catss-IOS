@@ -2285,7 +2285,7 @@
                                                     <constraint firstAttribute="width" constant="22" id="9uq-On-Oq4"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Timmy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ntU-9Q-XFn" customClass="BorderTextField" customModule="Catss_ios" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ntU-9Q-XFn" customClass="BorderTextField" customModule="Catss_ios" customModuleProvider="target">
                                                 <rect key="frame" x="84" y="50.5" width="251" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="251" id="wVm-p0-Gl6"/>
@@ -2318,7 +2318,7 @@
                                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.98039215690000003" alpha="0.80166416949999997" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="08174847684" placeholder="-----------" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grW-4G-wEC" customClass="BorderTextField" customModule="Catss_ios" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-----------" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grW-4G-wEC" customClass="BorderTextField" customModule="Catss_ios" customModuleProvider="target">
                                                 <rect key="frame" x="75" y="154.5" width="148" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="FLQ-lW-KsD"/>
@@ -2355,7 +2355,7 @@
                                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.98039215690000003" alpha="0.80166416949999997" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Flt 402, 1004, Housing Estate" placeholder="------------------------------" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BBF-Cf-WvV" customClass="BorderTextField" customModule="Catss_ios" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="------------------------------" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BBF-Cf-WvV" customClass="BorderTextField" customModule="Catss_ios" customModuleProvider="target">
                                                 <rect key="frame" x="75" y="249" width="266" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="Uhr-n6-aGe"/>
@@ -2404,7 +2404,7 @@
                                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.98039215690000003" alpha="0.80166416949999997" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0222010772" placeholder="------------------------------" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlh-pU-m8x" customClass="BorderTextField" customModule="Catss_ios" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="------------------------------" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlh-pU-m8x" customClass="BorderTextField" customModule="Catss_ios" customModuleProvider="target">
                                                 <rect key="frame" x="75" y="345.5" width="266" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="GVr-cc-753"/>
@@ -2473,7 +2473,7 @@
                                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.98039215690000003" alpha="0.80166416949999997" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2345" placeholder="-----" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Ku-9v-c2Y" customClass="BorderTextField" customModule="Catss_ios" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-----" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Ku-9v-c2Y" customClass="BorderTextField" customModule="Catss_ios" customModuleProvider="target">
                                                 <rect key="frame" x="246" y="154.5" width="95" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="95" id="15t-DU-5ar"/>
@@ -2509,6 +2509,9 @@
                                                         <state key="normal" title="Select a bank">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="bankDropDownTapped:" destination="XMW-yY-SOU" eventType="touchUpInside" id="vhd-VE-Uhw"/>
+                                                        </connections>
                                                     </button>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_drop_down" translatesAutoresizingMaskIntoConstraints="NO" id="QKH-cC-gK8">
                                                         <rect key="frame" x="239" y="18" width="15" height="11"/>

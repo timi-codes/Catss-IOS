@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Font_Awesome_Swift
 class SettingsVC: UIViewController {
     
     @IBOutlet weak var editSettingsButton: UIButton!
@@ -20,6 +19,25 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var banksButton: UIButton!
     
     let dropDown = DropDown()
+    var optionsValue = [String]()
+    
+    var selectedBank: Bank?{
+        didSet {
+            guard let bank = selectedBank else {return}
+            self.banksButton.setTitle(bank.name, for: .normal)
+        }
+    }
+
+    
+    var banks = [Bank]() {
+        didSet {
+            optionsValue = banks.map({$0.name})
+            dropDown.dataSource = optionsValue
+            dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+                self.selectedBank = self.banks[index]
+            }
+        }
+    }
     
     
     enum DefaulState: String {
@@ -63,9 +81,31 @@ class SettingsVC: UIViewController {
         rightButton.customView?.widthAnchor.constraint(equalToConstant: 15).isActive = true
         
         self.navigationItem.rightBarButtonItem = rightButton
-        setUpView()
+        banksButton.isEnabled = false
+        accountViewModel.loadUserProfile { success in
+            self.setUpView()
+        }
+
     }
     
+    @IBAction func bankDropDownTapped(_ sender: UIButton) {
+        if optionsValue.count == 0 {
+            
+            if let banks = UserKeychainAccess.getBanks() {
+                let sortedBank = banks.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
+                self.banks = sortedBank
+            }else{
+                accountViewModel.getBanks { sortedBank in
+                    self.banks = sortedBank
+                }
+            }
+            return
+        }
+        
+        dropDown.anchorView = sender
+        dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.height)
+        dropDown.show()
+    }
     
     
     @objc private func appSettings(){
@@ -79,11 +119,14 @@ class SettingsVC: UIViewController {
     }
     
     private func setUpView(){
+        
         if let profile = accountViewModel.getProfile{
             userNameTextField.text = profile.name
             phoneNumberTextField.text =  profile.phone
             zipTextField.text = profile.zip_code
             addressTextField.text = profile.address
+            accountNumberTextField.text = profile.account_no
+            banksButton.setTitle(profile.bank_name, for: .normal)
         }
         
         self.editSettingsButton.backgroundColor = Color.accentColor
@@ -177,9 +220,9 @@ class SettingsVC: UIViewController {
         
         if wasEdited {
             
-            if let phone = phoneNumberTextField.text, phone.isNotEmpty, let address = addressTextField.text, address.isNotEmpty{
+            if let phone = phoneNumberTextField.text, phone.isNotEmpty, let address = addressTextField.text, address.isNotEmpty, let zip = zipTextField.text, zip.isNotEmpty, let accountNumber = accountNumberTextField.text, accountNumber.isNotEmpty, let bank = banksButton.titleLabel?.text {
                 
-                accountViewModel.updateUserProfile(phone: Int(phone)!, address: address, state: "Lagos"){ [unowned self] message in
+                accountViewModel.updateUserProfile(phone: Int(phone)!, address: address, zipcode: zip, accountNumber : accountNumber, bankName : bank){ [unowned self] message in
                     if let message = message {
                         
                         self.showBanner(subtitle: message, style: .warning)

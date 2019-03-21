@@ -14,6 +14,8 @@ struct Profile: Codable {
     let name, email, avatar : String?
     let phone,address, zip_code, state : String?
     let account_bal : String?
+    let account_no: String?
+    let bank_name : String?
 }
 
 struct ProfileError: Codable {

@@ -19,6 +19,7 @@ class AccountViewModel {
     
     private let disposeBag = DisposeBag()
     typealias AuthCompletion = (_ error: String?)-> Void
+    typealias BanksCompletion = (_ banks: [Bank])-> Void
     
     var getProfile: Profile? {
         guard let profile = UserKeychainAccess.getUserProfile() else{ return nil }
@@ -208,10 +209,10 @@ class AccountViewModel {
         }
     }
     
-    
-    func updateUserProfile(phone : Int, address : String, state: String, completion: @escaping AuthCompletion){
+    //userId : Int, phone : Int, address : String, zipcode : String, accountNumber : String, bankName : String
+    func updateUserProfile(phone : Int, address : String, zipcode: String, accountNumber : String, bankName : String, completion: @escaping AuthCompletion){
         if let id = self.getProfile?.id {
-            provider.request(.updateUserDetail(userId: id, phone: phone,  address: address, state: state)){ result in
+            provider.request(.updateUserDetail(userId: id, phone: phone,  address: address, zipcode: zipcode, accountNumber:accountNumber, bankName : bankName)){ result in
                 switch result {
                 case .success(let response):
                     do {
@@ -227,6 +228,51 @@ class AccountViewModel {
             }
         }
     }
+    
+
+    func loadUserProfile(completion: @escaping AuthCompletion){
+        if let id = self.getProfile?.id {
+            provider.request(.loadUserDetails(userId: id)){ result in
+                switch result {
+                case .success(let response):
+                    do {
+                        print(try response.mapJSON())
+                        let output = self.extractProfile(id,response)
+                        completion(output)
+                    } catch let error {
+                        completion(error.localizedDescription)
+                    }
+                case .failure(let error):
+                    completion(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    
+    private func extractProfile(_ id: Int, _ response: Response) -> String? {
+        do {
+            let data = try JSONDecoder()
+                .decode(ProfileError.self, from: response.data)
+            if data.message == nil {
+                if var json = try response.mapJSON() as? [String: Any]  {
+                    print("\(json) extracted json")
+                    json["id"] = id
+                    UserKeychainAccess.saveUserProfile(dict: json)
+                    return nil
+                } else {
+                    print(String(describing: data))
+                    return "Please try again!"
+                }
+            } else {
+                return data.message
+            }
+        } catch let err {
+            print(String(describing: err.localizedDescription))
+            return err.localizedDescription
+        }
+    }
+    
     
     func requestWithdrawal(amount : Double, completion: @escaping AuthCompletion){
         if let id = self.getProfile?.id {
@@ -247,4 +293,26 @@ class AccountViewModel {
         }
     }
     
+    func getBanks(completion: @escaping BanksCompletion){
+        
+            provider.request(.fetchBanks) {[weak self] result in
+                switch result {
+                case .success(let response):
+                    do {
+                        let output = try JSONDecoder().decode(BankResponse.self, from: response.data)
+                        
+                        UserKeychainAccess.saveBanks(banks: output.bank)
+                        
+                        let sortedBank = output.bank.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
+                        
+                        completion(sortedBank)
+                        
+                    }catch let error {
+                        print(error.localizedDescription)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
 }

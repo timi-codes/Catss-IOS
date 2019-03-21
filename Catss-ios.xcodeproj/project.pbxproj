@@ -18,6 +18,17 @@
 		B419634B21EF300900FF6E39 /* OpenOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B419634921EF300900FF6E39 /* OpenOrderCell.xib */; };
 		B419634D21EF35F100FF6E39 /* OpenOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634C21EF35F100FF6E39 /* OpenOrderCell.swift */; };
 		B419634F21EF3A5B00FF6E39 /* AllOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634E21EF3A5B00FF6E39 /* AllOrder.swift */; };
+		B41AB10C2243D0CA005D594E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41AB10B2243D0CA005D594E /* Extension.swift */; };
+		B41AB10E2243D0FE005D594E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41AB10D2243D0FE005D594E /* Constants.swift */; };
+		B41AB1102243D12D005D594E /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41AB10F2243D12D005D594E /* DateUtils.swift */; };
+		B41AB1122243D169005D594E /* UserKeychainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41AB1112243D169005D594E /* UserKeychainAccess.swift */; };
+		B41AB11F2243D2CB005D594E /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B41AB1162243D2CB005D594E /* DropDownCell.xib */; };
+		B41AB1202243D2CB005D594E /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41AB1182243D2CB005D594E /* DPDKeyboardListener.swift */; };
+		B41AB1212243D2CB005D594E /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41AB1192243D2CB005D594E /* DPDConstants.swift */; };
+		B41AB1222243D2CB005D594E /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41AB11A2243D2CB005D594E /* DPDUIView+Extension.swift */; };
+		B41AB1232243D2CB005D594E /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41AB11C2243D2CB005D594E /* DropDown.swift */; };
+		B41AB1242243D2CB005D594E /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41AB11D2243D2CB005D594E /* DropDownCell.swift */; };
+		B41AB1252243D2CB005D594E /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41AB11E2243D2CB005D594E /* DropDown+Appearance.swift */; };
 		B41D38282232C39F00F9C656 /* BiometricDialogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41D38272232C39F00F9C656 /* BiometricDialogVC.swift */; };
 		B41D382A2232C6B000F9C656 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B41D38292232C6B000F9C656 /* LocalAuthentication.framework */; };
 		B425602422367B8000A1E5CE /* FingerPrintSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B425602322367B8000A1E5CE /* FingerPrintSettingsVC.swift */; };
@@ -107,6 +118,18 @@
 		B419634921EF300900FF6E39 /* OpenOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenOrderCell.xib; sourceTree = "<group>"; };
 		B419634C21EF35F100FF6E39 /* OpenOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOrderCell.swift; sourceTree = "<group>"; };
 		B419634E21EF3A5B00FF6E39 /* AllOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOrder.swift; sourceTree = "<group>"; };
+		B41AB10B2243D0CA005D594E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		B41AB10D2243D0FE005D594E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B41AB10F2243D12D005D594E /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		B41AB1112243D169005D594E /* UserKeychainAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeychainAccess.swift; sourceTree = "<group>"; };
+		B41AB1142243D2CB005D594E /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
+		B41AB1162243D2CB005D594E /* DropDownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
+		B41AB1182243D2CB005D594E /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDKeyboardListener.swift; sourceTree = "<group>"; };
+		B41AB1192243D2CB005D594E /* DPDConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDConstants.swift; sourceTree = "<group>"; };
+		B41AB11A2243D2CB005D594E /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DPDUIView+Extension.swift"; sourceTree = "<group>"; };
+		B41AB11C2243D2CB005D594E /* DropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
+		B41AB11D2243D2CB005D594E /* DropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		B41AB11E2243D2CB005D594E /* DropDown+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DropDown+Appearance.swift"; sourceTree = "<group>"; };
 		B41D38272232C39F00F9C656 /* BiometricDialogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricDialogVC.swift; sourceTree = "<group>"; };
 		B41D38292232C6B000F9C656 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		B425602322367B8000A1E5CE /* FingerPrintSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerPrintSettingsVC.swift; sourceTree = "<group>"; };
@@ -226,6 +249,57 @@
 				B419634C21EF35F100FF6E39 /* OpenOrderCell.swift */,
 			);
 			path = Order;
+			sourceTree = "<group>";
+		};
+		B41AB10A2243D0A1005D594E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				B41AB1132243D2CB005D594E /* DropDown */,
+				B41AB10B2243D0CA005D594E /* Extension.swift */,
+				B41AB10D2243D0FE005D594E /* Constants.swift */,
+				B41AB10F2243D12D005D594E /* DateUtils.swift */,
+				B41AB1112243D169005D594E /* UserKeychainAccess.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		B41AB1132243D2CB005D594E /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				B41AB1142243D2CB005D594E /* DropDown.h */,
+				B41AB1152243D2CB005D594E /* resources */,
+				B41AB1172243D2CB005D594E /* helpers */,
+				B41AB11B2243D2CB005D594E /* src */,
+			);
+			path = DropDown;
+			sourceTree = "<group>";
+		};
+		B41AB1152243D2CB005D594E /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				B41AB1162243D2CB005D594E /* DropDownCell.xib */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		B41AB1172243D2CB005D594E /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B41AB1182243D2CB005D594E /* DPDKeyboardListener.swift */,
+				B41AB1192243D2CB005D594E /* DPDConstants.swift */,
+				B41AB11A2243D2CB005D594E /* DPDUIView+Extension.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		B41AB11B2243D2CB005D594E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B41AB11C2243D2CB005D594E /* DropDown.swift */,
+				B41AB11D2243D2CB005D594E /* DropDownCell.swift */,
+				B41AB11E2243D2CB005D594E /* DropDown+Appearance.swift */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		B431FDDF21F8981A00D7D5D7 /* AuthenticateView */ = {
@@ -491,6 +565,7 @@
 		B4DF0E8D2195906500966FDA /* Catss-ios */ = {
 			isa = PBXGroup;
 			children = (
+				B41AB10A2243D0A1005D594E /* Helper */,
 				B4A7D4B621A3463B005B6A77 /* App */,
 				B4A7D4B521A3462A005B6A77 /* Common */,
 				B4A7D4B721A34651005B6A77 /* Network */,
@@ -571,6 +646,7 @@
 				B458987C21F5D2ED0081EAC6 /* SummaryView.xib in Resources */,
 				B419634B21EF300900FF6E39 /* OpenOrderCell.xib in Resources */,
 				B400867821C95F2100134DB9 /* NewsCell.xib in Resources */,
+				B41AB11F2243D2CB005D594E /* DropDownCell.xib in Resources */,
 				B4DF0E992195906B00966FDA /* Assets.xcassets in Resources */,
 				B4F44C9221CB8E83007C542F /* StockIndexCell.xib in Resources */,
 				B458987A21F5D2CC0081EAC6 /* CardView.xib in Resources */,
@@ -686,13 +762,16 @@
 				B4CE427A21B5528A001E4B3D /* Profile.swift in Sources */,
 				B4F44C9421CB96B8007C542F /* StockIndex.swift in Sources */,
 				B479657E21C367E000EC1DF3 /* FinancialNews.swift in Sources */,
+				B41AB1232243D2CB005D594E /* DropDown.swift in Sources */,
 				B419634A21EF300900FF6E39 /* OpenOrderVC.swift in Sources */,
 				B4D316A621E8AD5B00D9CDBF /* SetPriceAlertVC.swift in Sources */,
 				B479657C21C367CB00EC1DF3 /* Ranking.swift in Sources */,
 				B44AF9BD22005E2F005D1EF9 /* TransHistoryVC.swift in Sources */,
 				B4DF0E912195906500966FDA /* LoginViewController.swift in Sources */,
+				B41AB10E2243D0FE005D594E /* Constants.swift in Sources */,
 				B458988321F5DC2A0081EAC6 /* SummaryView.swift in Sources */,
 				B4C99BF021A713240041F48D /* SignUpViewController.swift in Sources */,
+				B41AB1202243D2CB005D594E /* DPDKeyboardListener.swift in Sources */,
 				B479657A21C362A800EC1DF3 /* HomeRequest.swift in Sources */,
 				B4AD17ED21CD057600DA4B40 /* StockRecord.swift in Sources */,
 				B479657321C2B2BF00EC1DF3 /* HomeViewController.swift in Sources */,
@@ -708,8 +787,10 @@
 				B456E72B21B9747F00D06356 /* StockViewController.swift in Sources */,
 				B44AF9BF220064EB005D1EF9 /* TransactionLog.swift in Sources */,
 				B4E51C0121A5D00C000AE67B /* BorderButton.swift in Sources */,
+				B41AB1222243D2CB005D594E /* DPDUIView+Extension.swift in Sources */,
 				B4BFC9EA21E8E88A009E9A08 /* MarketViewController+alertControllers.swift in Sources */,
 				B4581CEB220213DF009B5EE3 /* TransLogCell.swift in Sources */,
+				B41AB10C2243D0CA005D594E /* Extension.swift in Sources */,
 				B4E3EB3F21E377FF003C3014 /* MarketViewModel.swift in Sources */,
 				B431FDDC21F897D000D7D5D7 /* AuthenticateView.swift in Sources */,
 				B46A731521C7EF520088D2D0 /* MarketViewController.swift in Sources */,
@@ -721,15 +802,20 @@
 				B4D5934F21AEFF4C006F166A /* UserRequest.swift in Sources */,
 				B4AD17F121CD4F5000DA4B40 /* MarketViewCell.swift in Sources */,
 				B4F44C9121CB8E83007C542F /* StockIndexCell.swift in Sources */,
+				B41AB1122243D169005D594E /* UserKeychainAccess.swift in Sources */,
+				B41AB1212243D2CB005D594E /* DPDConstants.swift in Sources */,
 				B4C4286D21F09B6400CB551D /* SettingsVC.swift in Sources */,
+				B41AB1242243D2CB005D594E /* DropDownCell.swift in Sources */,
 				B419634F21EF3A5B00FF6E39 /* AllOrder.swift in Sources */,
 				B4781B4F21FF0EAF00891458 /* CustomBannerColors.swift in Sources */,
+				B41AB1102243D12D005D594E /* DateUtils.swift in Sources */,
 				B4C4287321F0AD4B00CB551D /* AccountViewModel.swift in Sources */,
 				B458988021F5DBF80081EAC6 /* CardView.swift in Sources */,
 				B458988A21F782440081EAC6 /* CardNumberTextFieldDelegate.swift in Sources */,
 				B479657821C2B41D00EC1DF3 /* RankingCell.swift in Sources */,
 				B456E72921B9745A00D06356 /* OrderViewController.swift in Sources */,
 				B419634521EE3E2300FF6E39 /* OrderViewModel.swift in Sources */,
+				B41AB1252243D2CB005D594E /* DropDown+Appearance.swift in Sources */,
 				B425602422367B8000A1E5CE /* FingerPrintSettingsVC.swift in Sources */,
 				B458988821F75CE10081EAC6 /* ExpiryDateTextDelegate.swift in Sources */,
 				B400867221C951CF00134DB9 /* NewsCell.swift in Sources */,

@@ -56,7 +56,7 @@ class OnBoardingViewModel{
     
     var isUserLoggedIn: Observable<Bool>{
         if let profile = UserKeychainAccess.getUserProfile() {
-            if profile.email != nil{
+            if profile.id != nil{
                 return Observable.just(true)
             }
         }

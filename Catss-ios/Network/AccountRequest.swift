@@ -15,9 +15,10 @@ public enum AccountRequest{
     case authenticate(userId: Int, password: String)
     case passwordReset(userId: Int, oldPassword: String, newPassword: String)
     case loadUserDetails(userId:Int)
-    case updateUserDetail(userId : Int, phone : Int, address : String, state : String)
+    case updateUserDetail(userId : Int, phone : Int, address : String, zipcode : String, accountNumber : String, bankName : String)
     case postDepositReference(userId : Int, refId:String, amount:Int)
     case withdrawAmount(userId : Int, amount: Double)
+    case fetchBanks
 }
 
 extension AccountRequest : TargetType {
@@ -42,6 +43,8 @@ extension AccountRequest : TargetType {
             return Constant.POST_REF
         case .withdrawAmount(_):
             return Constant.WITHDRAW
+        case .fetchBanks:
+            return Constant.FETCH_BANKS
         }
     }
     
@@ -50,6 +53,8 @@ extension AccountRequest : TargetType {
         case .support(_),.authenticate(_),.passwordReset(_),.updateUserDetail(_),.postDepositReference(_),.withdrawAmount(_):
             return .post
         case .loadUserDetails(_):
+            return .get
+        case .fetchBanks:
             return .get
         }
     }
@@ -68,12 +73,14 @@ extension AccountRequest : TargetType {
             return .requestParameters(parameters: ["userid":userId, "oldpassword":oldPassword, "newpassword": newPassword], encoding: URLEncoding.queryString)
         case .loadUserDetails(let userId):
             return .requestParameters(parameters: ["userid":userId], encoding: URLEncoding.queryString)
-        case .updateUserDetail(let userId, let phone, let address, let state):
-            return .requestParameters(parameters: ["userid":userId, "phone": phone, "address":address, "state":state], encoding: URLEncoding.queryString)
+        case .updateUserDetail(let userId, let phone, let address, let zipCode, let accountNumber, let bankName):
+            return .requestParameters(parameters: ["userid":userId, "phone": phone,"address":address,"zipcode":zipCode,"account_number":accountNumber,"bank_name":bankName], encoding: URLEncoding.queryString)
         case .postDepositReference(let userId, let refId, let amount):
             return .requestParameters(parameters: ["userid" : userId, "refid" : refId, "amount" : amount], encoding: URLEncoding.queryString)
         case .withdrawAmount(let userId, let amount):
             return .requestParameters(parameters: ["userid" : userId, "amount" : amount], encoding: URLEncoding.queryString)
+        case .fetchBanks:
+            return .requestPlain
         }
     }
     
