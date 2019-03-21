@@ -23,6 +23,8 @@ pod 'JGProgressHUD'
 pod 'Kingfisher' #, '~> 4.0'
 pod 'Stripe'
 pod 'Font-Awesome-Swift', '~> 1.7.2'
+pod 'Fabric'
+pod 'Crashlytics'
 
 
 #post_install do |installer|
