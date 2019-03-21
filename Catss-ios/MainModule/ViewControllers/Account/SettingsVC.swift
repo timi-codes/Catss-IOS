@@ -17,11 +17,10 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var addressTextField: UITextField!
     
     @IBOutlet weak var accountNumberTextField: UITextField!
+    @IBOutlet weak var banksButton: UIButton!
     
-    @IBOutlet weak var bankTextField: UITextField!
+    let dropDown = DropDown()
     
-    //@IBOutlet weak var dropDown: UIButton!
-
     
     enum DefaulState: String {
         case placeholder = "Select Bank Name"
@@ -39,10 +38,6 @@ class SettingsVC: UIViewController {
         return view
     }()
     
-    
-    @IBAction func onEditClicked(_ sender: BorderTextField) {
-        bankTextField.isEnabled = false
-    }
     
     private lazy var titleView : UILabel = {
         let label =  UILabel()
@@ -154,16 +149,14 @@ class SettingsVC: UIViewController {
                     self.phoneNumberTextField.isEnabled =  true
                     self.zipTextField.isEnabled = true
                     self.addressTextField.isEnabled = true
-                    self.bankTextField.isEnabled = true
+                    self.banksButton.isEnabled = true
                     self.accountNumberTextField.isEnabled = true
+                self.userNameTextField.addLayer(.bottom).addPadding(.left)
+                self.phoneNumberTextField.addLayer(.bottom).addPadding(.left)
+                self.zipTextField.addLayer(.bottom).addPadding(.left)
+                self.addressTextField.addLayer(.bottom).addPadding(.left)
+                self.accountNumberTextField.addLayer(.bottom).addPadding(.left)
                     
-                    self.bankTextField.setRightViewFAIcon(icon:.FACaretDown, rightViewMode: .always, textColor: .white, backgroundColor: .clear, size: CGSize(width: 25, height: 25))
-                    self.userNameTextField.addLayer(.bottom).addPadding(.left)
-                    self.phoneNumberTextField.addLayer(.bottom).addPadding(.left)
-                    self.zipTextField.addLayer(.bottom).addPadding(.left)
-                    self.addressTextField.addLayer(.bottom).addPadding(.left)
-                    self.accountNumberTextField.addLayer(.bottom).addPadding(.left)
-                    self.bankTextField.addLayer(.bottom).addPadding(.left)
                     self.wasEdited = true
                     self.editSettingsButton.backgroundColor = Color.successColor
                     self.editSettingsButton.imageView?.image = #imageLiteral(resourceName: "done")
@@ -200,11 +193,8 @@ class SettingsVC: UIViewController {
                         self.zipTextField.isEnabled = false
                         self.addressTextField.isEnabled = false
                         self.accountNumberTextField.isEnabled = false
-                        self.bankTextField.isEnabled = false
-                        
-                    self.bankTextField.setRightViewFAIcon(icon:.FANone, rightViewMode: .always, textColor: .white, backgroundColor: .clear, size: nil)
+                        self.banksButton.isEnabled = false
 
-                        
                         self.editSettingsButton.backgroundColor = Color.accentColor
                         self.editSettingsButton.imageView?.image = #imageLiteral(resourceName: "edit")
                         

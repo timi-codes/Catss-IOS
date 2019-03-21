@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B400867221C951CF00134DB9 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400867121C951CF00134DB9 /* NewsCell.swift */; };
 		B400867821C95F2100134DB9 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B400867621C95F2100134DB9 /* NewsCell.xib */; };
+		B402CB1F2243B20800E620A1 /* BankResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B402CB1E2243B20800E620A1 /* BankResponse.swift */; };
 		B419633421EDE94800FF6E39 /* PickSecurityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419633321EDE94800FF6E39 /* PickSecurityVC.swift */; };
 		B419634321EE201600FF6E39 /* MarketViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B419634121EE201600FF6E39 /* MarketViewCell.xib */; };
 		B419634521EE3E2300FF6E39 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634421EE3E2300FF6E39 /* OrderViewModel.swift */; };
@@ -19,7 +20,6 @@
 		B419634F21EF3A5B00FF6E39 /* AllOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B419634E21EF3A5B00FF6E39 /* AllOrder.swift */; };
 		B41D38282232C39F00F9C656 /* BiometricDialogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41D38272232C39F00F9C656 /* BiometricDialogVC.swift */; };
 		B41D382A2232C6B000F9C656 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B41D38292232C6B000F9C656 /* LocalAuthentication.framework */; };
-		B42452C3219F719300820952 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42452C2219F719300820952 /* Constants.swift */; };
 		B425602422367B8000A1E5CE /* FingerPrintSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B425602322367B8000A1E5CE /* FingerPrintSettingsVC.swift */; };
 		B431FDDC21F897D000D7D5D7 /* AuthenticateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431FDDB21F897D000D7D5D7 /* AuthenticateView.swift */; };
 		B431FDDE21F8980300D7D5D7 /* AuthenticateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B431FDDD21F8980300D7D5D7 /* AuthenticateView.xib */; };
@@ -53,8 +53,6 @@
 		B4864C6B222591A2002C4FE4 /* WithdrawalLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4864C6A222591A2002C4FE4 /* WithdrawalLogCell.swift */; };
 		B4864C6F222595F0002C4FE4 /* WithdrawalLogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4864C6D222595F0002C4FE4 /* WithdrawalLogCell.xib */; };
 		B4864C7122259DE4002C4FE4 /* WithdrawLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4864C7022259DE4002C4FE4 /* WithdrawLog.swift */; };
-		B4864C732225B23A002C4FE4 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4864C722225B23A002C4FE4 /* DateUtils.swift */; };
-		B490AE7221A8404800A23AFD /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B490AE7121A8404800A23AFD /* Extension.swift */; };
 		B4AD17E921CD005500DA4B40 /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD17E821CD005500DA4B40 /* StockViewModel.swift */; };
 		B4AD17ED21CD057600DA4B40 /* StockRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD17EC21CD057600DA4B40 /* StockRecord.swift */; };
 		B4AD17EF21CD346900DA4B40 /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD17EE21CD346900DA4B40 /* StockCell.swift */; };
@@ -69,7 +67,6 @@
 		B4C99BF021A713240041F48D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C99BEF21A713240041F48D /* SignUpViewController.swift */; };
 		B4CE427821B543BF001E4B3D /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE427721B543BF001E4B3D /* AuthResponse.swift */; };
 		B4CE427A21B5528A001E4B3D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE427921B5528A001E4B3D /* Profile.swift */; };
-		B4CE427C21B5CCDD001E4B3D /* UserKeychainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE427B21B5CCDD001E4B3D /* UserKeychainAccess.swift */; };
 		B4D316A621E8AD5B00D9CDBF /* SetPriceAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D316A521E8AD5B00D9CDBF /* SetPriceAlertVC.swift */; };
 		B4D5934D21ADF7C0006F166A /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D5934C21ADF7C0006F166A /* OnBoardingViewModel.swift */; };
 		B4D5934F21AEFF4C006F166A /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D5934E21AEFF4C006F166A /* UserRequest.swift */; };
@@ -101,6 +98,7 @@
 		9F9F27483176E699D7198525 /* Pods-Catss-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catss-iosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Catss-iosUITests/Pods-Catss-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B400867121C951CF00134DB9 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		B400867621C95F2100134DB9 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		B402CB1E2243B20800E620A1 /* BankResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankResponse.swift; sourceTree = "<group>"; };
 		B419633321EDE94800FF6E39 /* PickSecurityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickSecurityVC.swift; sourceTree = "<group>"; };
 		B419634121EE201600FF6E39 /* MarketViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketViewCell.xib; sourceTree = "<group>"; };
 		B419634421EE3E2300FF6E39 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 		B419634E21EF3A5B00FF6E39 /* AllOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOrder.swift; sourceTree = "<group>"; };
 		B41D38272232C39F00F9C656 /* BiometricDialogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricDialogVC.swift; sourceTree = "<group>"; };
 		B41D38292232C6B000F9C656 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
-		B42452C2219F719300820952 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B425602322367B8000A1E5CE /* FingerPrintSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerPrintSettingsVC.swift; sourceTree = "<group>"; };
 		B431FDDB21F897D000D7D5D7 /* AuthenticateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateView.swift; sourceTree = "<group>"; };
 		B431FDDD21F8980300D7D5D7 /* AuthenticateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticateView.xib; sourceTree = "<group>"; };
@@ -145,8 +142,6 @@
 		B4864C6A222591A2002C4FE4 /* WithdrawalLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalLogCell.swift; sourceTree = "<group>"; };
 		B4864C6D222595F0002C4FE4 /* WithdrawalLogCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawalLogCell.xib; sourceTree = "<group>"; };
 		B4864C7022259DE4002C4FE4 /* WithdrawLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawLog.swift; sourceTree = "<group>"; };
-		B4864C722225B23A002C4FE4 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
-		B490AE7121A8404800A23AFD /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		B4AD17E821CD005500DA4B40 /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
 		B4AD17EC21CD057600DA4B40 /* StockRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRecord.swift; sourceTree = "<group>"; };
 		B4AD17EE21CD346900DA4B40 /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
@@ -161,7 +156,6 @@
 		B4C99BEF21A713240041F48D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B4CE427721B543BF001E4B3D /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		B4CE427921B5528A001E4B3D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		B4CE427B21B5CCDD001E4B3D /* UserKeychainAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeychainAccess.swift; sourceTree = "<group>"; };
 		B4D316A521E8AD5B00D9CDBF /* SetPriceAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPriceAlertVC.swift; sourceTree = "<group>"; };
 		B4D5934C21ADF7C0006F166A /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
 		B4D5934E21AEFF4C006F166A /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
@@ -232,17 +226,6 @@
 				B419634C21EF35F100FF6E39 /* OpenOrderCell.swift */,
 			);
 			path = Order;
-			sourceTree = "<group>";
-		};
-		B42452C1219F715700820952 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				B42452C2219F719300820952 /* Constants.swift */,
-				B490AE7121A8404800A23AFD /* Extension.swift */,
-				B4CE427B21B5CCDD001E4B3D /* UserKeychainAccess.swift */,
-				B4864C722225B23A002C4FE4 /* DateUtils.swift */,
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		B431FDDF21F8981A00D7D5D7 /* AuthenticateView */ = {
@@ -360,6 +343,7 @@
 				B419634E21EF3A5B00FF6E39 /* AllOrder.swift */,
 				B44AF9BE220064EB005D1EF9 /* TransactionLog.swift */,
 				B4864C7022259DE4002C4FE4 /* WithdrawLog.swift */,
+				B402CB1E2243B20800E620A1 /* BankResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -509,7 +493,6 @@
 			children = (
 				B4A7D4B621A3463B005B6A77 /* App */,
 				B4A7D4B521A3462A005B6A77 /* Common */,
-				B42452C1219F715700820952 /* Helper */,
 				B4A7D4B721A34651005B6A77 /* Network */,
 				B4A7D4B821A34667005B6A77 /* Models */,
 				B4A7D4E821A54E6A005B6A77 /* MainModule */,
@@ -697,6 +680,7 @@
 				B4C4287121F0A1EB00CB551D /* AccountRequest.swift in Sources */,
 				B4D5934D21ADF7C0006F166A /* OnBoardingViewModel.swift in Sources */,
 				B458988621F757B40081EAC6 /* CashTextFieldDelegate.swift in Sources */,
+				B402CB1F2243B20800E620A1 /* BankResponse.swift in Sources */,
 				B458987E21F5D9C10081EAC6 /* PaystackPaymentLauncher.swift in Sources */,
 				B4BFC9E821E8DC95009E9A08 /* BuySellDialogVC.swift in Sources */,
 				B4CE427A21B5528A001E4B3D /* Profile.swift in Sources */,
@@ -719,7 +703,6 @@
 				B4AD17EF21CD346900DA4B40 /* StockCell.swift in Sources */,
 				B4864C6B222591A2002C4FE4 /* WithdrawalLogCell.swift in Sources */,
 				B419633421EDE94800FF6E39 /* PickSecurityVC.swift in Sources */,
-				B42452C3219F719300820952 /* Constants.swift in Sources */,
 				B4E51BFF21A5C6C5000AE67B /* BorderTextField.swift in Sources */,
 				B4E2A9722225357600DA8881 /* WithdrawDialogVC.swift in Sources */,
 				B456E72B21B9747F00D06356 /* StockViewController.swift in Sources */,
@@ -734,19 +717,16 @@
 				B456E72721B9743B00D06356 /* AccountViewController.swift in Sources */,
 				B4C4286B21F09B2300CB551D /* SupportVC.swift in Sources */,
 				B4C4286921F09B0400CB551D /* SecurityVC.swift in Sources */,
-				B4CE427C21B5CCDD001E4B3D /* UserKeychainAccess.swift in Sources */,
 				B4864C6722258660002C4FE4 /* WithdrawalLogVC.swift in Sources */,
 				B4D5934F21AEFF4C006F166A /* UserRequest.swift in Sources */,
 				B4AD17F121CD4F5000DA4B40 /* MarketViewCell.swift in Sources */,
 				B4F44C9121CB8E83007C542F /* StockIndexCell.swift in Sources */,
-				B490AE7221A8404800A23AFD /* Extension.swift in Sources */,
 				B4C4286D21F09B6400CB551D /* SettingsVC.swift in Sources */,
 				B419634F21EF3A5B00FF6E39 /* AllOrder.swift in Sources */,
 				B4781B4F21FF0EAF00891458 /* CustomBannerColors.swift in Sources */,
 				B4C4287321F0AD4B00CB551D /* AccountViewModel.swift in Sources */,
 				B458988021F5DBF80081EAC6 /* CardView.swift in Sources */,
 				B458988A21F782440081EAC6 /* CardNumberTextFieldDelegate.swift in Sources */,
-				B4864C732225B23A002C4FE4 /* DateUtils.swift in Sources */,
 				B479657821C2B41D00EC1DF3 /* RankingCell.swift in Sources */,
 				B456E72921B9745A00D06356 /* OrderViewController.swift in Sources */,
 				B419634521EE3E2300FF6E39 /* OrderViewModel.swift in Sources */,
@@ -896,7 +876,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2824MHUPYK;
 				INFOPLIST_FILE = "$(SRCROOT)/Catss-ios/Common/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -918,7 +898,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2824MHUPYK;
 				INFOPLIST_FILE = "$(SRCROOT)/Catss-ios/Common/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
